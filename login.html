@@ -4,49 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <header>
-        <h1>Login</h1>
-    <nav>
-        <ul>
-            <li><a href="sky.html">Home</a></li>
-            <li><a href="destinations.html">Destinations</a></li>
-            <li><a href="flights.html">Flights</a></li>
-            <li><a href="offers.html">Offers</a></li>
-            <li><a href="booking.html" >Booking</a></li>
-            <li><a href="contact.html" >Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-</header>
-<section class="hero">
-<h2>Login - Sky Travelling</h2>
-<p>Join us at the best travel agency!</p>
-</section>
-<section class="login">
-<h2>Login</h2>
-<form>
-<label>Email</label>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling</h1>
+            <p>Your journey begins with a single login</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="sky.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" class="active"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
 
-<input type="email" placeholder="Enter your e-mail">
+    <section class="login-hero">
+        <h2>Welcome Back Explorer</h2>
+        <p>Access your personalized travel dashboard and continue your journey</p>
+    </section>
 
-<label>Password</label>
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Login to Your Account</h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                
+                <button type="submit" class="login-btn">Login <i class="fas fa-arrow-right"></i></button>
+                
+                <div class="login-links">
+                    <a href="#">Forgot your password?</a>
+                    <p>Don't have an account? <a href="create.html">Create one</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<input type="password" placeholder="Enter your password">
-
-<label for="">Remember me</label><input type="checkbox">  
-<br>
-<button type="submit" class="btn">Login</button>
-<br>
-<a href="" class="www">Forget password?</a>
-<br>
-<label for="">Don't have an account?<a href="create.html" class="www">Create account</a></label>
-</form>
-</section>
-<footer class="Footer">
-    &copy; 2025 Sky Travelling | All rights reserved.
-</footer>
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+    </footer>
 </body>
 </html>

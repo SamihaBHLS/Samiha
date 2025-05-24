@@ -4,47 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="contact.css">
 </head>
 <body>
-    <header>
-        <h1>Contact Us</h1>
-        <nav>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling</h1>
+            <p>Get in touch with our travel experts</p>
+        </div>
+        <nav class="floating-nav">
             <ul>
-                <li><a href="sky.html">Home</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="flights.html">Flights</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="booking.html" >Booking</a></li>
-                <li><a href="contact.html" >Contact</a></li>
+                <li><a href="sky.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h2>Contact US </h2>
-        <p>The sky is just the beginning . Let's explore !</p>
-    
-    </section>
-    
-    <section>
-        <h2>Get in Touch</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Your Name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Your Email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-            
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Sky Travelling. All Rights Reserved.</p>
+    <main class="dynamic-contact">
+        <section class="hero-tip">
+            <div class="hero-content">
+                <h2>We'd Love to Hear From You</h2>
+                <p>Have questions or feedback? Reach out to our team anytime</p>
+            </div>
+        </section>
+
+        <div class="contact-container">
+            <section class="contact-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-paper-plane"></i></div>
+                    <h3>Send Us a Message</h3>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="What's this about?">
+                        <i class="fas fa-tag input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Type your message here..." required></textarea>
+                        <i class="fas fa-comment input-icon textarea-icon"></i>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        Send Message <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </section>
+
+            <aside class="info-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-info-circle"></i></div>
+                    <h3>Contact Information</h3>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Office</h4>
+                            <p>123 Skyline Drive, Cloud City, CC 90210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>hello@skytravelling.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9AM - 6PM</p>
+                            <p>Saturday: 10AM - 4PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
     </footer>
 </body>
 </html>
