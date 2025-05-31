@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havana - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Havana Layout */
+.dynamic-havana {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-havana {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-havana::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Havana Grid */
+.havana-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Havana Cards */
+.havana-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.havana-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.havana-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.havana-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.havana-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .havana-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-havana {
+        padding: 3rem 1rem;
+    }
+    
+    .havana-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Havana</h1>
+            <p>Discover Cuba's vibrant capital where vintage cars, colonial charm, and infectious rhythms create a timeless Caribbean experience</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-havana">
+        <section class="hero-havana">
+            <div class="hero-content">
+                <h2>Experience Timeless Havana</h2>
+                <p>Where pastel-colored facades, 1950s classics, and the soulful sounds of son cubano transport you to another era</p>
+            </div>
+        </section>
+
+        <div class="havana-grid">
+            <!-- Old Havana -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-archway"></i></div>
+                    <h3>Old Havana (Habana Vieja)</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Old Havana (Habana Vieja).jpg" alt="Old Havana" class="havana-image">
+                    <p>UNESCO-listed historic center with colonial plazas, baroque churches, and vibrant street life.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Plaza Vieja & Cathedral Square</p>
+                        <p><strong>Tip:</strong> Follow the "Ruta del Café"</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Malecón -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Malecón</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Malecón.jpg" alt="Malecón" class="havana-image">
+                    <p>Iconic 8km seawall where locals gather at sunset to fish, dance, and socialize.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Evening for golden hour</p>
+                        <p><strong>Don't miss:</strong> Street musicians</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Classic Car Tour -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-car"></i></div>
+                    <h3>Classic Car Tour</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Classic Car Tour.jpg" alt="Classic Car Tour" class="havana-image">
+                    <p>Ride in a 1950s American convertible through Havana's most photogenic neighborhoods.</p>
+                    <div class="card-details">
+                        <p><strong>Duration:</strong> 1-2 hours</p>
+                        <p><strong>Price:</strong> $30-50 CUC</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Fábrica de Arte Cubano -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Fábrica de Arte Cubano</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Fábrica de Arte Cubano.jpg" alt="Fábrica de Arte Cubano" class="havana-image">
+                    <p>Havana's hippest art space with galleries, live music, bars and performance art.</p>
+                    <div class="card-details">
+                        <p><strong>Open:</strong> Thurs-Sun nights</p>
+                        <p><strong>Tip:</strong> Go early to avoid lines</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- El Floridita -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-cocktail"></i></div>
+                    <h3>El Floridita</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/El Floridita.jpg" alt="El Floridita" class="havana-image">
+                    <p>Legendary Hemingway haunt famous for inventing the daiquiri cocktail.</p>
+                    <div class="card-details">
+                        <p><strong>Must-try:</strong> Papa Doble daiquiri</p>
+                        <p><strong>Note:</strong> Tourist prices apply</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Fusterlandia -->
+            <article class="havana-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>Fusterlandia</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Fusterlandia.jpg" alt="Fusterlandia" class="havana-image">
+                    <p>Colorful mosaic wonderland created by artist José Fuster in Jaimanitas neighborhood.</p>
+                    <div class="card-details">
+                        <p><strong>Distance:</strong> 20 mins from center</p>
+                        <p><strong>Tip:</strong> Wear bright colors for photos</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Havana</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Gran Hotel Manzana Kempinski</h3>
+                    <p>★★★★★ | Havana's first 5-star hotel with rooftop pool</p>
+                    <p>Price range: $300-800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Hotel Saratoga</h3>
+                    <p>★★★★★ | Historic charm with rooftop bar</p>
+                    <p>Price range: $200-400/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Hotel Nacional</h3>
+                    <p>★★★★ | Iconic 1930s hotel with ocean views</p>
+                    <p>Price range: $120-250/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Casa Particular</h3>
+                    <p>★★★ | Authentic Cuban homestays</p>
+                    <p>Price range: $25-60/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Havana Eateries</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>La Guarida</h3>
+                    <p>Havana's most famous paladar (private restaurant)</p>
+                    <p>Specialty: Rooftop dining with city views</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>El Cocinero</h3>
+                    <p>Trendy spot in a former oil factory with rooftop garden</p>
+                    <p>Must-try: Lobster and mojitos</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Paladar Los Mercaderes</h3>
+                    <p>Romantic colonial house with live music</p>
+                    <p>Famous for: Ropa vieja (shredded beef)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Heladería Coppelia</h3>
+                    <p>Cuba's legendary ice cream parlor from "Strawberry and Chocolate"</p>
+                    <p>Don't miss: Local experience in the park</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Havana Wisdom</h3>
+                <p>"Havana doesn't show you its secrets all at once - you have to wander, linger, and let the rhythm of the city reveal itself to you."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Dual currency system - tourists use CUC. Bring enough cash (cards often don't work).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Internet Access</h3>
+                    <p>WiFi only in parks/hotels via prepaid ETECSA cards. Embrace digital detox!</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Nightlife</h3>
+                    <p>Don't miss live music at La Zorra y el Cuervo or Café Bertolt Brecht.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3>Day Trips</h3>
+                    <p>Visit Playas del Este beaches or Viñales valley for tobacco farms.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | La Habana Que Espera</p>
+    </footer>
+</body>
+</html>
