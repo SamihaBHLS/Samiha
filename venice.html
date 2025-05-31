@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venice - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Venice Layout */
+.dynamic-venice {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-venice {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-venice::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Venice Grid */
+.venice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Venice Cards */
+.venice-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.venice-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.venice-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.venice-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.venice-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .venice-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-venice {
+        padding: 3rem 1rem;
+    }
+    
+    .venice-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Venice</h1>
+            <p>Discover the romantic canals and timeless beauty of Italy's floating city</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+               <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-venice">
+        <section class="hero-venice">
+            <div class="hero-content">
+                <h2>Experience the Romance of Venice</h2>
+                <p>Gondolas, grand palaces, and winding canals await you</p>
+            </div>
+        </section>
+
+        <div class="venice-grid">
+            <!-- St. Mark's Square -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-monument"></i></div>
+                    <h3>St. Mark's Square</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/St. Mark's Square.jpg" alt="St. Mark's Square" class="venice-image">
+                    <p>The heart of Venice, surrounded by stunning architecture including St. Mark's Basilica and the Campanile.</p>
+                    <div class="card-details">
+                        <p><strong>Best time to visit:</strong> Early morning to avoid crowds</p>
+                        <p><strong>Must-see:</strong> The golden mosaics inside the Basilica</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Grand Canal -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Grand Canal</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Grand Canal.jpg" alt="Grand Canal" class="venice-image">
+                    <p>The main waterway of Venice, lined with magnificent palaces and crossed by the Rialto Bridge.</p>
+                    <div class="card-details">
+                        <p><strong>Best way to see:</strong> Vaporetto (water bus) Line 1</p>
+                        <p><strong>Tip:</strong> Ride at sunset for magical views</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Rialto Bridge -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Rialto Bridge</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Rialto Bridge.jpg" alt="Rialto Bridge" class="venice-image">
+                    <p>The oldest bridge across the Grand Canal, offering spectacular views and bustling markets nearby.</p>
+                    <div class="card-details">
+                        <p><strong>Best for:</strong> Photography and shopping</p>
+                        <p><strong>Note:</strong> Very crowded during midday</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Doge's Palace -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Doge's Palace</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Doge's Palace.jpg" alt="Doge's Palace" class="venice-image">
+                    <p>A masterpiece of Gothic architecture, once the residence of Venice's rulers and seat of government.</p>
+                    <div class="card-details">
+                        <p><strong>Hours:</strong> 8:30 AM - 7:00 PM (summer)</p>
+                        <p><strong>Admission:</strong> €25 (includes Bridge of Sighs)</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Murano Island -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-glass-whiskey"></i></div>
+                    <h3>Murano Island</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Murano Island.jpg" alt="Murano Island" class="venice-image">
+                    <p>Famous for its centuries-old glass-making tradition, with demonstrations and beautiful glass art.</p>
+                    <div class="card-details">
+                        <p><strong>Try:</strong> Watch a glass-blowing demonstration</p>
+                        <p><strong>How to get there:</strong> Vaporetto lines 4.1, 4.2, or 3</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Gondola Ride -->
+            <article class="venice-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Gondola Ride</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Gondola Ride.jpg" alt="Gondola Ride" class="venice-image">
+                    <p>The quintessential Venetian experience, gliding through picturesque canals with a singing gondolier.</p>
+                    <div class="card-details">
+                        <p><strong>Price:</strong> €80-€120 for 30-40 minutes</p>
+                        <p><strong>Best time:</strong> Early evening for sunset views</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Venice</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Hotel Danieli</h3>
+                    <p>★★★★★ | Historic palace with Grand Canal views</p>
+                    <p>Price range: €400-€1200/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Ca' Sagredo Hotel</h3>
+                    <p>★★★★★ | 15th-century palace with original frescoes</p>
+                    <p>Price range: €300-€900/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Hotel Antiche Figure</h3>
+                    <p>★★★★ | Charming canalside hotel near train station</p>
+                    <p>Price range: €150-€400/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Hotel Dalla Mora</h3>
+                    <p>★★★ | Simple, clean rooms near Santa Lucia station</p>
+                    <p>Price range: €80-€180/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Osteria alle Testiere</h3>
+                    <p>Exceptional seafood in an intimate setting</p>
+                    <p>Specialty: Spaghetti with clams and zucchini</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Trattoria da Romano</h3>
+                    <p>Historic restaurant on Burano Island</p>
+                    <p>Must-try: Risotto di pesce (fish risotto)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Antiche Carampane</h3>
+                    <p>Authentic Venetian cuisine away from tourist spots</p>
+                    <p>Specialty: Bigoli in salsa (pasta with anchovy sauce)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Ristorante Quadri</h3>
+                    <p>Michelin-starred dining overlooking St. Mark's Square</p>
+                    <p>Famous for: Modern Venetian tasting menu</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Venice Wisdom</h3>
+                <p>"Venice is like eating an entire box of chocolate liqueurs in one go." - Truman Capote</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Getting Around</h3>
+                    <p>Walk or use vaporettos (water buses). Gondolas are expensive but worth it for a special experience.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>April-May and September-October for pleasant weather and fewer crowds.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>What to Wear</h3>
+                    <p>Comfortable walking shoes (lots of bridges) and layers for changing weather.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography Tips</h3>
+                    <p>Best light is early morning. Get lost in side streets for authentic Venetian scenes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | La Serenissima Awaits</p>
+    </footer>
+</body>
+</html>
