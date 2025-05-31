@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seoul - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Seoul Layout */
+.dynamic-seoul {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-seoul {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-seoul::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Seoul Grid */
+.seoul-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Seoul Cards */
+.seoul-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.seoul-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.seoul-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.seoul-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.seoul-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .seoul-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-seoul {
+        padding: 3rem 1rem;
+    }
+    
+    .seoul-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Seoul</h1>
+            <p>Discover South Korea's dynamic capital where ancient palaces meet cutting-edge technology</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-seoul">
+        <section class="hero-seoul">
+            <div class="hero-content">
+                <h2>Experience Dynamic Seoul</h2>
+                <p>Where 600-year-old palaces stand beside futuristic skyscrapers and K-pop culture</p>
+            </div>
+        </section>
+
+        <div class="seoul-grid">
+            <!-- Gyeongbokgung Palace -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Gyeongbokgung Palace</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Gyeongbokgung Palace.jpg" alt="Gyeongbokgung Palace" class="seoul-image">
+                    <p>The largest and most beautiful of Seoul's five grand Joseon dynasty palaces, with its iconic Gwanghwamun gate.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Changing of the guard ceremony</p>
+                        <p><strong>Tip:</strong> Rent hanbok for free admission</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Bukchon Hanok Village -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-home"></i></div>
+                    <h3>Bukchon Hanok Village</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Bukchon Hanok Village.jpg" alt="Bukchon Hanok Village" class="seoul-image">
+                    <p>Traditional Korean hanok houses nestled between palaces with winding alleys and tea houses.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Early morning for photos</p>
+                        <p><strong>Note:</strong> Respect residents' privacy</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- N Seoul Tower -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>N Seoul Tower</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/N Seoul Tower.jpg" alt="N Seoul Tower" class="seoul-image">
+                    <p>Iconic observation tower on Namsan Mountain offering panoramic city views and love locks.</p>
+                    <div class="card-details">
+                        <p><strong>How to reach:</strong> Cable car or hike</p>
+                        <p><strong>Best time:</strong> Sunset for night views</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Myeongdong -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>Myeongdong</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Myeongdong.jpg" alt="Myeongdong" class="seoul-image">
+                    <p>Seoul's premier shopping district packed with cosmetics shops, street food, and department stores.</p>
+                    <div class="card-details">
+                        <p><strong>Must-try:</strong> Korean street food</p>
+                        <p><strong>Tip:</strong> Bring cash for street vendors</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Korean BBQ -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-utensils"></i></div>
+                    <h3>Korean BBQ</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Korean BBQ.jpg" alt="Korean BBQ" class="seoul-image">
+                    <p>Interactive dining experience grilling premium meats at your table with endless banchan (side dishes).</p>
+                    <div class="card-details">
+                        <p><strong>Best cuts:</strong> Samgyeopsal (pork belly) or galbi (beef ribs)</p>
+                        <p><strong>Pair with:</strong> Soju or makgeolli</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- DMZ Tour -->
+            <article class="seoul-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>DMZ Tour</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/DMZ Tour.jpg" alt="DMZ" class="seoul-image">
+                    <p>Visit the heavily fortified border with North Korea, including the Joint Security Area (JSA).</p>
+                    <div class="card-details">
+                        <p><strong>Requires:</strong> Advance booking with tour</p>
+                        <p><strong>Duration:</strong> Half-day trip from Seoul</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Seoul</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Four Seasons Seoul</h3>
+                    <p>★★★★★ | Modern luxury near Gyeongbokgung Palace</p>
+                    <p>Price range: ₩400,000-1,500,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Rakkojae Hanok</h3>
+                    <p>★★★★ | Traditional hanok stay in Bukchon</p>
+                    <p>Price range: ₩250,000-500,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Lotte City Myeongdong</h3>
+                    <p>★★★★ | Convenient location for shopping</p>
+                    <p>Price range: ₩150,000-300,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Zzzip Guesthouse</h3>
+                    <p>★★★ | Cozy hostel in Hongdae area</p>
+                    <p>Price range: ₩30,000-80,000/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Mingles</h3>
+                    <p>Michelin-starred modern Korean cuisine</p>
+                    <p>Specialty: Creative tasting menus</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Gwangjang Market</h3>
+                    <p>Historic food market with authentic street food</p>
+                    <p>Must-try: Bindaetteok (mung bean pancakes)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Mapo Galmaegi</h3>
+                    <p>Legendary Korean BBQ spot loved by locals</p>
+                    <p>Famous for: Pork neck meat</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Tosokchon Samgyetang</h3>
+                    <p>Specializes in ginseng chicken soup</p>
+                    <p>Experience: Traditional medicinal meal</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Seoul Wisdom</h3>
+                <p>"Seoul is a city that never stops moving, where tradition and hyper-modernity exist in perfect harmony."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>Excellent subway system (buy T-money card). Taxis are affordable (orange/silver most common).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Korean Won (KRW) is the currency. Credit cards widely accepted but carry cash for markets.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-umbrella"></i>
+                    <h3>Weather</h3>
+                    <p>Hot humid summers, cold winters. Spring (cherry blossoms) and fall (foliage) are ideal.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Language</h3>
+                    <p>Korean is official but English signs common. Learn basic phrases like "Annyeonghaseyo" (Hello).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | The Soul of Asia</p>
+    </footer>
+</body>
+</html>

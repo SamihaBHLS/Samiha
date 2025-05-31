@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edinburgh - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Edinburgh Layout */
+.dynamic-edinburgh {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-edinburgh {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-edinburgh::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Edinburgh Grid */
+.edinburgh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Edinburgh Cards */
+.edinburgh-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.edinburgh-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.edinburgh-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.edinburgh-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.edinburgh-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .edinburgh-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-edinburgh {
+        padding: 3rem 1rem;
+    }
+    
+    .edinburgh-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Edinburgh</h1>
+            <p>Discover Scotland's majestic capital where medieval charm meets modern vibrancy</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-edinburgh">
+        <section class="hero-edinburgh">
+            <div class="hero-content">
+                <h2>Experience Enchanting Edinburgh</h2>
+                <p>Where ancient castles, literary legends, and whisky warmth create a timeless Scottish experience</p>
+            </div>
+        </section>
+
+        <div class="edinburgh-grid">
+            <!-- Edinburgh Castle -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-chess-rook"></i></div>
+                    <h3>Edinburgh Castle</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Edinburgh Castle.jpg" alt="Edinburgh Castle" class="edinburgh-image">
+                    <p>Iconic fortress towering over the city, home to Scotland's crown jewels and the Stone of Destiny.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> One O'Clock Gun</p>
+                        <p><strong>Admission:</strong> £18.50 adults</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Royal Mile -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-road"></i></div>
+                    <h3>Royal Mile</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Royal Mile.jpg" alt="Royal Mile" class="edinburgh-image">
+                    <p>Historic thoroughfare connecting Edinburgh Castle to Holyrood Palace, lined with shops and landmarks.</p>
+                    <div class="card-details">
+                        <p><strong>Don't miss:</strong> The Real Mary King's Close</p>
+                        <p><strong>Best for:</strong> Souvenirs and whisky</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Arthur's Seat -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Arthur's Seat</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Arthur's Seat.jpg" alt="Arthur's Seat" class="edinburgh-image">
+                    <p>Ancient volcano offering panoramic city views, perfect for a moderate hike in Holyrood Park.</p>
+                    <div class="card-details">
+                        <p><strong>Duration:</strong> 1-2 hour hike</p>
+                        <p><strong>Best time:</strong> Sunrise or sunset</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Scotch Whisky Experience -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-glass-whiskey"></i></div>
+                    <h3>Scotch Whisky Experience</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Scotch Whisky Experience.jpg" alt="Scotch Whisky Experience" class="edinburgh-image">
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> World's largest whisky collection</p>
+                        <p><strong>Tours:</strong> From £20</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- National Museum of Scotland -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>National Museum of Scotland</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/National Museum of Scotland.jpg" alt="National Museum of Scotland" class="edinburgh-image">
+                    <p>Fascinating collections spanning Scottish history, science, technology and world cultures.</p>
+                    <div class="card-details">
+                        <p><strong>Admission:</strong> Free (special exhibits extra)</p>
+                        <p><strong>Must-see:</strong> Dolly the Sheep</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Edinburgh Festival -->
+            <article class="edinburgh-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-theater-masks"></i></div>
+                    <h3>Edinburgh Festival</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Edinburgh Festival.jpg" alt="Edinburgh Festival" class="edinburgh-image">
+                    <p>World's largest arts festival every August, transforming the city into a cultural wonderland.</p>
+                    <div class="card-details">
+                        <p><strong>Includes:</strong> Fringe, International, and more</p>
+                        <p><strong>Tip:</strong> Book accommodation early</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Edinburgh</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: The Balmoral</h3>
+                    <p>★★★★★ | Iconic clocktower hotel with Rocco Forte luxury</p>
+                    <p>Price range: £250-£800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: The Witchery</h3>
+                    <p>★★★★★ | Gothic luxury by the castle</p>
+                    <p>Price range: £350-£600/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Grassmarket Hotel</h3>
+                    <p>★★★★ | Vibrant design in historic location</p>
+                    <p>Price range: £120-£250/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Kick Ass Grassmarket</h3>
+                    <p>★★★ | Lively hostel with great castle views</p>
+                    <p>Price range: £30-£80/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Edinburgh Eateries</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>The Kitchin</h3>
+                    <p>Michelin-starred modern Scottish cuisine</p>
+                    <p>Specialty: "From Nature to Plate" tasting menu</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Oink</h3>
+                    <p>Legendary hog roast sandwiches</p>
+                    <p>Must-try: Pulled pork with haggis stuffing</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Dishoom</h3>
+                    <p>Authentic Bombay café experience</p>
+                    <p>Famous for: Black daal and bacon naan</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>The Elephant House</h3>
+                    <p>"Birthplace of Harry Potter" café</p>
+                    <p>Don't miss: Views of Edinburgh Castle</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Edinburgh Wisdom</h3>
+                <p>"Edinburgh is what Paris ought to be - a city of size, of magnificence, of romance." - Robert Louis Stevenson</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Getting Around</h3>
+                    <p>Compact city center is very walkable. Buses excellent for farther destinations.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-umbrella"></i>
+                    <h3>Weather</h3>
+                    <p>Changeable year-round - always carry layers and a waterproof jacket.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>When to Visit</h3>
+                    <p>Summer for festivals, winter for Christmas markets, spring/fall for fewer crowds.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-pound-sign"></i>
+                    <h3>Money</h3>
+                    <p>British Pound (£). Credit cards widely accepted but carry some cash.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Auld Reekie Awaits</p>
+    </footer>
+</body>
+</html>
