@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio de Janeiro - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Layout */
+.dynamic-rio {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-rio {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-rio::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Attractions Grid */
+.rio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Attraction Cards */
+.rio-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.rio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.rio-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.rio-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.rio-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .rio-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-rio {
+        padding: 3rem 1rem;
+    }
+    
+    .rio-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Rio</h1>
+            <p>Discover Brazil's vibrant city of sun, sea, and samba</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-rio">
+        <section class="hero-rio">
+            <div class="hero-content">
+                <h2>Experience Marvelous Rio</h2>
+                <p>Where golden beaches meet lush mountains and vibrant culture</p>
+            </div>
+        </section>
+
+        <div class="rio-grid">
+            <!-- Christ the Redeemer -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-monument"></i></div>
+                    <h3>Christ the Redeemer</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Christ the Redeemer.jpg" alt="Christ the Redeemer" class="rio-image">
+                    <p>Iconic 98-foot statue atop Corcovado Mountain, one of the New Seven Wonders of the World.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Sunrise visit for best views</p>
+                        <p><strong>Best way up:</strong> Cog train through Tijuca Forest</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sugarloaf Mountain -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Sugarloaf Mountain</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Sugarloaf Mountain.jpg" alt="Sugarloaf Mountain" class="rio-image">
+                    <p>Granite peak with cable cars offering panoramic views of Rio and its beaches.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Sunset from the summit</p>
+                        <p><strong>Tip:</strong> Combine with Urca neighborhood visit</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Copacabana Beach -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3>Copacabana Beach</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Copacabana Beach.jpg" alt="Copacabana Beach" class="rio-image">
+                    <p>Legendary 2.5-mile beach with iconic wave-patterned sidewalk and vibrant atmosphere.</p>
+                    <div class="card-details">
+                        <p><strong>Must-try:</strong> Fresh coconut water from beach vendors</p>
+                        <p><strong>Best time:</strong> Early morning for jogging or sunset</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lapa Steps -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-stairs"></i></div>
+                    <h3>Lapa Steps</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Lapa Steps.jpg" alt="Lapa Steps" class="rio-image">
+                    <p>Colorful mosaic staircase with 215 steps created by artist Jorge Selarón.</p>
+                    <div class="card-details">
+                        <p><strong>Nearby:</strong> Lapa neighborhood nightlife</p>
+                        <p><strong>Tip:</strong> Visit early to avoid crowds</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tijuca Forest -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-tree"></i></div>
+                    <h3>Tijuca Forest</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Tijuca Forest.jpg" alt="Tijuca Forest" class="rio-image">
+                    <p>World's largest urban rainforest with waterfalls, hiking trails, and diverse wildlife.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Cascatinha Waterfall</p>
+                        <p><strong>Activity:</strong> Guided jeep tours available</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Maracanã Stadium -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-futbol"></i></div>
+                    <h3>Maracanã Stadium</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Maracanã Stadium.jpg" alt="Maracanã Stadium" class="rio-image">
+                    <p>Legendary football stadium that hosted two World Cup finals and 2016 Olympics.</p>
+                    <div class="card-details">
+                        <p><strong>Experience:</strong> Attend a Flamengo match</p>
+                        <p><strong>Alternative:</strong> Stadium tour</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Rio</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Belmond Copacabana Palace</h3>
+                    <p>★★★★★ | Iconic beachfront luxury since 1923</p>
+                    <p>Price range: $400-2000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Santa Teresa Hotel RJ</h3>
+                    <p>★★★★★ | Chic hillside retreat with pool</p>
+                    <p>Price range: $300-800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Windsor Excelsior Copacabana</h3>
+                    <p>★★★★ | Great value beachfront location</p>
+                    <p>Price range: $150-400/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Mango Tree Hostel</h3>
+                    <p>★★★ | Social hostel in Ipanema</p>
+                    <p>Price range: $20-80/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Aprazível</h3>
+                    <p>Treehouse restaurant with stunning views and Brazilian cuisine</p>
+                    <p>Specialty: Moqueca (seafood stew)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Confeitaria Colombo</h3>
+                    <p>Historic 1894 café with stunning Belle Époque decor</p>
+                    <p>Must-try: Pastel de nata (custard tart)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Bar Urca</h3>
+                    <p>Classic boteco with harbor views and famous pasteis</p>
+                    <p>Famous for: Shrimp pastel</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Oro</h3>
+                    <p>Michelin-starred modern Brazilian gastronomy</p>
+                    <p>Experience: Chef's tasting menu</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Rio Wisdom</h3>
+                <p>"Rio is a city that dances to its own rhythm - where the mountains meet the sea, and every sunset feels like a celebration of life itself."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>Metrô is safest transit. Uber works well. Avoid unmarked taxis.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Brazilian Real (R$) is the currency. Cards widely accepted.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Weather</h3>
+                    <p>Summer (Dec-Mar) is hot/humid. Winter (Jun-Sep) is mild (20-25°C).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety</h3>
+                    <p>Leave valuables in hotel. Avoid flashing phones/cameras. Stick to tourist areas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Cidade Maravilhosa</p>
+    </footer>
+</body>
+</html>

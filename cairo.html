@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cairo - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Layout */
+.dynamic-cairo {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-cairo {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-cairo::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Attractions Grid */
+.cairo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Attraction Cards */
+.cairo-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cairo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.cairo-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.cairo-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.cairo-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .cairo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-cairo {
+        padding: 3rem 1rem;
+    }
+    
+    .cairo-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Cairo</h1>
+            <p>Discover Egypt's ancient wonders and vibrant modern culture</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-cairo">
+        <section class="hero-cairo">
+            <div class="hero-content">
+                <h2>Experience Timeless Cairo</h2>
+                <p>Where ancient pyramids meet bustling markets and the mighty Nile River</p>
+            </div>
+        </section>
+
+        <div class="cairo-grid">
+            <!-- Pyramids of Giza -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-monument"></i></div>
+                    <h3>Pyramids of Giza</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Pyramids of Giza.jpg" alt="Pyramids of Giza" class="cairo-image">
+                    <p>The last surviving wonder of the ancient world, including the Great Pyramid and Sphinx.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Camel ride at sunset</p>
+                        <p><strong>Best time:</strong> Early morning to avoid crowds</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Egyptian Museum -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Egyptian Museum</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Egyptian Museum.jpg" alt="Egyptian Museum" class="cairo-image">
+                    <p>Home to the world's most extensive collection of pharaonic antiquities.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Tutankhamun's golden mask</p>
+                        <p><strong>Tip:</strong> Hire a guide for best experience</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Khan el-Khalili -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-shopping-basket"></i></div>
+                    <h3>Khan el-Khalili</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Khan el-Khalili.jpg" alt="Khan el-Khalili" class="cairo-image">
+                    <p>Historic bazaar dating back to 1382, filled with spices, jewelry, and traditional crafts.</p>
+                    <div class="card-details">
+                        <p><strong>Must-try:</strong> Hibiscus tea at Fishawi's Cafe</p>
+                        <p><strong>Remember:</strong> Bargaining is expected</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Nile River Cruise -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Nile River Cruise</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Nile River Cruise.jpg" alt="Nile River Cruise" class="cairo-image">
+                    <p>Experience Cairo from the water with dinner cruises featuring traditional entertainment.</p>
+                    <div class="card-details">
+                        <p><strong>Popular choice:</strong> Evening dinner cruise</p>
+                        <p><strong>Tip:</strong> Book a boat with open-air deck</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Islamic Cairo -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mosque"></i></div>
+                    <h3>Islamic Cairo</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Islamic Cairo.jpg" alt="Islamic Cairo" class="cairo-image">
+                    <p>Historic district with stunning mosques, madrasas and medieval architecture.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Mosque of Muhammad Ali</p>
+                        <p><strong>Note:</strong> Dress modestly for mosques</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Coptic Cairo -->
+            <article class="cairo-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-church"></i></div>
+                    <h3>Coptic Cairo</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Coptic Cairo.jpg" alt="Coptic Cairo" class="cairo-image">
+                    <p>Ancient Christian area with churches dating back to the 3rd century AD.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Hanging Church</p>
+                        <p><strong>Also see:</strong> Coptic Museum</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Cairo</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Four Seasons Nile Plaza</h3>
+                    <p>★★★★★ | Stunning Nile views with world-class service</p>
+                    <p>Price range: $250-1000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Historic: Mena House</h3>
+                    <p>★★★★★ | Palace hotel with pyramid views</p>
+                    <p>Price range: $200-800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Steigenberger El Tahrir</h3>
+                    <p>★★★★ | Central location near Egyptian Museum</p>
+                    <p>Price range: $100-300/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Dahab Hostel</h3>
+                    <p>★★★ | Cozy budget option with rooftop views</p>
+                    <p>Price range: $15-50/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Abou El Sid</h3>
+                    <p>Authentic Egyptian cuisine in atmospheric setting</p>
+                    <p>Specialty: Molokhia and stuffed pigeon</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Sequoia</h3>
+                    <p>Upscale dining with Nile views</p>
+                    <p>Must-try: Mezze platter</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Kazaz</h3>
+                    <p>Legendary koshary (Egypt's national dish)</p>
+                    <p>Famous for: Best koshary in Cairo</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Andrea Mariouteya</h3>
+                    <p>Popular spot for grilled chicken</p>
+                    <p>Experience: Traditional Egyptian barbecue</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Cairo Wisdom</h3>
+                <p>"Cairo is a city where time stands still and rushes forward simultaneously - where millennia-old pyramids watch over a metropolis pulsing with modern life."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-taxi"></i>
+                    <h3>Getting Around</h3>
+                    <p>Use Uber/Careem for taxis. Metro is efficient but crowded. Avoid driving yourself.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Egyptian Pound (EGP) is the currency. Carry small bills for tips and markets.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Weather</h3>
+                    <p>Hot summers (Jun-Aug), mild winters (Dec-Feb). Spring has sandstorms.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Cultural Norms</h3>
+                    <p>Dress modestly, especially women. Learn basic Arabic phrases. Haggle in markets.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | City of a Thousand Minarets</p>
+    </footer>
+</body>
+</html>

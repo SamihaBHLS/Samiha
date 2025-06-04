@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stockholm - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette as Queenstown */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Stockholm Layout */
+.dynamic-stockholm {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-stockholm {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-stockholm::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Stockholm Grid */
+.stockholm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Stockholm Cards */
+.stockholm-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stockholm-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.stockholm-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.stockholm-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.stockholm-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .stockholm-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-stockholm {
+        padding: 3rem 1rem;
+    }
+    
+    .stockholm-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Stockholm</h1>
+            <p>Discover Sweden's stunning capital spread across 14 islands connected by bridges</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-stockholm">
+        <section class="hero-stockholm">
+            <div class="hero-content">
+                <h2>Experience Beautiful Stockholm</h2>
+                <p>Where Scandinavian design meets medieval charm and breathtaking archipelago views</p>
+            </div>
+        </section>
+
+        <div class="stockholm-grid">
+            <!-- Gamla Stan -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-archway"></i></div>
+                    <h3>Gamla Stan</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Gamla Stan.jpg" alt="Gamla Stan" class="stockholm-image">
+                    <p>Stockholm's charming Old Town with cobblestone streets, colorful buildings, and the Royal Palace dating back to the 13th century.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Stortorget square</p>
+                        <p><strong>Best time:</strong> Early morning before crowds</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Vasa Museum -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Vasa Museum</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Vasa Museum.jpg" alt="Vasa Museum" class="stockholm-image">
+                    <p>Home to the almost fully intact 17th-century warship that sank on its maiden voyage, now painstakingly restored.</p>
+                    <div class="card-details">
+                        <p><strong>Unique fact:</strong> 98% original wood</p>
+                        <p><strong>Duration:</strong> Allow 2 hours</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Skansen -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-tree"></i></div>
+                    <h3>Skansen</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Skansen.jpg" alt="Skansen" class="stockholm-image">
+                    <p>The world's oldest open-air museum showcasing traditional Swedish life with historic buildings and Nordic animals.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Christmas market in winter</p>
+                        <p><strong>Great for:</strong> Families</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Archipelago Cruise -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Archipelago Cruise</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Archipelago Cruise.jpg" alt="Stockholm Archipelago" class="stockholm-image">
+                    <p>Explore Stockholm's stunning archipelago of 30,000 islands, islets and rocks stretching into the Baltic Sea.</p>
+                    <div class="card-details">
+                        <p><strong>Popular route:</strong> To Vaxholm</p>
+                        <p><strong>Best season:</strong> Summer months</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ABBA Museum -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-music"></i></div>
+                    <h3>ABBA Museum</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/ABBA Museum.jpg" alt="ABBA Museum" class="stockholm-image">
+                    <p>Interactive museum celebrating Sweden's most famous pop group with costumes, memorabilia, and recording booths.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Sing with hologram ABBA</p>
+                        <p><strong>Tip:</strong> Book ahead in summer</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Fotografiska -->
+            <article class="stockholm-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-camera"></i></div>
+                    <h3>Fotografiska</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Fotografiska.jpg" alt="Fotografiska" class="stockholm-image">
+                    <p>World-class photography museum in a former customs house with stunning views from its top-floor restaurant.</p>
+                    <div class="card-details">
+                        <p><strong>Bonus:</strong> Great vegan restaurant</p>
+                        <p><strong>Open late:</strong> Until 11pm most nights</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Stockholm</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Grand Hôtel Stockholm</h3>
+                    <p>★★★★★ | Historic waterfront luxury since 1874</p>
+                    <p>Price range: SEK 3000-15000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Ett Hem</h3>
+                    <p>★★★★★ | Exclusive 12-room townhouse hotel</p>
+                    <p>Price range: SEK 4000-8000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Hotel Skeppsholmen</h3>
+                    <p>★★★★ | Chic waterfront hotel on quiet island</p>
+                    <p>Price range: SEK 1800-3500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Generator Stockholm</h3>
+                    <p>★★★ | Trendy hostel in Norrmalm district</p>
+                    <p>Price range: SEK 300-900/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Frantzén</h3>
+                    <p>Three-Michelin-starred Nordic cuisine</p>
+                    <p>Specialty: 20+ course tasting menu</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Meatballs for the People</h3>
+                    <p>Traditional Swedish meatballs done right</p>
+                    <p>Must-try: Moose meatballs</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Vete-Katten</h3>
+                    <p>Classic Swedish café since 1928</p>
+                    <p>Famous for: Cinnamon buns</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Oaxen Slip</h3>
+                    <p>Casual bistro from Michelin-starred team</p>
+                    <p>Highlight: Seasonal Nordic dishes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Stockholm Wisdom</h3>
+                <p>"Stockholm is where medieval alleyways whisper history, where modern design meets timeless beauty, and where the archipelago's islands dance on the Baltic horizon."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>Excellent public transport. SL Access card works on all buses, metro, and ferries.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Swedish Krona (SEK) is the currency. Cards accepted almost everywhere.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h3>Weather</h3>
+                    <p>Warm summers, cold winters. May-Sept best for outdoor activities.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Dining</h3>
+                    <p>Book restaurants in advance. "Dagens lunch" offers great value weekday lunches.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Venice of the North</p>
+    </footer>
+</body>
+</html>
