@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangkok - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Layout */
+.dynamic-rio {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-rio {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-rio::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Attractions Grid */
+.rio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Attraction Cards */
+.rio-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.rio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.rio-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.rio-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.rio-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .rio-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-rio {
+        padding: 3rem 1rem;
+    }
+    
+    .rio-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Bangkok</h1>
+            <p>Discover Thailand's vibrant city of temples, markets, and street food</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-rio">
+        <section class="hero-rio">
+            <div class="hero-content">
+                <h2>Experience Amazing Bangkok</h2>
+                <p>Where ancient temples meet modern skyscrapers and bustling street markets</p>
+            </div>
+        </section>
+
+        <div class="rio-grid">
+            <!-- Grand Palace -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Grand Palace</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Grand Palace.jpg" alt="Grand Palace" class="rio-image">
+                    <p>Spectacular complex of buildings including Wat Phra Kaew (Temple of the Emerald Buddha).</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> The Emerald Buddha in the ordination hall</p>
+                        <p><strong>Dress code:</strong> Cover shoulders and knees</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Wat Arun -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-torii-gate"></i></div>
+                    <h3>Wat Arun</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Wat Arun.jpg" alt="Wat Arun" class="rio-image">
+                    <p>Stunning "Temple of Dawn" with Khmer-style prang decorated with colorful porcelain.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Sunset for magical views</p>
+                        <p><strong>Tip:</strong> Take the ferry from Tha Tien pier</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Chatuchak Market -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>Chatuchak Market</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Chatuchak Market.jpg" alt="Chatuchak Market" class="rio-image">
+                    <p>World's largest weekend market with over 15,000 stalls selling everything imaginable.</p>
+                    <div class="card-details">
+                        <p><strong>Must-try:</strong> Coconut ice cream in a coconut shell</p>
+                        <p><strong>Best time:</strong> Early morning to avoid heat/crowds</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Khao San Road -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-cocktail"></i></div>
+                    <h3>Khao San Road</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Khao San Road.jpg" alt="Khao San Road" class="rio-image">
+                    <p>Famous backpacker street with cheap hostels, street food, bars, and shopping.</p>
+                    <div class="card-details">
+                        <p><strong>Nearby:</strong> Soi Rambuttri for slightly quieter vibe</p>
+                        <p><strong>Tip:</strong> Try fried scorpions if you're adventurous</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Chao Phraya River -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Chao Phraya River</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Chao Phraya River.jpg" alt="Chao Phraya River" class="rio-image">
+                    <p>Bangkok's "River of Kings" with scenic boat rides and riverside attractions.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Dinner cruise at sunset</p>
+                        <p><strong>Best way:</strong> Hop-on-hop-off tourist boat</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Jim Thompson House -->
+            <article class="rio-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-home"></i></div>
+                    <h3>Jim Thompson House</h3>
+                </div>
+                <div class="card-content">
+                    <img src="image/Jim Thompson House.jpg" alt="Jim Thompson House" class="rio-image">
+                    <p>Beautiful traditional Thai house museum of the American silk entrepreneur.</p>
+                    <div class="card-details">
+                        <p><strong>Experience:</strong> Guided tour of the house and gardens</p>
+                        <p><strong>Alternative:</strong> Visit the excellent silk shop</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Bangkok</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: The Mandarin Oriental</h3>
+                    <p>★★★★★ | Historic luxury on the Chao Phraya River</p>
+                    <p>Price range: $350-1500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: The Siam Hotel</h3>
+                    <p>★★★★★ | Art deco luxury with private pool villas</p>
+                    <p>Price range: $300-1000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Avani+ Riverside Bangkok</h3>
+                    <p>★★★★ | Modern hotel with stunning river views</p>
+                    <p>Price range: $120-300/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Lub d Bangkok Silom</h3>
+                    <p>★★★ | Trendy hostel with great social atmosphere</p>
+                    <p>Price range: $15-60/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Gaggan Anand</h3>
+                    <p>Progressive Indian cuisine (2 Michelin stars)</p>
+                    <p>Specialty: 25-course tasting menu</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Jay Fai</h3>
+                    <p>Michelin-starred street food (famous crab omelet)</p>
+                    <p>Must-try: Drunken noodles or crab omelet</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Thipsamai</h3>
+                    <p>Legendary pad thai cooked in egg net</p>
+                    <p>Famous for: Original pad thai with shrimp</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Chinatown Street Food</h3>
+                    <p>Incredible variety of Thai-Chinese street food</p>
+                    <p>Experience: Nighttime food crawl on Yaowarat Road</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Bangkok Wisdom</h3>
+                <p>"Bangkok is a city that awakens all your senses - the golden glow of temples, the sizzle of street food, the scent of jasmine, and the constant hum of vibrant energy."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>BTS Skytrain and MRT subway are efficient. Tuk-tuks for short distances. Grab (like Uber) works well.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>Thai Baht (THB) is the currency. Carry small bills for street vendors. ATMs widely available.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Weather</h3>
+                    <p>Hot year-round. Cool season (Nov-Feb) best for visiting. Rainy season (Jul-Oct) has heavy showers.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Etiquette</h3>
+                    <p>Dress modestly at temples. Don't touch heads or point feet at people. Remove shoes when required.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Krung Thep Maha Nakhon</p>
+    </footer>
+</body>
+</html>
