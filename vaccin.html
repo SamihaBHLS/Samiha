@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Requirements - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Original Blue Color Scheme */
+        :root {
+            --primary-blue: #126ca1;
+            --light-blue: #e0f0f8;
+            --accent-blue: #0d5a8a;
+            --white: #ffffff;
+            --gray: #555555;
+            --light-gray: #f8f9fa;
+            --health-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --danger-red: #F44336;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Vibrant Header */
+        .vibrant-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vibrant-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .header-content h1 span {
+            color: #a6c1ee;
+        }
+
+        .header-content p {
+            margin: 0.5rem 0 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 0.8rem;
+            width: 90%;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .floating-nav li a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav li a:hover, 
+        .floating-nav li a.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero-vaccine {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: #126ca1;
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+           animation: fadeIn 1.5s ease-in-out;
+            margin-top: 50px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+        .hero-vaccine::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid var(--primary-blue);
+        }
+
+        /* Vaccine Search Section */
+        .vaccine-search {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-container h3 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .select-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .select-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .select-group label i {
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .select-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--gray);
+            background: white;
+        }
+
+        .search-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-button:hover {
+            background: var(--accent-blue);
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-header h3 {
+            color: var(--primary-blue);
+            margin: 0;
+        }
+
+        .print-button {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-button:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .result-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .result-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .requirement-status {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .required {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+
+        .recommended {
+            background-color: #FFF8E1;
+            color: #FF8F00;
+        }
+
+        .routine {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .result-card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .result-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Vaccine Types Section */
+        .vaccine-types {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            margin: 0.5rem auto 0;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .vaccine-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            width: 300px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+            position: relative;
+        }
+
+        .vaccine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .vaccine-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--danger-red);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .vaccine-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .vaccine-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vaccine-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .vaccine-list li:last-child {
+            border-bottom: none;
+        }
+
+        .vaccine-list i {
+            color: var(--primary-blue);
+            margin-right: 0.7rem;
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        /* Interactive Map Section */
+        .map-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            background: var(--light-blue);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            border: 2px dashed var(--primary-blue);
+            border-radius: 4px;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(255,255,255,0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        /* Region Requirements */
+        .region-requirements {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .region-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tab-button {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-button:hover {
+            background: var(--light-blue);
+        }
+
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .region-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .region-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .region-info h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .info-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .info-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card strong {
+            color: var(--primary-blue);
+        }
+
+        /* Risk Levels */
+        .risk-level {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .low-risk {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .medium-risk {
+            background-color: #FFF8E1;
+            color: #FF8F00;
+        }
+
+        .high-risk {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+
+        /* Preparation Steps */
+        .preparation-steps {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            background: var(--primary-blue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+
+        .step-content h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--gray);
+        }
+
+        /* Common Vaccines Section */
+        .common-vaccines {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .vaccines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .vaccine-detail-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .vaccine-detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .vaccine-icon {
+            background: var(--light-blue);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+
+        .vaccine-detail-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .vaccine-detail-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            text-align: left;
+        }
+
+        .vaccine-detail-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .vaccine-detail-card li::before {
+            content: "•";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Vaccine Comparison Table */
+        .comparison-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--light-blue);
+        }
+
+        .comparison-table .highlight {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem auto;
+            max-width: 1000px;
+            padding: 0 1rem;
+        }
+
+        .faq-container {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: var(--light-blue);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1.5rem;
+            color: var(--gray);
+        }
+
+        /* Resources Section */
+        .resources-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h3 {
+            color: var(--primary-blue);
+            margin: 0 0 0.5rem;
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            margin: 0 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .resource-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .resource-link i {
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+            color: var(--accent-blue);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            margin: 4rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .newsletter-section h2 {
+            margin-top: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 1rem auto 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #0b4a72;
+        }
+
+        /* Vibrant Footer */
+        .vibrant-footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #a6c1ee;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .select-group {
+                width: 100%;
+            }
+            
+            .search-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .process-steps, .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-question {
+                font-size: 0.9rem;
+            }
+
+            .types-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .vaccine-card {
+                margin-left: 0;
+                margin-bottom: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .floating-nav,
+            .search-button,
+            .print-button,
+            .vibrant-footer {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+            }
+
+            .hero-vaccine,
+            .vaccine-search,
+            .results-container,
+            .vaccine-card,
+            .info-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .resource-link::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                font-weight: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Vaccination Requirements</h1>
+            <p>Stay protected on your global adventures</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-content">
+        <section class="hero-vaccine">
+            <div class="hero-content">
+                <h2>Global Vaccination Guide for Travelers</h2>
+                <p>Essential immunization information for safe international travel</p>
+            </div>
+        </section>
+
+        <!-- Vaccine Search Section -->
+        <section class="vaccine-search">
+            <div class="search-container">
+                <h3>Check Vaccination Requirements</h3>
+                <div class="search-box">
+                    <div class="select-group">
+                        <label for="destination"><i class="fas fa-globe-americas"></i> Destination</label>
+                        <select id="destination" name="destination">
+                            <option value="">Select a country</option>
+                            <option value="brazil">Brazil</option>
+                            <option value="india">India</option>
+                            <option value="thailand">Thailand</option>
+                            <option value="south-africa">South Africa</option>
+                            <option value="kenya">Kenya</option>
+                        </select>
+                    </div>
+                    <div class="select-group">
+                        <label for="origin"><i class="fas fa-passport"></i> Origin Country</label>
+                        <select id="origin" name="origin">
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                            <option value="germany">Germany</option>
+                        </select>
+                    </div>
+                    <div class="select-group">
+                        <label for="travel-dates"><i class="fas fa-calendar-alt"></i> Travel Dates</label>
+                        <input type="text" id="travel-dates" name="travel-dates" placeholder="Select dates" class="datepicker">
+                    </div>
+                    <button class="search-button" id="search-vaccines">
+                        <i class="fas fa-search"></i> Check Requirements
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (Initially Hidden) -->
+        <section class="results-container" id="results-section">
+            <div class="results-header">
+                <h3><i class="fas fa-syringe"></i> Vaccination Requirements for <span id="results-country">Thailand</span></h3>
+                <button class="print-button" id="print-results">
+                    <i class="fas fa-print"></i> Print Results
+                </button>
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>Required Vaccines <span class="requirement-status required">Mandatory</span></h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Yellow Fever (if arriving from endemic country)</li>
+                        <li><i class="fas fa-check-circle"></i> COVID-19 (proof of vaccination may be required)</li>
+                    </ul>
+                </div>
+                <div class="result-card">
+                    <h4>Recommended Vaccines <span class="requirement-status recommended">Advised</span></h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Hepatitis A</li>
+                        <li><i class="fas fa-check-circle"></i> Typhoid</li>
+                        <li><i class="fas fa-check-circle"></i> Japanese Encephalitis (for rural areas)</li>
+                        <li><i class="fas fa-check-circle"></i> Rabies (for extended stays)</li>
+                    </ul>
+                </div>
+                <div class="result-card">
+                    <h4>Routine Vaccines <span class="requirement-status routine">Check Status</span></h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> MMR (Measles, Mumps, Rubella)</li>
+                        <li><i class="fas fa-check-circle"></i> DTaP (Diphtheria, Tetanus, Pertussis)</li>
+                        <li><i class="fas fa-check-circle"></i> Polio</li>
+                        <li><i class="fas fa-check-circle"></i> Influenza</li>
+                    </ul>
+                </div>
+                <div class="result-card">
+                    <h4>Health Advisories</h4>
+                    <ul>
+                        <li><i class="fas fa-exclamation-triangle"></i> Malaria risk in rural areas</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Dengue fever present</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Food/water precautions recommended</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="map-section">
+            <h2 class="section-title">Global Vaccine Requirements Map</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt fa-3x"></i>
+                    <p>Interactive vaccine requirements map coming soon</p>
+                </div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #C62828;"></div>
+                        <span>High Risk - Vaccines Required</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #FF8F00;"></div>
+                        <span>Medium Risk - Vaccines Recommended</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #2E7D32;"></div>
+                        <span>Low Risk - Routine Vaccines Only</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vaccine Types Section -->
+        <section class="vaccine-types">
+            <h2 class="section-title">Travel Vaccine Categories</h2>
+            <div class="types-grid">
+                <article class="vaccine-card">
+                    <div class="vaccine-badge">NEW</div>
+                    <div class="card-header">
+                        <h3>Routine Vaccines</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="vaccine-list">
+                            <li><i class="fas fa-check"></i> Recommended for all travelers</li>
+                            <li><i class="fas fa-check"></i> Includes MMR, DTaP, polio</li>
+                            <li><i class="fas fa-check"></i> Often required for school</li>
+                            <li><i class="fas fa-check"></i> May need boosters for travel</li>
+                            <li><i class="fas fa-check"></i> Check your immunization records</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="vaccine-card">
+                    <div class="card-header">
+                        <h3>Required Vaccines</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="vaccine-list">
+                            <li><i class="fas fa-check"></i> Mandatory for entry to some countries</li>
+                            <li><i class="fas fa-check"></i> Yellow fever for certain destinations</li>
+                            <li><i class="fas fa-check"></i> Proof often required at border</li>
+                            <li><i class="fas fa-check"></i> Must be administered at certified centers</li>
+                            <li><i class="fas fa-check"></i> International Certificate required</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="vaccine-card">
+                    <div class="card-header">
+                        <h3>Recommended Vaccines</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="vaccine-list">
+                            <li><i class="fas fa-check"></i> Based on destination risks</li>
+                            <li><i class="fas fa-check"></i> Includes typhoid, hepatitis</li>
+                            <li><i class="fas fa-check"></i> Rabies for certain activities</li>
+                            <li><i class="fas fa-check"></i> Japanese encephalitis in rural Asia</li>
+                            <li><i class="fas fa-check"></i> Cholera in outbreak areas</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="vaccine-card">
+                    <div class="vaccine-badge">HOT</div>
+                    <div class="card-header">
+                        <h3>COVID-19 Vaccines</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="vaccine-list">
+                            <li><i class="fas fa-check"></i> Requirements vary by country</li>
+                            <li><i class="fas fa-check"></i> Some require proof of vaccination</li>
+                            <li><i class="fas fa-check"></i> May need specific vaccine brands</li>
+                            <li><i class="fas fa-check"></i> Check for booster requirements</li>
+                            <li><i class="fas fa-check"></i> Digital vaccine passports available</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Vaccine Requirements by Region -->
+        <section class="region-requirements">
+            <h2 class="section-title">Vaccine Requirements by Region</h2>
+            <div class="region-tabs">
+                <button class="tab-button active" data-region="africa">Africa</button>
+                <button class="tab-button" data-region="asia">Asia</button>
+                <button class="tab-button" data-region="latin-america">Latin America</button>
+                <button class="tab-button" data-region="middle-east">Middle East</button>
+                <button class="tab-button" data-region="oceania">Oceania</button>
+            </div>
+            
+            <div class="region-content active" id="africa">
+                <div class="region-info">
+                    <h3><i class="fas fa-globe-africa"></i> African Vaccination Requirements</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Sub-Saharan Africa <span class="risk-level high-risk">High Risk</span></h4>
+                            <p>Many countries require yellow fever vaccination certificate.</p>
+                            <ul>
+                                <li><strong>Required:</strong> Yellow fever for many countries</li>
+                                <li><strong>Recommended:</strong> Typhoid, Hepatitis A & B</li>
+                                <li><strong>Malaria:</strong> Prophylaxis recommended in most areas</li>
+                                <li><strong>Cholera:</strong> Risk in some regions</li>
+                                <li><strong>Meningitis:</strong> Belt region during dry season</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>North Africa <span class="risk-level medium-risk">Medium Risk</span></h4>
+                            <p>Generally lower risk than sub-Saharan Africa but still important precautions.</p>
+                            <ul>
+                                <li><strong>Required:</strong> None typically</li>
+                                <li><strong>Recommended:</strong> Hepatitis A, Typhoid</li>
+                                <li><strong>Malaria:</strong> Limited risk in some areas</li>
+                                <li><strong>COVID-19:</strong> Check current entry requirements</li>
+                                <li><strong>Water Safety:</strong> Bottled water recommended</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>Special Considerations</h4>
+                            <p>Additional health precautions for African travel.</p>
+                            <ul>
+                                <li><strong>Proof:</strong> Carry yellow fever certificate</li>
+                                <li><strong>Rabies:</strong> Consider if outdoor activities</li>
+                                <li><strong>Waterborne:</strong> Drink only bottled/purified water</li>
+                                <li><strong>HIV:</strong> Universal precautions recommended</li>
+                                <li><strong>Ebola:</strong> Check for current outbreaks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="region-content" id="asia">
+                <div class="region-info">
+                    <h3><i class="fas fa-archway"></i> Asian Vaccination Requirements</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Southeast Asia <span class="risk-level medium-risk">Medium Risk</span></h4>
+                            <p>Tropical diseases more common in rural areas.</p>
+                            <ul>
+                                <li><strong>Required:</strong> Yellow fever if coming from endemic area</li>
+                                <li><strong>Recommended:</strong> Hepatitis A & B, Typhoid, Japanese Encephalitis</li>
+                                <li><strong>Malaria:</strong> Risk in rural areas</li>
+                                <li><strong>Dengue:</strong> Mosquito protection essential</li>
+                                <li><strong>Food Safety:</strong> Street food precautions</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>South Asia <span class="risk-level high-risk">High Risk</span></h4>
+                            <p>Higher risk of food/waterborne illnesses.</p>
+                            <ul>
+                                <li><strong>Required:</strong> Polio if coming from affected countries</li>
+                                <li><strong>Recommended:</strong> All routine plus Hepatitis A, Typhoid</li>
+                                <li><strong>Malaria:</strong> High risk in many areas</li>
+                                <li><strong>Cholera:</strong> Sporadic outbreaks</li>
+                                <li><strong>Rabies:</strong> Consider pre-exposure vaccine</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>East Asia <span class="risk-level low-risk">Lower Risk</span></h4>
+                            <p>Generally good health infrastructure.</p>
+                            <ul>
+                                <li><strong>Required:</strong> None typically</li>
+                                <li><strong>Recommended:</strong> Routine vaccines, Hepatitis A</li>
+                                <li><strong>Special:</strong> Japanese Encephalitis for rural areas</li>
+                                <li><strong>COVID-19:</strong> Check current restrictions</li>
+                                <li><strong>Flu Season:</strong> Consider influenza vaccine</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional region content would go here -->
+            <div class="region-content" id="latin-america">
+                <div class="region-info">
+                    <h3><i class="fas fa-mountain"></i> Latin America Requirements</h3>
+                    <p>Content about vaccination requirements for Central and South America...</p>
+                </div>
+            </div>
+            
+            <div class="region-content" id="middle-east">
+                <div class="region-info">
+                    <h3><i class="fas fa-mosque"></i> Middle East Requirements</h3>
+                    <p>Content about vaccination requirements for Middle Eastern countries...</p>
+                </div>
+            </div>
+            
+            <div class="region-content" id="oceania">
+                <div class="region-info">
+                    <h3><i class="fas fa-umbrella-beach"></i> Oceania Requirements</h3>
+                    <p>Content about vaccination requirements for Australia, New Zealand, Pacific Islands...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preparation Steps -->
+        <section class="preparation-steps">
+            <h2 class="section-title">Vaccination Preparation Timeline</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Research (6-8 weeks before)</h3>
+                        <p>Check CDC/WHO recommendations for your destination. Identify required and recommended vaccines.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Medical Consultation (4-6 weeks before)</h3>
+                        <p>Visit a travel medicine specialist to review your immunization history and get professional advice.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Vaccination Schedule (3-6 weeks before)</h3>
+                        <p>Some vaccines require multiple doses over several weeks. Others need time to become effective.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Documentation (1-2 weeks before)</h3>
+                        <p>Obtain International Certificate of Vaccination (yellow card) for required vaccines like yellow fever.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Final Check (1 week before)</h3>
+                        <p>Verify all vaccinations are complete. Pack your vaccination records with your travel documents.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>During Travel</h3>
+                        <p>Continue malaria prophylaxis if prescribed. Practice food/water safety and mosquito bite prevention.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Vaccines Section -->
+        <section class="common-vaccines">
+            <h2 class="section-title">Common Travel Vaccines</h2>
+            <div class="vaccines-grid">
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-syringe"></i></div>
+                    <h3>Yellow Fever</h3>
+                    <ul>
+                        <li><strong>Required for:</strong> Many African and South American countries</li>
+                        <li><strong>Duration:</strong> Lifetime for most travelers</li>
+                        <li><strong>Side Effects:</strong> Mild fever, headache common</li>
+                        <li><strong>Certification:</strong> International Certificate required</li>
+                    </ul>
+                </div>
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-virus"></i></div>
+                    <h3>Typhoid</h3>
+                    <ul>
+                        <li><strong>Recommended for:</strong> Most developing countries</li>
+                        <li><strong>Types:</strong> Injectable (2 years) or oral (5 years)</li>
+                        <li><strong>Protection:</strong> 50-80% effective</li>
+                        <li><strong>Also:</strong> Still practice food/water precautions</li>
+                    </ul>
+                </div>
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-lungs-virus"></i></div>
+                    <h3>Hepatitis A</h3>
+                    <ul>
+                        <li><strong>Recommended for:</strong> All international travel</li>
+                        <li><strong>Schedule:</strong> 2 doses (6-12 months apart)</li>
+                        <li><strong>Duration:</strong> Likely lifetime protection</li>
+                        <li><strong>Combination:</strong> Available with Hepatitis B</li>
+                    </ul>
+                </div>
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-head-side-mask"></i></div>
+                    <h3>Japanese Encephalitis</h3>
+                    <ul>
+                        <li><strong>Recommended for:</strong> Rural Asia, prolonged stays</li>
+                        <li><strong>Schedule:</strong> 2 doses (28 days apart)</li>
+                        <li><strong>Boosters:</strong> May be needed after 1-2 years</li>
+                        <li><strong>Risk:</strong> Low for most travelers</li>
+                    </ul>
+                </div>
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-bacterium"></i></div>
+                    <h3>Cholera</h3>
+                    <ul>
+                        <li><strong>Recommended for:</strong> Humanitarian workers in outbreaks</li>
+                        <li><strong>Type:</strong> Oral vaccine (2-3 doses)</li>
+                        <li><strong>Protection:</strong> 65% effective for 6 months</li>
+                        <li><strong>Also:</strong> Still essential to drink safe water</li>
+                    </ul>
+                </div>
+                <div class="vaccine-detail-card">
+                    <div class="vaccine-icon"><i class="fas fa-dog"></i></div>
+                    <h3>Rabies</h3>
+                    <ul>
+                        <li><strong>Recommended for:</strong> Long stays, remote areas</li>
+                        <li><strong>Schedule:</strong> 3 doses over 3-4 weeks</li>
+                        <li><strong>Post-exposure:</strong> Still needs treatment</li>
+                        <li><strong>Benefit:</strong> Buys time to reach care</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vaccine Comparison Table -->
+        <section class="comparison-section">
+            <h2 class="section-title">Vaccine Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Vaccine</th>
+                        <th>Type</th>
+                        <th>Doses</th>
+                        <th>Duration</th>
+                        <th>Cost Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight">Yellow Fever</td>
+                        <td>Live virus</td>
+                        <td>1</td>
+                        <td>Lifetime</td>
+                        <td>$150-$350</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Typhoid (Injectable)</td>
+                        <td>Polysaccharide</td>
+                        <td>1</td>
+                        <td>2 years</td>
+                        <td>$50-$100</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Hepatitis A</td>
+                        <td>Inactivated</td>
+                        <td>2</td>
+                        <td>20+ years</td>
+                        <td>$75-$125 per dose</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Japanese Encephalitis</td>
+                        <td>Inactivated</td>
+                        <td>2</td>
+                        <td>1-2 years</td>
+                        <td>$200-$400 per dose</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Rabies</td>
+                        <td>Inactivated</td>
+                        <td>3</td>
+                        <td>2-3 years</td>
+                        <td>$300-$600 total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources-section">
+            <h2 class="section-title">Vaccination Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Vaccine Map</h3>
+                    <p>Interactive map showing vaccination requirements by country</p>
+                    <a href="#" class="resource-link">Explore Map <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-clinic-medical"></i>
+                    <h3>Find a Clinic</h3>
+                    <p>Locate certified travel vaccination clinics near you</p>
+                    <a href="#" class="resource-link">Search Clinics <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-book-medical"></i>
+                    <h3>Health Records</h3>
+                    <p>Download your personal vaccination record template</p>
+                    <a href="#" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Access to travel health professionals for urgent questions</p>
+                    <a href="#" class="resource-link">Contact Support <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+       
+
+        <!-- Vaccine FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Vaccination FAQs</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How far in advance should I get travel vaccinations?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ideally, schedule a travel health consultation 4-6 weeks before departure. Many vaccines require multiple doses over several weeks to provide full protection. Some vaccines (like rabies) require a month to complete the series. Even last-minute travelers should get vaccinated as some protection is better than none.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are travel vaccines covered by insurance?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Coverage varies by insurance provider. Routine vaccines (like MMR or flu) are often covered, but travel-specific vaccines (yellow fever, typhoid) may not be. Some plans cover vaccines if administered by your primary doctor but not at travel clinics. Always check with your insurer beforehand.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if I'm traveling last minute and can't complete all vaccines?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Even partial vaccination provides some protection. Some vaccines can be accelerated (like hepatitis B). For diseases like rabies, starting the series before travel means you'd need fewer post-exposure shots. Focus first on required vaccines (yellow fever) and highest risk diseases for your destination.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I get multiple travel vaccines at the same time?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, most travel vaccines can be given simultaneously at different injection sites. Exceptions include live vaccines (like yellow fever and MMR) which should either be given on the same day or spaced 4 weeks apart. Your travel health provider will create an optimal schedule.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What are the most common side effects of travel vaccines?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most side effects are mild: soreness at injection site, low-grade fever, headache, or fatigue. Yellow fever vaccine may cause flu-like symptoms 5-10 days after vaccination. Serious allergic reactions are rare. Always stay at the clinic for 15 minutes after vaccination as a precaution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Health Resources</h3>
+                <ul>
+                    <li><a href="#">Vaccine Checklist</a></li>
+                    <li><a href="#">Travel Clinic Directory</a></li>
+                    <li><a href="#">Disease Risk Map</a></li>
+                    <li><a href="#">Malaria Prevention</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Travel Health Tools</h3>
+                <ul>
+                    <li><a href="#">Vaccine Cost Calculator</a></li>
+                    <li><a href="#">Medication Guide</a></li>
+                    <li><a href="#">First Aid Kit Checklist</a></li>
+                    <li><a href="#">Travel Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Need Help?</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fas fa-phone-alt"></i> Health Hotline</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Email Doctor</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> Chat Support</a>
+                </div>
+                <p>Subscribe for travel health alerts and updates</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sky Travelling | Health information is subject to change - consult a travel medicine specialist</p>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('search-vaccines').addEventListener('click', function() {
+            const destination = document.getElementById('destination').value;
+            if (destination) {
+                document.getElementById('results-country').textContent = document.getElementById('destination').options[document.getElementById('destination').selectedIndex].text;
+                document.getElementById('results-section').style.display = 'block';
+                window.scrollTo({
+                    top: document.getElementById('results-section').offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            } else {
+                alert('Please select a destination country');
+            }
+        });
+
+        // Print functionality
+        document.getElementById('print-results').addEventListener('click', function() {
+            window.print();
+        });
+
+        // Region tabs functionality
+        document.querySelectorAll('.region-tabs .tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.region-tabs .tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.region-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const region = button.getAttribute('data-region');
+                document.getElementById(region).classList.add('active');
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.maxHeight;
+                
+                // Close all answers first
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.maxHeight = null;
+                    ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                    ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                });
+                
+                // Open current answer if it was closed
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    question.querySelector('i').classList.remove('fa-chevron-down');
+                    question.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Datepicker initialization (would need to include a datepicker library)
+        // This is just a placeholder - you'd need to implement or include a datepicker
+        document.querySelector('.datepicker').addEventListener('focus', function() {
+            // In a real implementation, this would show a datepicker
+            this.type = 'date';
+        });
+    </script>
+</body>
+</html>

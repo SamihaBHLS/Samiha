@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant  */
+        :root {
+            --primary-blue: #126ca1;
+            --light-blue: #e0f0f8;
+            --accent-blue: #0d5a8a;
+            --white: #ffffff;
+            --gray: #555555;
+            --light-gray: #f8f9fa;
+            --success-green: #28a745;
+            --warning-orange: #ffc107;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Vibrant Header */
+        .vibrant-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vibrant-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .header-content h1 span {
+            color: #a6c1ee;
+        }
+
+        .header-content p {
+            margin: 0.5rem 0 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 0.8rem;
+            width: 90%;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .floating-nav li a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav li a:hover, 
+        .floating-nav li a.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero-currency {
+            background: url('./image/sky.webp') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            color: var(--primary-blue);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-currency::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid var(--primary-blue);
+        }
+
+        /* Converter Section */
+        .converter-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .converter-container h3 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .converter-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .amount-group, .currency-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .amount-group label, .currency-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .amount-group label i, .currency-group label i {
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .amount-group input, .currency-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--gray);
+            background: white;
+        }
+
+        .swap-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+
+        .swap-button:hover {
+            background: var(--accent-blue);
+            transform: rotate(180deg);
+        }
+
+        .convert-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem auto;
+        }
+
+        .convert-button:hover {
+            background: var(--accent-blue);
+        }
+
+        .result-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--light-blue);
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0.5rem 0;
+        }
+
+        .result-details {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 1rem;
+        }
+
+        .rate-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .rate-change {
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .positive {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success-green);
+        }
+
+        .negative {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+        }
+
+        .neutral {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: var(--warning-orange);
+        }
+
+        /* Currency Cards Section */
+        .currency-cards {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            margin: 0.5rem auto 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .currency-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .currency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .currency-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .currency-flag {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .currency-name h3 {
+            margin: 0;
+            color: var(--primary-blue);
+        }
+
+        .currency-name p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .currency-stats {
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--gray);
+        }
+
+        .stat-value {
+            font-weight: 600;
+        }
+
+        /* Exchange Rate Table */
+        .rates-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .rates-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .rates-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .rates-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rates-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rates-table tr:hover {
+            background-color: var(--light-blue);
+        }
+
+        .rate-change-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .tip-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .tip-card h3 i {
+            color: var(--accent-blue);
+        }
+
+        .tip-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .tip-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem auto;
+            max-width: 1000px;
+            padding: 0 1rem;
+        }
+
+        .faq-container {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: var(--light-blue);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1.5rem;
+            color: var(--gray);
+        }
+
+        /* Vibrant Footer */
+        .vibrant-footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #a6c1ee;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #a6c1ee;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .converter-box {
+                flex-direction: column;
+            }
+            
+            .amount-group, .currency-group {
+                width: 100%;
+            }
+            
+            .swap-button {
+                margin: 1rem 0;
+                transform: rotate(90deg);
+            }
+            
+            .cards-grid, .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .rates-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* Animation for conversion */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .converting {
+            animation: pulse 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Currency Converter</h1>
+            <p>Real-time exchange rates and currency tools for travelers</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-content">
+        <section class="hero-currency">
+            <div class="hero-content">
+                <h2>Global Currency Conversion Made Easy</h2>
+                <p>Get accurate exchange rates for over 160 currencies worldwide</p>
+            </div>
+        </section>
+
+        <section class="converter-section">
+            <div class="converter-container">
+                <h3>Currency Converter</h3>
+                <div class="converter-box">
+                    <div class="amount-group">
+                        <label for="amount"><i class="fas fa-money-bill-wave"></i> Amount</label>
+                        <input type="number" id="amount" placeholder="Enter amount" min="0" step="0.01">
+                    </div>
+                    
+                    <div class="currency-group">
+                        <label for="from-currency"><i class="fas fa-flag"></i> From</label>
+                        <select id="from-currency">
+                            <option value="USD">United States Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                            <option value="CAD">Canadian Dollar (CAD)</option>
+                            <option value="AUD">Australian Dollar (AUD)</option>
+                            <option value="CNY">Chinese Yuan (CNY)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="swap-button" id="swap-currencies" title="Swap currencies">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <div class="currency-group">
+                        <label for="to-currency"><i class="fas fa-flag"></i> To</label>
+                        <select id="to-currency">
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="USD">United States Dollar (USD)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                            <option value="CAD">Canadian Dollar (CAD)</option>
+                            <option value="AUD">Australian Dollar (AUD)</option>
+                            <option value="CNY">Chinese Yuan (CNY)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="convert-button" id="convert-button">
+                    <i class="fas fa-calculator"></i> Convert
+                </button>
+                
+                <div class="result-container" id="result-container">
+                    <div class="result-value" id="result-value">0.00</div>
+                    <div class="result-details" id="result-details">1 USD = 0.85 EUR</div>
+                    <div class="rate-info">
+                        <span class="rate-change positive" id="rate-change">
+                            <i class="fas fa-arrow-up"></i> 0.5%
+                        </span>
+                        <span>Last updated: <span id="update-time">Just now</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="currency-cards">
+            <h2 class="section-title">Major World Currencies</h2>
+            <div class="cards-grid">
+                <div class="currency-card">
+                    <div class="currency-header">
+                        <div class="currency-flag">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="currency-name">
+                            <h3>US Dollar (USD)</h3>
+                            <p>United States</p>
+                        </div>
+                    </div>
+                    <div class="currency-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Exchange Rate:</span>
+                            <span class="stat-value">1 USD = 0.85 EUR</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Daily Change:</span>
+                            <span class="stat-value positive">+0.5% <i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Central Bank:</span>
+                            <span class="stat-value">Federal Reserve</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="currency-card">
+                    <div class="currency-header">
+                        <div class="currency-flag">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="currency-name">
+                            <h3>Euro (EUR)</h3>
+                            <p>European Union</p>
+                        </div>
+                    </div>
+                    <div class="currency-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Exchange Rate:</span>
+                            <span class="stat-value">1 EUR = 1.18 USD</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Daily Change:</span>
+                            <span class="stat-value negative">-0.3% <i class="fas fa-arrow-down"></i></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Central Bank:</span>
+                            <span class="stat-value">European Central Bank</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="currency-card">
+                    <div class="currency-header">
+                        <div class="currency-flag">
+                            <i class="fas fa-pound-sign"></i>
+                        </div>
+                        <div class="currency-name">
+                            <h3>British Pound (GBP)</h3>
+                            <p>United Kingdom</p>
+                        </div>
+                    </div>
+                    <div class="currency-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Exchange Rate:</span>
+                            <span class="stat-value">1 GBP = 1.38 USD</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Daily Change:</span>
+                            <span class="stat-value positive">+0.2% <i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Central Bank:</span>
+                            <span class="stat-value">Bank of England</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="currency-card">
+                    <div class="currency-header">
+                        <div class="currency-flag">
+                            <i class="fas fa-yen-sign"></i>
+                        </div>
+                        <div class="currency-name">
+                            <h3>Japanese Yen (JPY)</h3>
+                            <p>Japan</p>
+                        </div>
+                    </div>
+                    <div class="currency-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Exchange Rate:</span>
+                            <span class="stat-value">1 USD = 110.25 JPY</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Daily Change:</span>
+                            <span class="stat-value neutral">0.0% <i class="fas fa-equals"></i></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Central Bank:</span>
+                            <span class="stat-value">Bank of Japan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rates-section">
+            <h2 class="section-title">Current Exchange Rates</h2>
+            <table class="rates-table">
+                <thead>
+                    <tr>
+                        <th>Currency</th>
+                        <th>Code</th>
+                        <th>Rate (USD)</th>
+                        <th>Change (24h)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Euro</td>
+                        <td>EUR</td>
+                        <td>0.85</td>
+                        <td><span class="rate-change-cell positive"><i class="fas fa-arrow-up"></i> 0.5%</span></td>
+                    </tr>
+                    <tr>
+                        <td>British Pound</td>
+                        <td>GBP</td>
+                        <td>0.72</td>
+                        <td><span class="rate-change-cell positive"><i class="fas fa-arrow-up"></i> 0.2%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Japanese Yen</td>
+                        <td>JPY</td>
+                        <td>110.25</td>
+                        <td><span class="rate-change-cell neutral"><i class="fas fa-equals"></i> 0.0%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Canadian Dollar</td>
+                        <td>CAD</td>
+                        <td>1.25</td>
+                        <td><span class="rate-change-cell negative"><i class="fas fa-arrow-down"></i> 0.1%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Australian Dollar</td>
+                        <td>AUD</td>
+                        <td>1.35</td>
+                        <td><span class="rate-change-cell positive"><i class="fas fa-arrow-up"></i> 0.3%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Swiss Franc</td>
+                        <td>CHF</td>
+                        <td>0.92</td>
+                        <td><span class="rate-change-cell negative"><i class="fas fa-arrow-down"></i> 0.4%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Chinese Yuan</td>
+                        <td>CNY</td>
+                        <td>6.45</td>
+                        <td><span class="rate-change-cell positive"><i class="fas fa-arrow-up"></i> 0.1%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tips-section">
+            <h2 class="section-title">Currency Exchange Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Best Places to Exchange</h3>
+                    <ul>
+                        <li>Local banks often offer better rates than airports</li>
+                        <li>Use ATMs for good rates (check your bank's fees)</li>
+                        <li>Avoid hotel currency exchanges - they have high fees</li>
+                        <li>Compare rates at multiple exchange offices</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-credit-card"></i> Using Cards Abroad</h3>
+                    <ul>
+                        <li>Notify your bank before traveling internationally</li>
+                        <li>Use credit cards with no foreign transaction fees</li>
+                        <li>Always pay in local currency to avoid bad rates</li>
+                        <li>Carry a backup card in case one gets blocked</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Cash Management</h3>
+                    <ul>
+                        <li>Carry small denominations for tips and taxis</li>
+                        <li>Don't exchange all your money at once</li>
+                        <li>Keep emergency cash separate from your wallet</li>
+                        <li>Know the local customs for tipping</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="section-title">Currency Conversion FAQs</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Where can I get the best exchange rates?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The best exchange rates are typically found at local banks, credit unions, or reputable currency exchange offices in major cities. Avoid exchanging money at airports, hotels, or tourist areas as they usually offer poor rates with high fees. Using ATMs in your destination country often provides competitive rates, but check with your bank about foreign transaction fees first.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Should I exchange money before I travel?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>It's good to exchange a small amount of money before you travel (enough for transportation and immediate expenses), but don't exchange all your money at home. You'll generally get better rates in the country you're visiting. However, for some currencies that are difficult to exchange abroad or countries with strict currency controls, you may need to get more in advance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is it better to use cash or card when traveling?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>It depends on your destination. In most developed countries, credit cards (especially those without foreign transaction fees) are convenient and offer good exchange rates. However, always carry some local cash as smaller establishments may not accept cards. In some countries, cash is still king, so research your destination's payment preferences before you go.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How often do exchange rates change?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Exchange rates fluctuate constantly throughout the day as currencies are traded on global markets. Major economic news, political events, and market sentiment can cause significant movements. For travelers, the rates at banks and exchange offices may only update once or twice a day, while credit card companies typically use the daily interbank rate at the time of transaction.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What should I do with leftover foreign currency?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Options for leftover currency include: exchanging it back to your home currency (though you'll lose on the spread), keeping it for a future trip, donating it to charity (some airports have donation boxes), or giving it to friends who might be traveling to that country. For coins, consider spending them at the airport before departure as many places won't exchange coins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Currency Tools</h3>
+                <ul>
+                    <li><a href="#">Historical Rates</a></li>
+                    <li><a href="#">Currency Charts</a></li>
+                    <li><a href="#">Exchange Rate Alerts</a></li>
+                    <li><a href="#">Travel Money Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Travel Resources</h3>
+                <ul>
+                    <li><a href="#">ATMs Worldwide</a></li>
+                    <li><a href="#">Currency Restrictions</a></li>
+                    <li><a href="#">Best Travel Credit Cards</a></li>
+                    <li><a href="#">International Banking</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>Subscribe for daily exchange rate updates</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sky Travelling | Exchange rates are for informational purposes only and may vary by provider</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample exchange rate data (in a real app, this would come from an API)
+        const exchangeRates = {
+            "USD": 1,
+            "EUR": 0.85,
+            "GBP": 0.72,
+            "JPY": 110.25,
+            "CAD": 1.25,
+            "AUD": 1.35,
+            "CNY": 6.45,
+            "INR": 74.50
+        };
+
+        // Previous day's rates for comparison
+        const previousRates = {
+            "USD": 1,
+            "EUR": 0.845,
+            "GBP": 0.718,
+            "JPY": 110.25,
+            "CAD": 1.251,
+            "AUD": 1.347,
+            "CNY": 6.449,
+            "INR": 74.55
+        };
+
+        // DOM elements
+        const amountInput = document.getElementById('amount');
+        const fromCurrencySelect = document.getElementById('from-currency');
+        const toCurrencySelect = document.getElementById('to-currency');
+        const swapButton = document.getElementById('swap-currencies');
+        const convertButton = document.getElementById('convert-button');
+        const resultContainer = document.getElementById('result-container');
+        const resultValue = document.getElementById('result-value');
+        const resultDetails = document.getElementById('result-details');
+        const rateChange = document.getElementById('rate-change');
+        const updateTime = document.getElementById('update-time');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTime.textContent = new Date().toLocaleString();
+            populateCurrencySelects();
+        });
+
+        // Populate currency selects with options
+        function populateCurrencySelects() {
+            const currencies = [
+                {code: "USD", name: "United States Dollar"},
+                {code: "EUR", name: "Euro"},
+                {code: "GBP", name: "British Pound"},
+                {code: "JPY", name: "Japanese Yen"},
+                {code: "CAD", name: "Canadian Dollar"},
+                {code: "AUD", name: "Australian Dollar"},
+                {code: "CNY", name: "Chinese Yuan"},
+                {code: "INR", name: "Indian Rupee"}
+            ];
+
+            currencies.forEach(currency => {
+                const option1 = document.createElement('option');
+                option1.value = currency.code;
+                option1.textContent = `${currency.name} (${currency.code})`;
+                
+                const option2 = option1.cloneNode(true);
+                
+                fromCurrencySelect.appendChild(option1);
+                toCurrencySelect.appendChild(option2);
+            });
+
+            // Set default values
+            fromCurrencySelect.value = "USD";
+            toCurrencySelect.value = "EUR";
+        }
+
+        // Swap currencies
+        swapButton.addEventListener('click', function() {
+            const temp = fromCurrencySelect.value;
+            fromCurrencySelect.value = toCurrencySelect.value;
+            toCurrencySelect.value = temp;
+            
+            // If there's a result, swap and recalculate
+            if (resultContainer.style.display === 'block') {
+                convertCurrency();
+            }
+        });
+
+        // Convert currency
+        convertButton.addEventListener('click', convertCurrency);
+
+        function convertCurrency() {
+            const amount = parseFloat(amountInput.value);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
+
+            // Show converting animation
+            convertButton.classList.add('converting');
+            setTimeout(() => {
+                convertButton.classList.remove('converting');
+            }, 500);
+
+            const fromCurrency = fromCurrencySelect.value;
+            const toCurrency = toCurrencySelect.value;
+
+            // Calculate conversion
+            const fromRate = exchangeRates[fromCurrency];
+            const toRate = exchangeRates[toCurrency];
+            const result = (amount / fromRate) * toRate;
+
+            // Calculate rate change
+            const prevFromRate = previousRates[fromCurrency];
+            const prevToRate = previousRates[toCurrency];
+            const prevRate = (1 / prevFromRate) * prevToRate;
+            const currentRate = (1 / fromRate) * toRate;
+            const changePercent = ((currentRate - prevRate) / prevRate) * 100;
+            
+            // Display result
+            resultValue.textContent = result.toFixed(2);
+            resultDetails.textContent = `1 ${fromCurrency} = ${(toRate / fromRate).toFixed(4)} ${toCurrency}`;
+            
+            // Display rate change
+            rateChange.className = 'rate-change ';
+            if (changePercent > 0) {
+                rateChange.classList.add('positive');
+                rateChange.innerHTML = `<i class="fas fa-arrow-up"></i> ${Math.abs(changePercent).toFixed(2)}%`;
+            } else if (changePercent < 0) {
+                rateChange.classList.add('negative');
+                rateChange.innerHTML = `<i class="fas fa-arrow-down"></i> ${Math.abs(changePercent).toFixed(2)}%`;
+            } else {
+                rateChange.classList.add('neutral');
+                rateChange.innerHTML = `<i class="fas fa-equals"></i> 0.00%`;
+            }
+            
+            // Update timestamp
+            updateTime.textContent = new Date().toLocaleString();
+            
+            // Show result container
+            resultContainer.style.display = 'block';
+        }
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.maxHeight;
+                
+                // Close all answers first
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.maxHeight = null;
+                    ans.previousElementSibling.classList.remove('active');
+                });
+                
+                // Open current answer if it was closed
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Allow pressing Enter in amount field to convert
+        amountInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                convertCurrency();
+            }
+        });
+    </script>
+</body>
+</html>
