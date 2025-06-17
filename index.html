@@ -6,17 +6,18 @@
     <title>Sky Travelling</title>
     <link rel="stylesheet" href="sky.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
     <header class="vibrant-header">
         <div class="header-content">
-            <h1><span>Sky</span> Travelling</h1>
+            <h1><span>Sky</span> Travelling <span class="logo-name">by Samiha</span></h1>
             <p>Your gateway to unforgettable adventures</p>
         </div>
-         <nav class="floating-nav">
+        <nav class="floating-nav">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="destinations.html" ><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
                 <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
                 <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
                 <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
@@ -26,11 +27,11 @@
         </nav>
         <div class="search-language-container">
             <div class="search-bar">
-                <input type="text" placeholder="Search destinations...">
-                <button><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Search destinations..." id="searchInput">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
             <div class="language-selector">
-                <select>
+                <select id="languageSelect">
                     <option value="en">English</option>
                     <option value="fr">Français</option>
                     <option value="es">Español</option>
@@ -43,9 +44,19 @@
     <main class="dynamic-home">
         <section class="hero-home">
             <div class="hero-content">
-                <h2>Explore the World with Sky Travelling</h2>
-                <p>Discover new destinations, plan your trips, and book easily.</p>
+                <h1 id="animated-title" class="animate__animated animate__fadeInDown">Explore the World with Sky Travelling</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">Dream. Discover. Travel</p>
+                <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                    <button class="cta-button" id="exploreBtn">Explore Now</button>
+                    <button class="cta-button secondary" id="aboutBtn">About Us</button>
+                </div>
             </div>
+        </section>
+
+        <section class="floating-clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
         </section>
     </main>
 <br>
@@ -54,12 +65,9 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
+<br>
+<br>
     <footer class="vibrant-footer">
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -67,6 +75,169 @@
             <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
         <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Add tooltips to nav items
+    const navItems = document.querySelectorAll('.floating-nav li a');
+    const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+    
+    navItems.forEach((item, index) => {
+        item.setAttribute('data-tooltip', tooltips[index]);
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Search functionality
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    
+    searchBtn.addEventListener('click', function() {
+        if (searchInput.value.trim() !== '') {
+            alert(`Searching for: ${searchInput.value}`);
+            // In a real app, you would redirect to search results
+        }
+    });
+    
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+            alert(`Searching for: ${searchInput.value}`);
+        }
+    });
+
+    // Language selector
+    const languageSelect = document.getElementById('languageSelect');
+    
+    languageSelect.addEventListener('change', function() {
+        alert(`Language changed to: ${this.value}`);
+        // In a real app, you would change the language
+    });
+
+    // CTA buttons
+    const exploreBtn = document.getElementById('exploreBtn');
+    const aboutBtn = document.getElementById('aboutBtn');
+    
+    exploreBtn.addEventListener('click', function() {
+        window.location.href = 'destinations.html';
+    });
+    
+    aboutBtn.addEventListener('click', function() {
+        // Create a modal for About Us
+        const modal = document.createElement('div');
+        modal.className = 'about-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>About Sky Travelling</h2>
+                <p>Sky Travelling is your ultimate guide to exploring the world's most breathtaking destinations. Founded by Samiha, our mission is to inspire and enable unforgettable travel experiences.</p>
+                <p>Whether you're looking for adventure, relaxation, or cultural immersion, we've got you covered with expert tips, curated destinations, and seamless booking options.</p> 
+                <p> At Sky Travelling, we believe that every journey is a story waiting to be written  and we’re here to help you write yours.</p>
+                <h3>About the Founder – Samiha</h3> 
+                <p>Samiha is a creative travel lover who started Sky Travelling to share her passion for discovering new places. She believes that every trip is a chance to learn, grow, and enjoy life. <br> and she’s here to help you make your journey amazing.</p>
+
+
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close modal
+        const closeModal = document.querySelector('.close-modal');
+        closeModal.addEventListener('click', function() {
+            document.body.removeChild(modal);
+        });
+        
+        // Close when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    });
+
+    // Add animation to header on scroll
+    const header = document.querySelector('.vibrant-header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 50) {
+            header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            header.style.padding = '0.5rem 1rem';
+        } else {
+            header.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            header.style.padding = '1rem';
+        }
+    });
+});
+
+// Add modal styles dynamically
+const style = document.createElement('style');
+style.textContent = `
+    .about-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--primary-blue);
+    }
+    
+    .close-modal:hover {
+        color: var(--accent-blue);
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+`;
+document.head.appendChild(style);
+
+
+
+    </script>
 </body>
 </html>
