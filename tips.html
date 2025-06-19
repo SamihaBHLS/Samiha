@@ -7,7 +7,6 @@
     <title>Travel Tips - Sky Travelling</title>
     <link rel="stylesheet" href="tips.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
 </head>
 <body>
     <header class="vibrant-header">
@@ -36,9 +35,34 @@
             </div>
         </section>
 
+        <!-- NEW TIMELINE FILTER SECTION -->
+        <section class="timeline-section">
+            <div class="timeline-tabs">
+                <button class="timeline-tab active" data-timeline="all">
+                    <i class="fas fa-star"></i> All Tips
+                </button>
+                <button class="timeline-tab" data-timeline="before">
+                    <i class="fas fa-calendar-check"></i> Before Travel
+                </button>
+                <button class="timeline-tab" data-timeline="during">
+                    <i class="fas fa-plane"></i> During Travel
+                </button>
+                <button class="timeline-tab" data-timeline="after">
+                    <i class="fas fa-home"></i> After Travel
+                </button>
+            </div>
+        </section>
+
         <div class="tips-grid">
-            <!-- Packing Pro Card -->
-            <article class="tip-card">
+            <!-- NEW CATEGORY HEADER -->
+            <div class="category-header">
+                <i class="fas fa-suitcase-rolling"></i>
+                <h2>Packing & Preparation</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <!-- Tip Cards with NEW data-timeline attributes -->
+            <article class="tip-card" data-timeline="before">
                 <div class="card-header">
                     <div class="icon-circle"><i class="fas fa-suitcase-rolling"></i></div>
                     <h3>Packing Pro</h3>
@@ -55,44 +79,24 @@
                 </div>
             </article>
 
-            <!-- Safety Savvy Card -->
-            <article class="tip-card">
+            <article class="tip-card" data-timeline="before">
                 <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Safety Savvy</h3>
+                    <div class="icon-circle"><i class="fas fa-wallet"></i></div>
+                    <h3>Budget Planning</h3>
                 </div>
                 <div class="card-content">
                     <ul class="tip-list">
-                        <li><i class="fas fa-check"></i> Digital copies of documents</li>
-                        <li><i class="fas fa-check"></i> Research local emergency info</li>
-                        <li><i class="fas fa-check"></i> Anti-theft gear essentials</li>
-                        <li><i class="fas fa-check"></i> Share itinerary with contacts</li>
-                        <li><i class="fas fa-check"></i> Use RFID-blocking wallet</li>
-                        <li><i class="fas fa-check"></i> Learn basic self-defense phrases</li>
+                        <li><i class="fas fa-check"></i> Set a daily spending limit</li>
+                        <li><i class="fas fa-check"></i> Research free attractions</li>
+                        <li><i class="fas fa-check"></i> Book refundable options</li>
+                        <li><i class="fas fa-check"></i> Notify your bank about travel</li>
+                        <li><i class="fas fa-check"></i> Get travel insurance</li>
+                        <li><i class="fas fa-check"></i> Download offline maps</li>
                     </ul>
                 </div>
             </article>
 
-            <!-- Airport Ace Card -->
-            <article class="tip-card">
-                <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-plane-departure"></i></div>
-                    <h3>Airport Ace</h3>
-                </div>
-                <div class="card-content">
-                    <ul class="tip-list">
-                        <li><i class="fas fa-check"></i> 2-hour early arrival rule</li>
-                        <li><i class="fas fa-check"></i> Airline apps for mobile passes</li>
-                        <li><i class="fas fa-check"></i> Empty water bottle hack</li>
-                        <li><i class="fas fa-check"></i> Slip-on shoes for security</li>
-                        <li><i class="fas fa-check"></i> Know your lounge access options</li>
-                        <li><i class="fas fa-check"></i> Gate-check bag for tight connections</li>
-                    </ul>
-                </div>
-            </article>
-
-            <!-- Genius Hacks Card -->
-            <article class="tip-card">
+            <article class="tip-card" data-timeline="before">
                 <div class="card-header">
                     <div class="icon-circle"><i class="fas fa-magic"></i></div>
                     <h3>Genius Hacks</h3>
@@ -109,26 +113,49 @@
                 </div>
             </article>
 
-            <!-- Budget Traveler Card -->
-            <article class="tip-card">
+            <!-- NEW CATEGORY HEADER -->
+            <div class="category-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Safety & Security</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <article class="tip-card" data-timeline="during">
                 <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-wallet"></i></div>
-                    <h3>Budget Traveler</h3>
+                    <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Safety Savvy</h3>
                 </div>
                 <div class="card-content">
                     <ul class="tip-list">
-                        <li><i class="fas fa-check"></i> Travel during shoulder seasons</li>
-                        <li><i class="fas fa-check"></i> Use fare comparison tools</li>
-                        <li><i class="fas fa-check"></i> Consider alternative airports</li>
-                        <li><i class="fas fa-check"></i> Book accommodations with kitchens</li>
-                        <li><i class="fas fa-check"></i> Use public transportation</li>
-                        <li><i class="fas fa-check"></i> Look for free walking tours</li>
+                        <li><i class="fas fa-check"></i> Digital copies of documents</li>
+                        <li><i class="fas fa-check"></i> Research local emergency info</li>
+                        <li><i class="fas fa-check"></i> Anti-theft gear essentials</li>
+                        <li><i class="fas fa-check"></i> Share itinerary with contacts</li>
+                        <li><i class="fas fa-check"></i> Use RFID-blocking wallet</li>
+                        <li><i class="fas fa-check"></i> Learn basic self-defense phrases</li>
                     </ul>
                 </div>
             </article>
 
-            <!-- Tech Traveler Card -->
-            <article class="tip-card">
+            <!-- More tip cards with appropriate timeline attributes -->
+            <article class="tip-card" data-timeline="during">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-plane-departure"></i></div>
+                    <h3>Airport Ace</h3>
+                </div>
+                <div class="card-content">
+                    <ul class="tip-list">
+                        <li><i class="fas fa-check"></i> 2-hour early arrival rule</li>
+                        <li><i class="fas fa-check"></i> Airline apps for mobile passes</li>
+                        <li><i class="fas fa-check"></i> Empty water bottle hack</li>
+                        <li><i class="fas fa-check"></i> Slip-on shoes for security</li>
+                        <li><i class="fas fa-check"></i> Know your lounge access options</li>
+                        <li><i class="fas fa-check"></i> Gate-check bag for tight connections</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tip-card" data-timeline="during">
                 <div class="card-header">
                     <div class="icon-circle"><i class="fas fa-tablet-alt"></i></div>
                     <h3>Tech Traveler</h3>
@@ -145,54 +172,34 @@
                 </div>
             </article>
 
-            <!-- Family Travel Card -->
-            <article class="tip-card">
+            <!-- NEW CATEGORY HEADER -->
+            <div class="category-header">
+                <i class="fas fa-home"></i>
+                <h2>Post-Travel</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <article class="tip-card" data-timeline="after">
                 <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-child"></i></div>
-                    <h3>Family Travel</h3>
+                    <div class="icon-circle"><i class="fas fa-home"></i></div>
+                    <h3>After Return</h3>
                 </div>
                 <div class="card-content">
                     <ul class="tip-list">
-                        <li><i class="fas fa-check"></i> Pack surprise activity bags</li>
-                        <li><i class="fas fa-check"></i> Book accommodations with laundry</li>
-                        <li><i class="fas fa-check"></i> Child locator devices in crowds</li>
-                        <li><i class="fas fa-check"></i> Snacks for every hour of travel</li>
-                        <li><i class="fas fa-check"></i> Scan important documents</li>
-                        <li><i class="fas fa-check"></i> Kid-friendly travel apps</li>
+                        <li><i class="fas fa-check"></i> Sort photos immediately</li>
+                        <li><i class="fas fa-check"></i> Wash all clothes thoroughly</li>
+                        <li><i class="fas fa-check"></i> Check credit card statements</li>
+                        <li><i class="fas fa-check"></i> Leave reviews for good services</li>
+                        <li><i class="fas fa-check"></i> Restock travel supplies</li>
+                        <li><i class="fas fa-check"></i> Update travel wishlist</li>
                     </ul>
                 </div>
             </article>
 
-            <!-- Sustainable Travel Card -->
-            <article class="tip-card">
-                <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-leaf"></i></div>
-                    <h3>Sustainable Travel</h3>
-                </div>
-                <div class="card-content">
-                    <ul class="tip-list">
-                        <li><i class="fas fa-check"></i> Reusable water bottle with filter</li>
-                        <li><i class="fas fa-check"></i> Eco-friendly toiletries</li>
-                        <li><i class="fas fa-check"></i> Support local businesses</li>
-                        <li><i class="fas fa-check"></i> Carbon offset programs</li>
-                        <li><i class="fas fa-check"></i> Pack a reusable shopping bag</li>
-                        <li><i class="fas fa-check"></i> Choose direct flights when possible</li>
-                    </ul>
-                </div>
-            </article>
+            <!-- More tip cards... -->
         </div>
 
-        <section class="wisdom-banner">
-            <div class="banner-content">
-                <i class="fas fa-star"></i>
-                <h3>Pro Traveler Wisdom</h3>
-                <p>Trust your instincts, embrace spontaneity, respect local cultures, and most importantly - savor every moment of your journey!</p>
-            </div>
-        </section>
 
-       
-
-        <!-- New Travel Resources Section -->
         <section class="resources-section">
             <h2 class="section-title">Travel Resources</h2>
             <div class="resources-grid">
@@ -223,7 +230,7 @@
             </div>
         </section>
 
-        <!-- New Seasonal Tips Section -->
+        
         <section class="seasonal-tips">
             <h2 class="section-title">Seasonal Travel Tips</h2>
             <div class="seasonal-tabs">
@@ -273,28 +280,22 @@
                 </ul>
             </div>
         </section>
+
+
+        <!-- Rest of your existing sections -->
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-star"></i>
+                <h3>Pro Traveler Wisdom</h3>
+                <p>Trust your instincts, embrace spontaneity, respect local cultures, and most importantly - savor every moment of your journey!</p>
+            </div>
+        </section>
+
+        
     </main>
 
     <footer class="vibrant-footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>More Travel Tips</h3>
-                <ul>
-                    <li><a href="#">Solo Travel Guides</a></li>
-                    <li><a href="#">Luxury Travel Tips</a></li>
-                    <li><a href="#">Adventure Travel Prep</a></li>
-                    <li><a href="#">Business Travel Hacks</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Travel Tools</h3>
-                <ul>
-                    <li><a href="#">Packing Checklist</a></li>
-                    <li><a href="#">Travel Budget Calculator</a></li>
-                    <li><a href="#">Time Zone Converter</a></li>
-                    <li><a href="#">Language Phrasebook</a></li>
-                </ul>
-            </div>
             <div class="footer-section">
                 <h3>Connect With Us</h3>
                 <div class="social-links">
@@ -304,14 +305,13 @@
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
                 <p>Subscribe to our newsletter for weekly travel tips</p>
-                
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
             <div class="scroll-top" id="scrollTopBtn">
-            <i class="fas fa-arrow-up"></i>
-        </div>
+                <i class="fas fa-arrow-up"></i>
+            </div>
         </div>
     </footer>
 
@@ -341,23 +341,55 @@
                 });
             });
         });
-        // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('active');
-        } else {
-            scrollTopBtn.classList.remove('active');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+
+        // NEW TIMELINE FILTER FUNCTIONALITY
+        document.querySelectorAll('.timeline-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.timeline-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const timeline = tab.dataset.timeline;
+                document.querySelectorAll('.tip-card').forEach(card => {
+                    if (timeline === 'all' || card.dataset.timeline === timeline) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
         });
-    });
+
+        // Your existing JavaScript
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.seasonal-content').forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                
+                const season = button.getAttribute('data-season');
+                document.getElementById(season).classList.add('active');
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>

@@ -335,3 +335,36 @@ a{
     background: var(--accent-blue);
     transform: translateY(-5px);
 }
+
+/* أضف هذا الكود في نهاية ملف destinations.css دون حذف أي شيء موجود */
+
+/* تأثير Hover على صور الوجهات */
+.card-image {
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.card-image::before {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 108, 161, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.destination-card:hover .card-image::before {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.destination-card:hover .card-image {
+    filter: brightness(0.9);
+}
