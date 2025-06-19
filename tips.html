@@ -309,6 +309,9 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+            <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
         </div>
     </footer>
 
@@ -338,6 +341,23 @@
                 });
             });
         });
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
     </script>
 </body>
 </html>

@@ -386,6 +386,37 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+
     </style>
 </head>
 <body>
@@ -607,6 +638,28 @@ body {
             <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
         <p>&copy; 2025 Sky Travelling | Swiss Perfection Awaits</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    </script>
 </body>
 </html>
