@@ -358,3 +358,35 @@
     background: var(--accent-blue);
     transform: translateY(-5px);
 }
+/* Error message styling */
+.error-message {
+    color: #ff4d4d;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: shake 0.5s;
+}
+
+/* Success message styling */
+.success-message {
+    color: #4BB543;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+/* Loading button state */
+.fa-spin {
+    margin-right: 8px;
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

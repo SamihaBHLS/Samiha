@@ -89,6 +89,70 @@
             behavior: 'smooth'
         });
     });
+
+    // Wait for the page to load
+window.onload = function() {
+
+    // Get the login form
+    const loginForm = document.querySelector('.login-form');
+    
+    // When form is submitted
+    loginForm.onsubmit = function(e) {
+        e.preventDefault(); // Stop form from submitting normally
+        
+        // Get the input values
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const remember = document.getElementById('remember').checked;
+        
+        // Simple email validation
+        if (!email.includes('@') || !email.includes('.')) {
+            alert('Please enter a valid email address');
+            return;
+        }
+        
+        // Simple password validation
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters');
+            return;
+        }
+        
+        // Change button to show loading
+        const loginBtn = document.querySelector('.login-btn');
+        loginBtn.innerHTML = 'Logging in...';
+        loginBtn.disabled = true;
+        
+        // Simulate checking credentials (in real app, this would call a server)
+        setTimeout(function() {
+            // These are example credentials - replace with real check in production
+            if ((email === 'user@example.com' && password === 'password123') || 
+                (email === 'test@test.com' && password === 'test123')) {
+                
+                // Save email if "Remember me" was checked
+                if (remember) {
+                    localStorage.setItem('savedEmail', email);
+                } else {
+                    localStorage.removeItem('savedEmail');
+                }
+                
+                // Show success and redirect
+                alert('Login successful! Welcome back.');
+                window.location.href = 'index.html'; // Go to homepage
+            } else {
+                alert('Wrong email or password. Please try again.');
+                loginBtn.innerHTML = 'Login <i class="fas fa-arrow-right"></i>';
+                loginBtn.disabled = false;
+            }
+        }, 1000); // 1 second delay to simulate server response
+    };
+    
+    // Check if there's a saved email from "Remember me"
+    const savedEmail = localStorage.getItem('savedEmail');
+    if (savedEmail) {
+        document.getElementById('email').value = savedEmail;
+        document.getElementById('remember').checked = true;
+    }
+};
     </script>
 </body>
 </html>
