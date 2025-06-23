@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Hidden Gems of 2025 - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* hidden-gems.css - Styles for Best Hidden Gems of 2025 page */
+
+/* Modern Vibrant Style - Same Color Palette as Blog */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+    --transition: all 0.3s ease;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: var(--shadow);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Blog Hero Section */
+.hero-blog {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-blog::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: var(--primary-blue);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--primary-blue);
+}
+
+/* Blog Container */
+.blog-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 0.5rem auto 0;
+}
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Blog Cards */
+.blog-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+}
+
+.card-content p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.card-footer i {
+    margin-right: 5px;
+    color: var(--primary-blue);
+}
+
+/* Hidden Gems Page Specific Styles */
+.intro-section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+.feature-section {
+    margin: 4rem 0;
+    padding: 3rem 0;
+    background-color: var(--light-blue);
+    border-radius: 10px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+}
+
+.feature-item p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.travel-tips {
+    margin: 4rem 0;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tip-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    padding-left: 4rem;
+}
+
+.tip-number {
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--primary-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.tip-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.tip-card p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Traveler Comments */
+.traveler-comments {
+    margin: 4rem 0;
+}
+
+.comment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.comment-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary-blue);
+    transition: var(--transition);
+}
+
+.comment-card:hover {
+    transform: translateY(-3px);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.comment-header i {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-right: 0.8rem;
+}
+
+.comment-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-blue);
+}
+
+.comment-card p {
+    margin: 0;
+    font-style: italic;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 3rem 0;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    background: #ff7e5f;
+    color: var(--white);
+    border: none;
+    padding: 0 25px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: #ff6b4a;
+}
+
+.privacy-note {
+    font-size: 12px;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-blog {
+        padding: 3rem 1rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-container {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Blog</h1>
+            <p>Discover the world's best kept secrets</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-blog">
+        <section class="hero-blog">
+            <div class="hero-content">
+                <h2>Best Hidden Gems of 2025</h2>
+                <p>Undiscovered destinations you need to visit before everyone else does</p>
+            </div>
+        </section>
+
+        <div class="blog-container">
+            <section class="intro-section">
+                <p>Our team of travel experts has scoured the globe to bring you these incredible under-the-radar destinations for 2025. From secluded beaches to mountain villages untouched by mass tourism, these hidden gems offer authentic experiences away from the crowds.</p>
+            </section>
+
+            <h2 class="section-title">Top Hidden Destinations</h2>
+            <div class="blog-grid">
+                <!-- Hidden Gem 1 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Azores\,\ Portugal.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Azores, Portugal</h3>
+                        <p>This Atlantic archipelago offers stunning volcanic landscapes, thermal springs, and whale watching in complete serenity.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: May-Oct</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Mid-Atlantic</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 2 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Albanian\ Riviera.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Albanian Riviera</h3>
+                        <p>Crystal clear waters of the Ionian Sea meet affordable prices and warm hospitality in this Mediterranean secret.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: Jun-Sep</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Balkans</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 3 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Mongolia\'s\ Gobi\ Desert.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Mongolia's Gobi Desert</h3>
+                        <p>Experience nomadic culture and vast, untouched landscapes in one of Asia's last wilderness frontiers.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: May-Sep</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Central Asia</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 4 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/oaxaca.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Oaxaca, Mexico</h3>
+                        <p>Beyond the tourist trail lies authentic Mexican culture, incredible cuisine, and stunning colonial architecture.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: Oct-Apr</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Southern Mexico</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 5 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Faroe\ Islands.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Faroe Islands</h3>
+                        <p>Dramatic cliffs, puffins, and Viking heritage in this North Atlantic archipelago between Iceland and Norway.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: Jun-Aug</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> North Atlantic</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 6 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Bhutan\'s\ Hidden\ Valleys.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Bhutan's Hidden Valleys</h3>
+                        <p>Ancient monasteries cling to cliffs in this Himalayan kingdom that limits tourist numbers to preserve culture.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: Mar-May</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Himalayas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 7 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Mozambique\ Coast.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Mozambique Coast</h3>
+                        <p>Pristine beaches, coral reefs, and Portuguese-influenced culture in Africa's best kept secret.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: May-Nov</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Southeast Africa</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Gem 8 -->
+                <article class="blog-card">
+                    <div class="card-image" style="background-image: url('./image/Slovenian\ Alps.jpg')"></div>
+                    <div class="card-content">
+                        <h3>Slovenian Alps</h3>
+                        <p>All the beauty of the Alps without the crowds or prices - perfect for hiking and outdoor adventures.</p>
+                        <div class="card-footer">
+                            <span class="travel-date"><i class="far fa-calendar-alt"></i> Best time: Jun-Sep</span>
+                            <span class="travel-duration"><i class="fas fa-map-marker-alt"></i> Central Europe</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <section class="feature-section">
+                <h2 class="section-title">Why Visit These Hidden Gems?</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-users-slash"></i>
+                        <h3>Fewer Crowds</h3>
+                        <p>Enjoy authentic experiences without fighting through tourist hordes at every attraction.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Better Value</h3>
+                        <p>Lower prices for accommodations, food, and activities compared to popular destinations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Authentic Culture</h3>
+                        <p>Experience traditions and lifestyles largely unaffected by mass tourism.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-camera"></i>
+                        <h3>Unique Photos</h3>
+                        <p>Capture stunning images of places most people have never seen or heard of.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="travel-tips">
+                <h2 class="section-title">Tips for Visiting Hidden Gems</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-number">1</div>
+                        <h3>Plan Transportation Early</h3>
+                        <p>Many hidden gems have limited transport options, so book trains, ferries or rental cars well in advance.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">2</div>
+                        <h3>Learn Basic Phrases</h3>
+                        <p>English may not be widely spoken, so learn greetings and essential phrases in the local language.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">3</div>
+                        <h3>Pack Versatile Clothing</h3>
+                        <p>Many hidden gems have unpredictable weather and limited shopping options.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">4</div>
+                        <h3>Bring Cash</h3>
+                        <p>Credit cards may not be accepted everywhere in less touristy areas.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">5</div>
+                        <h3>Research Local Customs</h3>
+                        <p>Respect cultural norms that may differ from more tourist-adapted destinations.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">6</div>
+                        <h3>Have Flexible Plans</h3>
+                        <p>Services may be less reliable, so build extra time into your itinerary.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="traveler-comments">
+                <h2 class="section-title">Travelers Who Visited Hidden Gems</h2>
+                <div class="comment-grid">
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Sarah K. from USA</h4>
+                        </div>
+                        <p>"Visiting the Faroe Islands was like stepping into a fantasy novel. The landscapes were unreal and we had entire hiking trails to ourselves!"</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Marco P. from Italy</h4>
+                        </div>
+                        <p>"Albania's beaches rival any in the Mediterranean at half the price. The food was incredible too!"</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Emma L. from Canada</h4>
+                        </div>
+                        <p>"Bhutan was worth every penny. The culture is so well preserved and the mountain scenery took my breath away."</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>James T. from Australia</h4>
+                        </div>
+                        <p>"Mozambique's beaches are paradise. We snorkeled with whale sharks and had whole stretches of sand to ourselves."</p>
+                    </div>
+                </div>
+            </section>
+
+            
+        </div>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

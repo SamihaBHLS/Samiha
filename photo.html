@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Photography Guide - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* photography-guide.css - Styles for Travel Photography Guide page */
+
+/* Modern Vibrant Style - Same Color Palette as Blog */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+    --transition: all 0.3s ease;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: var(--shadow);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Blog Hero Section */
+.hero-blog {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-blog::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: var(--primary-blue);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--primary-blue);
+}
+
+/* Blog Container */
+.blog-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 0.5rem auto 0;
+}
+
+/* Photography Guide Specific Styles */
+.intro-section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+.photography-tips {
+    margin: 4rem 0;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tip-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+}
+
+.tip-icon {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.tip-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+}
+
+.tip-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.gear-guide {
+    margin: 4rem 0;
+    padding: 3rem 0;
+    background-color: var(--light-blue);
+    border-radius: 10px;
+}
+
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.gear-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.gear-card:hover {
+    transform: translateY(-5px);
+}
+
+.gear-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.gear-content {
+    padding: 1.5rem;
+}
+
+.gear-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.gear-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.composition-guide {
+    margin: 4rem 0;
+}
+
+.composition-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.example-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.example-card:hover {
+    transform: translateY(-5px);
+}
+
+.example-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.example-content {
+    padding: 1.5rem;
+}
+
+.example-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+}
+
+.example-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.editing-section {
+    margin: 4rem 0;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.editing-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.editing-tip {
+    padding: 1rem;
+    border-left: 3px solid var(--primary-blue);
+}
+
+.editing-tip h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.editing-tip h3 i {
+    margin-right: 10px;
+}
+
+.editing-tip p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.software-recs {
+    background: var(--light-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.software-recs h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.software-recs ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.software-recs li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.software-recs li i {
+    margin-right: 10px;
+    color: var(--primary-blue);
+}
+
+/* Traveler Comments */
+.traveler-comments {
+    margin: 4rem 0;
+}
+
+.comment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.comment-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary-blue);
+    transition: var(--transition);
+}
+
+.comment-card:hover {
+    transform: translateY(-3px);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.comment-header i {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-right: 0.8rem;
+}
+
+.comment-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-blue);
+}
+
+.comment-card p {
+    margin: 0;
+    font-style: italic;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 3rem 0;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    background: #ff7e5f;
+    color: var(--white);
+    border: none;
+    padding: 0 25px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: #ff6b4a;
+}
+
+.privacy-note {
+    font-size: 12px;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .editing-section {
+        padding: 2rem 1rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-blog {
+        padding: 3rem 1rem;
+    }
+    
+    .composition-examples {
+        grid-template-columns: 1fr;
+    }
+    
+    .editing-tips {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Blog</h1>
+            <p>Capture the world through your lens</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-blog">
+        <section class="hero-blog">
+            <div class="hero-content">
+                <h2>Ultimate Travel Photography Guide</h2>
+                <p>Professional tips to capture stunning travel photos with any camera</p>
+            </div>
+        </section>
+
+        <div class="blog-container">
+            <section class="intro-section">
+                <p>Whether you're using a smartphone or a DSLR, this comprehensive guide will help you take better travel photos. Learn composition techniques, lighting tricks, and editing tips from professional travel photographers.</p>
+            </section>
+
+            <section class="photography-tips">
+                <h2 class="section-title">Essential Photography Tips</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-sun"></i></div>
+                        <h3>Golden Hour Magic</h3>
+                        <p>Shoot during the first and last hours of sunlight for soft, warm lighting that flatters every subject.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-vector-square"></i></div>
+                        <h3>Rule of Thirds</h3>
+                        <p>Imagine your frame divided into thirds and place key elements along these lines for balanced compositions.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Foreground Interest</h3>
+                        <p>Add depth to landscapes by including foreground elements like rocks or flowers.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-street-view"></i></div>
+                        <h3>Human Element</h3>
+                        <p>Include people in your shots to show scale and add life to your travel photos.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-arrows-alt-h"></i></div>
+                        <h3>Leading Lines</h3>
+                        <p>Use natural lines like roads or rivers to guide the viewer's eye through your image.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-eye"></i></div>
+                        <h3>Eye-Level Shots</h3>
+                        <p>Get down to your subject's eye level for more engaging portraits.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gear-guide">
+                <h2 class="section-title">Essential Photography Gear</h2>
+                <div class="gear-grid">
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/camera.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Camera Body</h3>
+                            <p>DSLR or mirrorless camera with manual controls for best quality</p>
+                        </div>
+                    </div>
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/Versatile\ Lens.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Versatile Lens</h3>
+                            <p>24-70mm or 18-135mm zoom lens covers most travel situations</p>
+                        </div>
+                    </div>
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/Tripod.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Tripod</h3>
+                            <p>Lightweight travel tripod for long exposures and stable shots</p>
+                        </div>
+                    </div>
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/Filters.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Filters</h3>
+                            <p>Polarizing and ND filters for better skies and long exposures</p>
+                        </div>
+                    </div>
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/Extra\ Batteries.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Extra Batteries</h3>
+                            <p>Always carry spares - you'll use more power than you think</p>
+                        </div>
+                    </div>
+                    <div class="gear-card">
+                        <div class="gear-image" style="background-image: url('./image/Memory\ Cards.jpg')"></div>
+                        <div class="gear-content">
+                            <h3>Memory Cards</h3>
+                            <p>Multiple high-capacity cards - shoot RAW for editing flexibility</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="composition-guide">
+                <h2 class="section-title">Composition Techniques</h2>
+                <div class="composition-examples">
+                    <div class="example-card">
+                        <div class="example-image" style="background-image: url('./image/Symmetry.jpg')"></div>
+                        <div class="example-content">
+                            <h3>Symmetry</h3>
+                            <p>Perfect for architecture and reflections - center your subject for powerful impact</p>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-image" style="background-image: url('./image/framing.jpg')"></div>
+                        <div class="example-content">
+                            <h3>Framing</h3>
+                            <p>Use natural frames like windows or arches to highlight your subject</p>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-image" style="background-image: url('./image/Negative\ Space.jpg')"></div>
+                        <div class="example-content">
+                            <h3>Negative Space</h3>
+                            <p>Leave empty space around your subject for minimalist, powerful images</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editing-section">
+                <h2 class="section-title">Photo Editing Basics</h2>
+                <div class="editing-tips">
+                    <div class="editing-tip">
+                        <h3><i class="fas fa-sliders-h"></i> Adjust Exposure</h3>
+                        <p>Correct brightness and contrast to make your photos pop</p>
+                    </div>
+                    <div class="editing-tip">
+                        <h3><i class="fas fa-crop"></i> Straighten & Crop</h3>
+                        <p>Fix horizons and remove distracting elements</p>
+                    </div>
+                    <div class="editing-tip">
+                        <h3><i class="fas fa-tint"></i> White Balance</h3>
+                        <p>Ensure colors look natural in different lighting conditions</p>
+                    </div>
+                    <div class="editing-tip">
+                        <h3><i class="fas fa-magic"></i> Presets/Filters</h3>
+                        <p>Use consistent editing styles for cohesive travel albums</p>
+                    </div>
+                </div>
+                <div class="software-recs">
+                    <h3>Recommended Editing Software:</h3>
+                    <ul>
+                        <li><i class="fas fa-desktop"></i> Adobe Lightroom (Desktop & Mobile)</li>
+                        <li><i class="fas fa-mobile-alt"></i> Snapseed (Mobile)</li>
+                        <li><i class="fas fa-laptop"></i> Capture One (Professional)</li>
+                        <li><i class="fas fa-phone"></i> VSCO (Mobile Filters)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="traveler-comments">
+                <h2 class="section-title">Photography Success Stories</h2>
+                <div class="comment-grid">
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Lisa M. from Germany</h4>
+                        </div>
+                        <p>"Using the rule of thirds transformed my travel photos! My Instagram engagement doubled after applying these techniques."</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>James T. from Australia</h4>
+                        </div>
+                        <p>"The golden hour tip was a game-changer. My sunset photos now look professional rather than amateur."</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Sophie L. from France</h4>
+                        </div>
+                        <p>"I never realized how much difference editing makes. Lightroom presets saved me hours of work!"</p>
+                    </div>
+                </div>
+            </section>
+
+           
+        </div>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

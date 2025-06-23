@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Travel Tips - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* sustainable-travel.css - Styles for Sustainable Travel Guide page */
+
+/* Modern Vibrant Style - Same Color Palette as Blog */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+    --transition: all 0.3s ease;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: var(--shadow);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Blog Hero Section */
+.hero-blog {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-blog::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: var(--primary-blue);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--primary-blue);
+}
+
+/* Blog Container */
+.blog-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 0.5rem auto 0;
+}
+
+/* Sustainable Travel Specific Styles */
+.intro-section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+.eco-pillars {
+    margin: 4rem 0;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pillar-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+}
+
+.pillar-icon {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.pillar-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+}
+
+.pillar-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.transportation-tips {
+    margin: 4rem 0;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.transport-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.transport-card:hover {
+    transform: translateY(-5px);
+}
+
+.transport-icon {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    min-width: 50px;
+}
+
+.transport-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.transport-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.accommodation-guide {
+    margin: 4rem 0;
+    padding: 3rem 0;
+    background-color: var(--light-blue);
+    border-radius: 10px;
+}
+
+.accommodation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.accommodation-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.accommodation-card:hover {
+    transform: translateY(-5px);
+}
+
+.accommodation-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.accommodation-content {
+    padding: 1.5rem;
+}
+
+.accommodation-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.accommodation-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.eco-certifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.eco-certifications span {
+    background: var(--light-blue);
+    color: var(--primary-blue);
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.eco-certifications i {
+    font-size: 0.8rem;
+}
+
+.daily-tips {
+    margin: 4rem 0;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.daily-tip {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    gap: 1rem;
+}
+
+.daily-tip:hover {
+    transform: translateY(-5px);
+}
+
+.tip-number {
+    background: var(--primary-blue);
+    color: var(--white);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.tip-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.tip-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.destination-spotlight {
+    margin: 4rem 0;
+}
+
+.spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.spotlight-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.spotlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.spotlight-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.spotlight-content {
+    padding: 1.5rem;
+}
+
+.spotlight-content h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+}
+
+.spotlight-content p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin: 0 0 1rem;
+}
+
+.spotlight-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spotlight-content li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.spotlight-content i {
+    color: var(--primary-blue);
+}
+
+/* Traveler Comments */
+.traveler-comments {
+    margin: 4rem 0;
+}
+
+.comment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.comment-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary-blue);
+    transition: var(--transition);
+}
+
+.comment-card:hover {
+    transform: translateY(-3px);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.comment-header i {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-right: 0.8rem;
+}
+
+.comment-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-blue);
+}
+
+.comment-card p {
+    margin: 0;
+    font-style: italic;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 3rem 0;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    background: #ff7e5f;
+    color: var(--white);
+    border: none;
+    padding: 0 25px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: #ff6b4a;
+}
+
+.privacy-note {
+    font-size: 12px;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .spotlight-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-blog {
+        padding: 3rem 1rem;
+    }
+    
+    .tips-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .transport-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .spotlight-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Blog</h1>
+            <p>Explore responsibly, preserve beautifully</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-blog">
+        <section class="hero-blog">
+            <div class="hero-content">
+                <h2>Sustainable Travel Guide</h2>
+                <p>How to explore the world while minimizing your environmental impact</p>
+            </div>
+        </section>
+
+        <div class="blog-container">
+            <section class="intro-section">
+                <p>Traveling sustainably means making simple choices that reduce your negative impact on the environment and local communities. Our guide will help you make eco-friendly decisions without sacrificing the quality of your travel experience.</p>
+            </section>
+
+            <section class="eco-pillars">
+                <h2 class="section-title">Pillars of Sustainable Travel</h2>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Environmental</h3>
+                        <p>Reduce your carbon footprint, waste, and impact on natural habitats</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Social</h3>
+                        <p>Support local communities and respect cultural heritage</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>Economic</h3>
+                        <p>Ensure your spending benefits local businesses and workers</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="transportation-tips">
+                <h2 class="section-title">Eco-Friendly Transportation</h2>
+                <div class="transport-grid">
+                    <div class="transport-card">
+                        <div class="transport-icon"><i class="fas fa-train"></i></div>
+                        <div class="transport-content">
+                            <h3>Take Trains</h3>
+                            <p>Trains produce up to 90% less CO2 than planes for the same distance</p>
+                        </div>
+                    </div>
+                    <div class="transport-card">
+                        <div class="transport-icon"><i class="fas fa-bicycle"></i></div>
+                        <div class="transport-content">
+                            <h3>Bike or Walk</h3>
+                            <p>Zero-emission ways to explore cities and countryside</p>
+                        </div>
+                    </div>
+                    <div class="transport-card">
+                        <div class="transport-icon"><i class="fas fa-bus"></i></div>
+                        <div class="transport-content">
+                            <h3>Public Transport</h3>
+                            <p>Buses and metros are more efficient than individual cars</p>
+                        </div>
+                    </div>
+                    <div class="transport-card">
+                        <div class="transport-icon"><i class="fas fa-plane"></i></div>
+                        <div class="transport-content">
+                            <h3>Fly Smart</h3>
+                            <p>Choose direct flights, economy class, and offset your carbon</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="accommodation-guide">
+                <h2 class="section-title">Green Accommodations</h2>
+                <div class="accommodation-grid">
+                    <div class="accommodation-card">
+                        <div class="accommodation-image" style="background-image: url('./image/Eco-Lodges.jpg')"></div>
+                        <div class="accommodation-content">
+                            <h3>Eco-Lodges</h3>
+                            <p>Stay at certified sustainable properties with green practices</p>
+                            <div class="eco-certifications">
+                                <span><i class="fas fa-certificate"></i> Green Key</span>
+                                <span><i class="fas fa-certificate"></i> EarthCheck</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accommodation-card">
+                        <div class="accommodation-image" style="background-image: url('./image/Homestays.jpg')"></div>
+                        <div class="accommodation-content">
+                            <h3>Homestays</h3>
+                            <p>Support local families and experience authentic culture</p>
+                        </div>
+                    </div>
+                    <div class="accommodation-card">
+                        <div class="accommodation-image" style="background-image: url('./image/Green\ Hotels.jpg')"></div>
+                        <div class="accommodation-content">
+                            <h3>Green Hotels</h3>
+                            <p>Look for properties with energy efficiency and waste reduction</p>
+                            <div class="eco-certifications">
+                                <span><i class="fas fa-certificate"></i> LEED</span>
+                                <span><i class="fas fa-certificate"></i> Green Globe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="daily-tips">
+                <h2 class="section-title">Sustainable Daily Practices</h2>
+                <div class="tips-container">
+                    <div class="daily-tip">
+                        <div class="tip-number">1</div>
+                        <div class="tip-content">
+                            <h3>Reusable Essentials</h3>
+                            <p>Carry a water bottle, utensils, and shopping bag to avoid single-use plastics</p>
+                        </div>
+                    </div>
+                    <div class="daily-tip">
+                        <div class="tip-number">2</div>
+                        <div class="tip-content">
+                            <h3>Local Cuisine</h3>
+                            <p>Eat locally sourced food to reduce transport emissions and support farmers</p>
+                        </div>
+                    </div>
+                    <div class="daily-tip">
+                        <div class="tip-number">3</div>
+                        <div class="tip-content">
+                            <h3>Water Conservation</h3>
+                            <p>Take shorter showers and reuse towels to reduce water usage</p>
+                        </div>
+                    </div>
+                    <div class="daily-tip">
+                        <div class="tip-number">4</div>
+                        <div class="tip-content">
+                            <h3>Energy Saving</h3>
+                            <p>Turn off lights/AC when leaving your room and unplug chargers</p>
+                        </div>
+                    </div>
+                    <div class="daily-tip">
+                        <div class="tip-number">5</div>
+                        <div class="tip-content">
+                            <h3>Responsible Souvenirs</h3>
+                            <p>Avoid products made from endangered species or unsustainable materials</p>
+                        </div>
+                    </div>
+                    <div class="daily-tip">
+                        <div class="tip-number">6</div>
+                        <div class="tip-content">
+                            <h3>Wildlife Ethics</h3>
+                            <p>Observe animals in their natural habitat without disturbing them</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="destination-spotlight">
+                <h2 class="section-title">Sustainable Destination Spotlight</h2>
+                <div class="spotlight-grid">
+                    <div class="spotlight-card">
+                        <div class="spotlight-image" style="background-image: url('./image/Slovenia.jpg')"></div>
+                        <div class="spotlight-content">
+                            <h3>Slovenia</h3>
+                            <p>Europe's greenest country with sustainable tourism infrastructure</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Over 60% of land protected</li>
+                                <li><i class="fas fa-check-circle"></i> Green certified accommodations</li>
+                                <li><i class="fas fa-check-circle"></i> Extensive cycling routes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="spotlight-card">
+                        <div class="spotlight-image" style="background-image: url('./image/Costa\ Rica.jpg')"></div>
+                        <div class="spotlight-content">
+                            <h3>Costa Rica</h3>
+                            <p>Pioneer in ecotourism with rich biodiversity</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 25% of land in national parks</li>
+                                <li><i class="fas fa-check-circle"></i> Runs on 99% renewable energy</li>
+                                <li><i class="fas fa-check-circle"></i> Carbon neutral by 2050 goal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="traveler-comments">
+                <h2 class="section-title">Traveler Experiences</h2>
+                <div class="comment-grid">
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Emma L. from Canada</h4>
+                        </div>
+                        <p>"Switching to train travel in Europe was eye-opening. The scenery was amazing and I met so many locals!"</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>James T. from Australia</h4>
+                        </div>
+                        <p>"Staying in eco-lodges in Costa Rica enhanced our trip. We learned so much about conservation efforts."</p>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h4>Sophie L. from France</h4>
+                        </div>
+                        <p>"Packing reusable items eliminated so much waste. Our family produced almost no trash during a 2-week trip!"</p>
+                    </div>
+                </div>
+            </section>
+
+            
+        </div>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
