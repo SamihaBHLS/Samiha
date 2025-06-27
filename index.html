@@ -12,7 +12,7 @@
     <header class="vibrant-header">
         <div class="header-content">
             <h1><span>Sky</span> Travelling <span class="logo-name">by Samiha</span></h1>
-            <p>Your gateway to unforgettable adventures</p>
+            <p data-translate="header_subtitle">Your gateway to unforgettable adventures</p>
         </div>
         <nav class="floating-nav">
             <ul>
@@ -27,7 +27,7 @@
         </nav>
         <div class="search-language-container">
             <div class="search-bar">
-                <input type="text" placeholder="Search destinations..." id="searchInput">
+                <input type="text" placeholder="Search destinations..." id="searchInput" data-translate-ph="search_placeholder">
                 <button id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
             <div class="language-selector">
@@ -44,11 +44,11 @@
     <main class="dynamic-home">
         <section class="hero-home">
             <div class="hero-content">
-                <h1 id="animated-title" class="animate__animated animate__fadeInDown">Welcome to Sky Travelling</h1>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">Discover the world’s most stunning destinations with us. We’re here to inspire your next journey and share practical tips to make every trip smoother and more memorable.</p>
+                <h1 id="animated-title" class="animate__animated animate__fadeInDown" data-translate="welcome_title">Welcome to Sky Travelling</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s" data-translate="welcome_text">Discover the world’s most stunning destinations with us. We’re here to inspire your next journey and share practical tips to make every trip smoother and more memorable.</p>
                 <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-2s">
-                    <button class="cta-button" id="exploreBtn">Explore Now</button>
-                    <button class="cta-button secondary" id="aboutBtn">About Us</button>
+                    <button class="cta-button" id="exploreBtn"  data-translate="explore_btn">Explore Now</button>
+                    <button class="cta-button secondary" id="aboutBtn" data-translate="about_btn">About Us</button>
                 </div>
             </div>
         </section>
@@ -74,7 +74,7 @@
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
-        <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
+        <p data-translate="footer_text">&copy; 2025 Sky Travelling | Adventure Awaits</p>
         <div class="scroll-top" id="scrollTopBtn">
             <i class="fas fa-arrow-up"></i>
         </div>
@@ -108,30 +108,184 @@
         });
     });
 
+
     // Search functionality
-    const searchBtn = document.getElementById('searchBtn');
+            const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
-    
-    searchBtn.addEventListener('click', function() {
-        if (searchInput.value.trim() !== '') {
-            alert(`Searching for: ${searchInput.value}`);
-            
+
+    const destinations = [
+        { name: "santorini", url: "santorini.html" },
+    { name: "venice", url: "venice.html" },
+    { name: "zurich", url: "zurich.html" },
+    { name: "rome", url: "rome.html" },
+    { name: "kuala lumpur", url: "kuala.html" },
+    { name: "prague", url: "prague.html" },
+    { name: "buenos aires", url: "buenos.html" },
+    { name: "reykjavik", url: "reykjavik.html" },
+    { name: "istanbul", url: "istanbul.html" },
+    { name: "marrakech", url: "marrakech.html" },
+    { name: "edinburgh", url: "edinburgh.html" },
+    { name: "seoul", url: "seoul.html" },
+    { name: "lisbon", url: "lisbon.html" },
+    { name: "havana", url: "havana.html" },
+    { name: "queenstown", url: "queenstown.html" },
+    { name: "barcelona", url: "barcelona.html" },
+    { name: "cairo", url: "cairo.html" },
+    { name: "stockholm", url: "stockholm.html" },
+    { name: "rio de janeiro", url: "rio.html" },
+    { name: "toronto", url: "toronto.html" },
+    { name: "vienna", url: "vienna.html" },
+    { name: "bangkok", url: "bangkok.html" },
+    { name: "sydney", url: "sidney.html" },
+    { name: "mexico city", url: "mexico.html" },
+    ];
+
+    function handleSearch() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (!searchTerm) return;
+
+        const foundDestination = destinations.find(dest =>
+            dest.name.toLowerCase().includes(searchTerm)
+        );
+
+        if (foundDestination && foundDestination.url) {
+            window.location.href = foundDestination.url;
+        } else {
+            const modal = document.createElement('div');
+            modal.className = 'error-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2><i class="fas fa-exclamation-circle"></i> Destination Not Found</h2>
+                    <p>We couldn't find "${searchTerm}". Please check the spelling or explore our <a href="destinations.html">destinations</a>.</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const closeModal = document.querySelector('.close-modal');
+            closeModal.addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
         }
-    });
-    
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && searchInput.value.trim() !== '') {
-            alert(`Searching for: ${searchInput.value}`);
-        }
+    }
+
+    // ✅ تفعيل الدالة داخل DOMContentLoaded
+    searchBtn.addEventListener('click', handleSearch);
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSearch();
     });
 
-    // Language selector
-    const languageSelect = document.getElementById('languageSelect');
-    
-    languageSelect.addEventListener('change', function() {
-        alert(`Language changed to: ${this.value}`);
+
+    // ترجمة المحتوى لكل اللغات
+        const translations = {
+            en: {
+                header_subtitle: "Your gateway to unforgettable adventures",
+                menu_home: "Home",
+                menu_destinations: "Destinations",
+                menu_forests: "Forests",
+                menu_blog: "Blog",
+                menu_tips: "Tips",
+                menu_contact: "Contact",
+                menu_login: "Login",
+                search_placeholder: "Search destinations...",
+                welcome_title: "Welcome to Sky Travelling",
+                welcome_text: "Discover the world's most stunning destinations with us. We're here to inspire your next journey and share practical tips to make every trip smoother and more memorable.",
+                explore_btn: "Explore Now",
+                about_btn: "About Us",
+                footer_text: "&copy; 2025 Sky Travelling | Adventure Awaits"
+            },
+            ar: {
+                header_subtitle: "بوابتك إلى مغامرات لا تنسى",
+                menu_home: "الرئيسية",
+                menu_destinations: "الوجهات",
+                menu_forests: "الغابات",
+                menu_blog: "المدونة",
+                menu_tips: "نصائح",
+                menu_contact: "اتصل بنا",
+                menu_login: "تسجيل الدخول",
+                search_placeholder: "ابحث عن وجهات...",
+                welcome_title: "مرحبًا بكم في سكاي ترافل",
+                welcome_text: "اكتشف معنا أجمل الوجهات في العالم. نحن هنا لنلهم رحلتك القادمة ونشاركك نصائح عملية لجعل كل رحلة أكثر سلاسة وإمتاعًا.",
+                explore_btn: "استكشف الآن",
+                about_btn: "من نحن",
+                footer_text: "&copy; 2025 سكاي ترافل | المغامرة تنتظرك"
+            },
+            fr: {
+                header_subtitle: "Votre porte d'entrée vers des aventures inoubliables",
+                menu_home: "Accueil",
+                menu_destinations: "Destinations",
+                menu_forests: "Forêts",
+                menu_blog: "Blog",
+                menu_tips: "Conseils",
+                menu_contact: "Contact",
+                menu_login: "Connexion",
+                search_placeholder: "Rechercher des destinations...",
+                welcome_title: "Bienvenue chez Sky Travelling",
+                welcome_text: "Découvrez les destinations les plus époustouflantes du monde avec nous. Nous sommes là pour inspirer votre prochain voyage et partager des conseils pratiques pour rendre chaque voyage plus fluide et plus mémorable.",
+                explore_btn: "Explorer maintenant",
+                about_btn: "À propos de nous",
+                footer_text: "&copy; 2025 Sky Travelling | L'aventure vous attend"
+            },
+            es: {
+                header_subtitle: "Tu puerta a aventuras inolvidables",
+                menu_home: "Inicio",
+                menu_destinations: "Destinos",
+                menu_forests: "Bosques",
+                menu_blog: "Blog",
+                menu_tips: "Consejos",
+                menu_contact: "Contacto",
+                menu_login: "Iniciar sesión",
+                search_placeholder: "Buscar destinos...",
+                welcome_title: "Bienvenido a Sky Travelling",
+                welcome_text: "Descubre los destinos más impresionantes del mundo con nosotros. Estamos aquí para inspirar tu próximo viaje y compartir consejos prácticos para que cada viaje sea más fluido y memorable.",
+                explore_btn: "Explorar ahora",
+                about_btn: "Sobre nosotros",
+                footer_text: "&copy; 2025 Sky Travelling | La aventura espera"
+            }
+        };
+
+        // تغيير اللغة
+        function changeLanguage() {
+            const lang = languageSelect.value;
+            
+            // تغيير اتجاه الصفحة للغة العربية
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // تحديث النصوص
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // تحديث العناصر النائبة
+            document.querySelectorAll('[data-translate-ph]').forEach(el => {
+                const key = el.getAttribute('data-translate-ph');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            // حفظ اللغة المفضلة
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // تحميل اللغة المفضلة
+        function loadPreferredLanguage() {
+            const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            languageSelect.value = preferredLang;
+            changeLanguage();
+        }
+
+        // العناصر
+        const languageSelect = document.getElementById('languageSelect');
         
-    });
+        // الأحداث
+        languageSelect.addEventListener('change', changeLanguage);
+        
+        // تحميل اللغة عند بدء الصفحة
+        document.addEventListener('DOMContentLoaded', loadPreferredLanguage);
 
     // CTA buttons
     const exploreBtn = document.getElementById('exploreBtn');
@@ -236,8 +390,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-
 
     </script>
 </body>
