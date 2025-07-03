@@ -570,24 +570,42 @@
             
 
             <!-- New Travel Quiz Section -->
-            <section class="travel-quiz">
-                <h2 class="section-title">What's Your Travel Personality?</h2>
-                <div class="quiz-container">
-                    <div class="quiz-intro">
-                        <p>Take our 2-minute quiz to discover your perfect travel style and get personalized destination recommendations!</p>
-                        <button class="quiz-button">Start Quiz <i class="fas fa-compass"></i></button>
-                    </div>
-                    <div class="quiz-results-sample">
-                        <h4>Possible Results Include:</h4>
-                        <ul>
-                            <li><i class="fas fa-umbrella-beach"></i> Beach Relaxer</li>
-                            <li><i class="fas fa-hiking"></i> Adventure Seeker</li>
-                            <li><i class="fas fa-landmark"></i> Culture Explorer</li>
-                            <li><i class="fas fa-utensils"></i> Foodie Traveler</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+           <section class="travel-quiz">
+    <h2 class="section-title">What's Your Travel Personality?</h2>
+    <div class="quiz-container">
+        <div class="quiz-intro" id="quiz-intro">
+            <p>Take our 2-minute quiz to discover your perfect travel style and get personalized destination recommendations!</p>
+            <button class="quiz-button" id="start-quiz">Start Quiz <i class="fas fa-compass"></i></button>
+        </div>
+        
+        <div class="quiz-questions" id="quiz-questions" style="display:none;">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="question" id="question-container"></div>
+            <div class="options" id="options-container"></div>
+            <button class="quiz-button" id="next-question" style="display:none;">Next Question <i class="fas fa-arrow-right"></i></button>
+        </div>
+        
+        <div class="quiz-results" id="quiz-results" style="display:none;">
+            <h3>Your Travel Personality Is: <span id="result-title"></span></h3>
+            <div class="result-icon" id="result-icon"></div>
+            <p id="result-description"></p>
+            <div class="result-destinations" id="result-destinations"></div>
+            <button class="quiz-button" id="retake-quiz">Retake Quiz <i class="fas fa-sync-alt"></i></button>
+        </div>
+        
+        <div class="quiz-results-sample">
+            <h4>Possible Results Include:</h4>
+            <ul>
+                <li><i class="fas fa-umbrella-beach"></i> Beach Relaxer</li>
+                <li><i class="fas fa-hiking"></i> Adventure Seeker</li>
+                <li><i class="fas fa-landmark"></i> Culture Explorer</li>
+                <li><i class="fas fa-utensils"></i> Foodie Traveler</li>
+            </ul>
+        </div>
+    </div>
+</section>
         </div>
     </main>
 
@@ -631,9 +649,244 @@
         });
 
         // Quiz button interaction
-        document.querySelector('.quiz-button').addEventListener('click', function() {
-            alert('Quiz feature coming soon!');
+        
+document.addEventListener('DOMContentLoaded', function() {
+    // Quiz data
+    const quizData = {
+        questions: [
+            {
+                question: "What's your ideal way to spend a day on vacation?",
+                options: [
+                    { text: "Lounging by the water with a good book", type: "beach" },
+                    { text: "Hiking through nature or trying extreme sports", type: "adventure" },
+                    { text: "Exploring museums and historical sites", type: "culture" },
+                    { text: "Eating at local restaurants and food markets", type: "food" }
+                ]
+            },
+            {
+                question: "Which type of accommodation do you prefer?",
+                options: [
+                    { text: "Beachfront resort with spa services", type: "beach" },
+                    { text: "Rustic cabin or camping under the stars", type: "adventure" },
+                    { text: "Boutique hotel in the city center", type: "culture" },
+                    { text: "Local homestay with home-cooked meals", type: "food" }
+                ]
+            },
+            {
+                question: "What's most important in choosing a destination?",
+                options: [
+                    { text: "Beautiful scenery and relaxation opportunities", type: "beach" },
+                    { text: "Outdoor activities and adrenaline-pumping experiences", type: "adventure" },
+                    { text: "Rich history and cultural significance", type: "culture" },
+                    { text: "Renowned culinary scene and local flavors", type: "food" }
+                ]
+            },
+            {
+                question: "How do you prefer to get around?",
+                options: [
+                    { text: "Walking short distances or taking taxis", type: "beach" },
+                    { text: "Renting bikes, jeeps, or hiking", type: "adventure" },
+                    { text: "Public transportation to see local life", type: "culture" },
+                    { text: "Food tours or walking between eateries", type: "food" }
+                ]
+            },
+            {
+                question: "What's your vacation budget like?",
+                options: [
+                    { text: "Comfort is key - I'll splurge on nice amenities", type: "beach" },
+                    { text: "Mostly on experiences and equipment rentals", type: "adventure" },
+                    { text: "Balanced between attractions and comforts", type: "culture" },
+                    { text: "Mostly on food and culinary experiences", type: "food" }
+                ]
+            }
+        ],
+        results: {
+            beach: {
+                title: "Beach Relaxer",
+                icon: '<i class="fas fa-umbrella-beach"></i>',
+                description: "You crave relaxation and beautiful scenery. Your perfect vacation involves warm sand, crystal-clear water, and plenty of time to unwind. You appreciate comfort and enjoy resorts that cater to your every need.",
+                destinations: [
+                    { name: "Maldives", image: "./image/maldives.jpg" },
+                    { name: "Bora Bora", image: "./image/bora-bora.jpg" },
+                    { name: "Seychelles", image: "./image/seychelles.jpg" }
+                ]
+            },
+            adventure: {
+                title: "Adventure Seeker",
+                icon: '<i class="fas fa-hiking"></i>',
+                description: "You're all about the thrill! Your ideal trip is packed with outdoor activities, challenging hikes, and adrenaline-pumping experiences. You'd rather climb a mountain than lie on a beach any day.",
+                destinations: [
+                    { name: "New Zealand", image: "./image/New Zealand.jpg" },
+                    { name: "Patagonia", image: "./image/Patagonia.jpg" },
+                    { name: "Nepal", image: "./image/Nepal.jpg" }
+                ]
+            },
+            culture: {
+                title: "Culture Explorer",
+                icon: '<i class="fas fa-landmark"></i>',
+                description: "You're fascinated by history, art, and local traditions. Your perfect vacation involves exploring museums, ancient ruins, and immersing yourself in the local way of life. You love learning something new everywhere you go.",
+                destinations: [
+                    { name: "Rome", image: "./image/rome.jpg" },
+                    { name: "Kyoto", image: "./image/Kyoto.jpg" },
+                    { name: "Cairo", image: "./image/cairo.jpg" }
+                ]
+            },
+            food: {
+                title: "Foodie Traveler",
+                icon: '<i class="fas fa-utensils"></i>',
+                description: "You plan your trips around meals! For you, travel is all about discovering new flavors, trying street food, and dining at renowned restaurants. You believe the best way to understand a culture is through its cuisine.",
+                destinations: [
+                    { name: "Bangkok", image: "./image/bangkok.jpg" },
+                    { name: "Bologna", image: "./image/Bologna.jpg" },
+                    { name: "Tokyo", image: "./image/tokyo.jpg" }
+                ]
+            }
+        }
+    };
+
+    // DOM elements
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const quizResults = document.getElementById('quiz-results');
+    const startQuizBtn = document.getElementById('start-quiz');
+    const nextQuestionBtn = document.getElementById('next-question');
+    const retakeQuizBtn = document.getElementById('retake-quiz');
+    const questionContainer = document.getElementById('question-container');
+    const optionsContainer = document.getElementById('options-container');
+    const progressBar = document.getElementById('progress-bar');
+    const resultTitle = document.getElementById('result-title');
+    const resultIcon = document.getElementById('result-icon');
+    const resultDescription = document.getElementById('result-description');
+    const resultDestinations = document.getElementById('result-destinations');
+
+    // Quiz state
+    let currentQuestion = 0;
+    let answers = {
+        beach: 0,
+        adventure: 0,
+        culture: 0,
+        food: 0
+    };
+
+    // Event listeners
+    startQuizBtn.addEventListener('click', startQuiz);
+    nextQuestionBtn.addEventListener('click', showNextQuestion);
+    retakeQuizBtn.addEventListener('click', retakeQuiz);
+
+    // Start the quiz
+    function startQuiz() {
+        quizIntro.style.display = 'none';
+        quizQuestions.style.display = 'block';
+        showQuestion();
+    }
+
+    // Display current question
+    function showQuestion() {
+        const question = quizData.questions[currentQuestion];
+        questionContainer.textContent = question.question;
+        optionsContainer.innerHTML = '';
+        
+        // Update progress bar
+        const progress = ((currentQuestion + 1) / quizData.questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        
+        // Create options
+        question.options.forEach((option, index) => {
+            const optionElement = document.createElement('div');
+            optionElement.classList.add('option');
+            optionElement.textContent = option.text;
+            optionElement.dataset.type = option.type;
+            optionElement.addEventListener('click', selectOption);
+            optionsContainer.appendChild(optionElement);
         });
+        
+        // Hide next button until an option is selected
+        nextQuestionBtn.style.display = 'none';
+    }
+
+    // Handle option selection
+    function selectOption(e) {
+        // Remove selected class from all options
+        document.querySelectorAll('.option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked option
+        e.target.classList.add('selected');
+        
+        // Show next button
+        nextQuestionBtn.style.display = 'inline-block';
+    }
+
+    // Show next question or results
+    function showNextQuestion() {
+        // Get selected option
+        const selectedOption = document.querySelector('.option.selected');
+        if (!selectedOption) return;
+        
+        // Update answers
+        const selectedType = selectedOption.dataset.type;
+        answers[selectedType]++;
+        
+        // Move to next question or show results
+        currentQuestion++;
+        if (currentQuestion < quizData.questions.length) {
+            showQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    // Calculate and display results
+    function showResults() {
+        quizQuestions.style.display = 'none';
+        quizResults.style.display = 'block';
+        
+        // Determine result with highest score
+        let maxScore = 0;
+        let resultType = 'beach';
+        
+        for (const type in answers) {
+            if (answers[type] > maxScore) {
+                maxScore = answers[type];
+                resultType = type;
+            }
+        }
+        
+        // Display result
+        const result = quizData.results[resultType];
+        resultTitle.textContent = result.title;
+        resultIcon.innerHTML = result.icon;
+        resultDescription.textContent = result.description;
+        
+        // Display destination recommendations
+        resultDestinations.innerHTML = '';
+        result.destinations.forEach(destination => {
+            const card = document.createElement('div');
+            card.classList.add('destination-card');
+            card.innerHTML = `
+                <img src="${destination.image}" alt="${destination.name}">
+                <h4>${destination.name}</h4>
+            `;
+            resultDestinations.appendChild(card);
+        });
+    }
+
+    // Reset quiz
+    function retakeQuiz() {
+        currentQuestion = 0;
+        answers = {
+            beach: 0,
+            adventure: 0,
+            culture: 0,
+            food: 0
+        };
+        
+        quizResults.style.display = 'none';
+        quizIntro.style.display = 'block';
+    }
+});
+
     </script>
 </body>
 </html>

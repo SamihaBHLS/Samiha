@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cape Town - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Layout */
+.dynamic-cape-town {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-cape-town {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-cape-town::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.cape-town-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.cape-town-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cape-town-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.cape-town-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.cape-town-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.cape-town-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .cape-town-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-cape-town {
+        padding: 3rem 1rem;
+    }
+    
+    .cape-town-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Cape Town</h1>
+            <p>Discover South Africa's Mother City with its stunning landscapes and vibrant culture</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="dynamic-cape-town">
+        <section class="hero-cape-town">
+            <div class="hero-content">
+                <h2>Experience Majestic Cape Town</h2>
+                <p>Where mountains meet oceans and cultures blend in harmony</p>
+            </div>
+        </section>
+
+        <div class="cape-town-grid">
+            <!-- Table Mountain -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Table Mountain</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Table Mountain.jpg" alt="Table Mountain" class="cape-town-image">
+                    <p>The iconic flat-topped mountain offering panoramic views of Cape Town and the Atlantic Ocean.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Cable car ride to the top</p>
+                        <p><strong>Best time:</strong> Early morning for clear views</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Robben Island -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-history"></i></div>
+                    <h3>Robben Island</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/robben-island.jpg" alt="Robben Island" class="cape-town-image">
+                    <p>UNESCO site where Nelson Mandela was imprisoned, now a powerful museum.</p>
+                    <div class="card-details">
+                        <p><strong>Duration:</strong> 3-4 hour tour</p>
+                        <p><strong>Tip:</strong> Book tickets in advance</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Cape Point -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-map-pin"></i></div>
+                    <h3>Cape Point</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/cape-point.jpg" alt="Cape Point" class="cape-town-image">
+                    <p>Dramatic cliffs where the Atlantic and Indian Oceans meet in Table Mountain National Park.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Lighthouse viewpoint</p>
+                        <p><strong>Wildlife:</strong> Baboons and ostriches</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kirstenbosch Gardens -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-leaf"></i></div>
+                    <h3>Kirstenbosch Gardens</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/kirstenbosch.jpg" alt="Kirstenbosch Gardens" class="cape-town-image">
+                    <p>World-renowned botanical garden at the foot of Table Mountain with diverse indigenous plants.</p>
+                    <div class="card-details">
+                        <p><strong>Special:</strong> Summer sunset concerts</p>
+                        <p><strong>Don't miss:</strong> Canopy walkway</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- V&A Waterfront -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>V&A Waterfront</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/V&A Waterfront.jpg" alt="V&A Waterfront" class="cape-town-image">
+                    <p>Historic working harbor with shopping, dining, entertainment, and ocean views.</p>
+                    <div class="card-details">
+                        <p><strong>Must-do:</strong> Sunset harbor cruise</p>
+                        <p><strong>Visit:</strong> Two Oceans Aquarium</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Boulders Beach -->
+            <article class="cape-town-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-paw"></i></div>
+                    <h3>Boulders Beach</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/boulders-beach.jpg" alt="Boulders Beach" class="cape-town-image">
+                    <p>Protected beach home to a colony of African penguins you can swim near.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Morning or late afternoon</p>
+                        <p><strong>Entry fee:</strong> ~R160 for adults</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Cape Town</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: The Silo Hotel</h3>
+                    <p>★★★★★ | Design hotel with panoramic views</p>
+                    <p>Price range: R15,000-40,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Cape Cadogan</h3>
+                    <p>★★★★★ | Elegant guesthouse in Gardens</p>
+                    <p>Price range: R4,000-12,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: The Portswood</h3>
+                    <p>★★★★ | Waterfront location with great value</p>
+                    <p>Price range: R2,000-5,000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Once in Cape Town</h3>
+                    <p>★★★ | Stylish hostel in city center</p>
+                    <p>Price range: R400-1,200/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>The Test Kitchen</h3>
+                    <p>World-class tasting menus in Woodstock</p>
+                    <p>Specialty: Innovative South African cuisine</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Gold Restaurant</h3>
+                    <p>African dining experience with drumming</p>
+                    <p>Must-try: 14-dish tasting menu</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>The Pot Luck Club</h3>
+                    <p>Luke Dale-Roberts' trendy tapas spot</p>
+                    <p>Famous for: Small plates with big flavors</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Kalky's</h3>
+                    <p>Authentic fish and chips in Kalk Bay</p>
+                    <p>Experience: Casual harbor-side dining</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Cape Town Wisdom</h3>
+                <p>"Cape Town is a place that gets under your skin - from the moment you see Table Mountain rising from the sea to the warmth of its people and the richness of its cultures."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Getting Around</h3>
+                    <p>Renting a car gives most flexibility. Uber works well in city. MyCiTi buses cover main routes.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Matters</h3>
+                    <p>South African Rand (ZAR) is the currency. Credit cards widely accepted but carry some cash.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Best Seasons</h3>
+                    <p>Summer (Nov-Feb) is warm and lively. Spring (Sep-Oct) has wildflowers and fewer crowds.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety Tips</h3>
+                    <p>Be vigilant in city center at night. Don't leave valuables visible in cars. Use hotel safes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | Mother City of South Africa</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    </script>
+</body>
+</html>
