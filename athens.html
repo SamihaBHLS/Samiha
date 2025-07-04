@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athens - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Dynamic Layout */
+.dynamic-athens {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-athens {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-athens::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.athens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.athens-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.athens-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.athens-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.athens-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.athens-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .athens-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-athens {
+        padding: 3rem 1rem;
+    }
+    
+    .athens-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Athens</h1>
+            <p>Discover the cradle of Western civilization where ancient history meets modern vibrancy</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-athens">
+        <section class="hero-athens">
+            <div class="hero-content">
+                <h2>Experience Timeless Athens</h2>
+                <p>Where ancient gods walked among mortals and philosophy was born</p>
+            </div>
+        </section>
+
+        <div class="athens-grid">
+            <!-- Acropolis -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Acropolis of Athens</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Acropolis of Athens.jpg" alt="Acropolis of Athens" class="athens-image">
+                    <p>The iconic ancient citadel towering over Athens, home to the Parthenon and other classical Greek masterpieces.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Early morning or sunset</p>
+                        <p><strong>Must-see:</strong> Parthenon, Erechtheion, Propylaea</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Plaka -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-route"></i></div>
+                    <h3>Plaka Neighborhood</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Plaka Neighborhood.jpg" alt="Plaka Neighborhood" class="athens-image">
+                    <p>Charming historic district with neoclassical houses, winding streets, and traditional tavernas beneath the Acropolis.</p>
+                    <div class="card-details">
+                        <p><strong>Best for:</strong> Evening strolls and shopping</p>
+                        <p><strong>Try:</strong> Loukoumades (Greek donuts)</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Ancient Agora -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-history"></i></div>
+                    <h3>Ancient Agora</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/ancient-agora.jpg" alt="Ancient Agora" class="athens-image">
+                    <p>The heart of classical Athens where Socrates philosophized and democracy took its first steps.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Temple of Hephaestus</p>
+                        <p><strong>Tip:</strong> Combined ticket with Acropolis</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Acropolis Museum -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-university"></i></div>
+                    <h3>Acropolis Museum</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/acropolis-museum.jpg" alt="Acropolis Museum" class="athens-image">
+                    <p>Modern architectural marvel housing priceless artifacts from the Acropolis with glass floors revealing excavations.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Parthenon Gallery top floor</p>
+                        <p><strong>Bonus:</strong> Restaurant with Acropolis view</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Temple of Olympian Zeus -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-columns"></i></div>
+                    <h3>Temple of Olympian Zeus</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Temple of Olympian Zeus.jpg" alt="Temple of Olympian Zeus" class="athens-image">
+                    <p>Once the largest temple in ancient Greece with towering Corinthian columns dedicated to Zeus.</p>
+                    <div class="card-details">
+                        <p><strong>Fun fact:</strong> Took 700 years to complete</p>
+                        <p><strong>Nearby:</strong> Hadrian's Arch</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Mount Lycabettus -->
+            <article class="athens-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Mount Lycabettus</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Mount Lycabettus.jpg" alt="Mount Lycabettus" class="athens-image">
+                    <p>The highest point in Athens offering panoramic views of the city and the Aegean Sea beyond.</p>
+                    <div class="card-details">
+                        <p><strong>Access:</strong> Funicular or hiking trail</p>
+                        <p><strong>Best time:</strong> Sunset with Acropolis view</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Athens</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Hotel Grande Bretagne</h3>
+                    <p>★★★★★ | Historic 5-star with Acropolis views on Syntagma Square</p>
+                    <p>Price range: €250-800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Coco-Mat Athens</h3>
+                    <p>★★★★ | Stylish eco-friendly hotel with natural materials</p>
+                    <p>Price range: €150-300/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Electra Palace Athens</h3>
+                    <p>★★★★ | Rooftop pool with Acropolis views in Plaka</p>
+                    <p>Price range: €100-250/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: City Circus Athens</h3>
+                    <p>★★★ | Vibrant hostel with great common areas in Psiri</p>
+                    <p>Price range: €30-80/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Ta Karamanlidika tou Fani</h3>
+                    <p>Authentic Greek and Turkish flavors in a deli setting</p>
+                    <p>Specialty: Pastirma and cured meats</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Dionysos Zonar's</h3>
+                    <p>Fine dining with unmatched Acropolis views</p>
+                    <p>Must-try: Grilled seafood platter</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Oinomageiremata</h3>
+                    <p>Traditional Greek dishes with modern twist</p>
+                    <p>Famous for: Moussaka and slow-cooked lamb</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Avocado</h3>
+                    <p>Athens' best vegetarian/vegan restaurant</p>
+                    <p>Experience: Creative plant-based Greek dishes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Athenian Wisdom</h3>
+                <p>"Athens is a city where ancient stones whisper stories of gods and philosophers, where Byzantine chapels nestle between neoclassical mansions, and where the vibrant pulse of modern life coexists with timeless monuments. It's a place where every corner reveals layers of history and every meal is a celebration of Mediterranean flavors."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-bus"></i>
+                    <h3>Getting Around</h3>
+                    <p>Athens Metro is efficient and connects to major sites. Taxis are affordable but agree on price first.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Weather Prep</h3>
+                    <p>Hot dry summers (pack sunscreen) and mild winters. Spring/fall are ideal for sightseeing.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Best Seasons</h3>
+                    <p>April-May and September-October for pleasant temperatures and fewer crowds.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Neighborhoods</h3>
+                    <p>Explore beyond Plaka: Psiri for nightlife, Kolonaki for upscale shopping, Exarchia for alternative vibe.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>&copy; 2025 Sky Travelling | City of the Violet Crown</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    </script>
+</body>
+</html>
