@@ -514,3 +514,15 @@ body {
         body[dir="rtl"] .search-language-container {
             flex-direction: row-reverse;
         }
+        body[dir="rtl"] .search-bar {
+    direction: ltr; /* تجعل الكتابة داخل input من اليسار لليمين */
+    display: flex;
+    flex-direction: row-reverse; /* تعكس ترتيب زر البحث ومدخل النص */
+}
+body[dir="rtl"] .search-bar input {
+    border-radius: 0 25px 25px 0; /* عكس الزوايا */
+}
+
+body[dir="rtl"] .search-bar button {
+    border-radius: 25px 0 0 25px; /* عكس الزوايا */
+}
