@@ -553,6 +553,278 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Responsive Design */
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    /* Adjustments for larger screens if needed */
+    .blog-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .feature-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .tips-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .comment-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.9rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tips-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .comment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .newsletter-form {
+        flex-direction: row;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px 0 0 4px;
+        margin-bottom: 0;
+    }
+    
+    .newsletter-form button {
+        border-radius: 0 4px 4px 0;
+        padding: 0 20px;
+    }
+    
+    .intro-section {
+        padding: 0 2rem;
+    }
+    
+    .card-image {
+        height: 180px;
+    }
+}
+
+/* Phone (up to 767px) */
+@media (max-width: 767px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-blog {
+        padding: 2.5rem 1rem;
+        margin-top: 30px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .floating-nav {
+        width: 100%;
+        border-radius: 0;
+        padding: 0.5rem;
+    }
+    
+    .floating-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .floating-nav li {
+        margin: 0.3rem;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .comment-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+    
+    .section-title {
+        font-size: 1.7rem;
+    }
+    
+    .intro-section {
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+    
+    .card-image {
+        height: 160px;
+    }
+    
+    .feature-section {
+        padding: 2rem 0;
+        margin: 3rem 0;
+    }
+    
+    .travel-tips {
+        margin: 3rem 0;
+    }
+    
+    .traveler-comments {
+        margin: 3rem 0;
+    }
+    
+    .tip-card {
+        padding-left: 3.5rem;
+    }
+    
+    .tip-number {
+        left: 1rem;
+        top: 1rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .vibrant-footer {
+        padding: 1.5rem 1rem;
+    }
+    
+    .social-links a {
+        font-size: 1.3rem;
+        margin: 0 0.5rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Phone (up to 480px) */
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-content p {
+        font-size: 0.9rem;
+    }
+    
+    .card-footer {
+        font-size: 0.8rem;
+    }
+    
+    .feature-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+    
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .comment-header h4 {
+        font-size: 0.9rem;
+    }
+    
+    .comment-card p {
+        font-size: 0.85rem;
+    }
+    
+    .newsletter-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .newsletter-section p {
+        font-size: 0.9rem;
+    }
+    
+    .vibrant-footer p {
+        font-size: 0.9rem;
+    }
+}
     </style>
 
 </head>

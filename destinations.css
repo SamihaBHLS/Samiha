@@ -368,3 +368,174 @@ a{
 .destination-card:hover .card-image {
     filter: brightness(0.9);
 }
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+/* (Add to the very end of your CSS file) */
+
+/* Large Desktop (1200px+) - Your base styles cover this well */
+
+/* Medium Desktop/Laptop (992px-1199px) */
+@media (max-width: 1199px) {
+    .hero-destination {
+        padding: 3.5rem 2rem;
+    }
+    
+    .destinations-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Tablet Landscape (768px-991px) */
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-destination {
+        padding: 3rem 1.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .card-image {
+        height: 180px;
+    }
+}
+
+/* Tablet Portrait (576px-767px) */
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .header-content h1 {
+        font-size: 1.9rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-destination {
+        margin-top: 40px;
+        padding: 2.5rem 1rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .destinations-grid {
+        gap: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 1.2rem;
+    }
+}
+
+/* Mobile (480px-575px) */
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.7rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .hero-destination {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .card-image {
+        height: 160px;
+    }
+    
+    .vibrant-footer {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
+/* Small Mobile (0-479px) */
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-destination {
+        padding: 1.8rem 0.8rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .reserve-btn {
+        padding: 4px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* RTL Support Adjustments */
+@media (max-width: 767px) {
+    body[dir="rtl"] .floating-nav ul {
+        padding-right: 0;
+    }
+    
+    body[dir="rtl"] .reserve-btn {
+        left: auto;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}

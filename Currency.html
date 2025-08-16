@@ -666,6 +666,237 @@
     background: var(--accent-blue);
     transform: translateY(-5px);
 }
+/* Responsive Media Queries for Currency Converter Page */
+@media (max-width: 1200px) {
+    .hero-currency,
+    .converter-section,
+    .currency-cards,
+    .rates-section,
+    .tips-section,
+    .faq-section {
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .vibrant-header {
+        padding: 1.8rem 1rem;
+    }
+    
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header-content p {
+        font-size: 0.95rem;
+    }
+    
+    .floating-nav {
+        width: 92%;
+        padding: 0.7rem;
+    }
+    
+    .hero-currency {
+        padding: 3.5rem 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-currency {
+        padding: 3rem 1.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .converter-box {
+        flex-direction: column;
+    }
+    
+    .amount-group, 
+    .currency-group {
+        width: 100%;
+    }
+    
+    .swap-button {
+        margin: 1rem 0;
+        transform: rotate(90deg);
+    }
+    
+    .cards-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rates-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-currency {
+        padding: 2.5rem 1rem;
+        margin: 1.5rem 1rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .converter-section {
+        padding: 1.5rem;
+    }
+    
+    .converter-container h3 {
+        font-size: 1.3rem;
+    }
+    
+    .result-value {
+        font-size: 1.5rem;
+    }
+    
+    .rate-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .faq-question {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header-content p {
+        font-size: 0.85rem;
+    }
+    
+    .floating-nav li a {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .currency-card,
+    .tip-card {
+        padding: 1.2rem;
+    }
+    
+    .currency-flag {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .header-content h1 {
+        font-size: 1.4rem;
+    }
+    
+    .floating-nav {
+        border-radius: 25px;
+    }
+    
+    .floating-nav li a {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .convert-button {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .currency-name h3 {
+        font-size: 1rem;
+    }
+    
+    .stat-item {
+        font-size: 0.9rem;
+    }
+}
 
     </style>
 </head>

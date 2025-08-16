@@ -786,3 +786,446 @@ body {
     background: var(--accent-blue);
     transform: translateY(-5px);
 }
+
+/* Responsive Adjustments for Conservation Page */
+
+/* Phone (up to 600px) */
+@media (max-width: 600px) {
+    /* Header adjustments */
+    .vibrant-header {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+    
+    /* Navigation */
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Hero section */
+    .hero-conservation {
+        height: 300px;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    /* Urgency section */
+    .urgency-section {
+        padding: 1.5rem;
+        margin: 2rem 0.5rem;
+    }
+    
+    .urgency-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-card i {
+        font-size: 2rem;
+    }
+    
+    .stat-card span {
+        font-size: 1.5rem;
+    }
+    
+    .urgency-text {
+        font-size: 1rem;
+    }
+    
+    /* Threats section */
+    .threats-section {
+        margin: 2rem 0.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .threats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .threat-icon {
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .threat-card h3 {
+        padding: 1rem 1rem 0;
+        font-size: 1.2rem;
+    }
+    
+    .threat-card p, 
+    .threat-card ul {
+        padding: 0.5rem 1rem 1rem;
+    }
+    
+    /* Solutions section */
+    .solutions-section {
+        padding: 2rem 1rem;
+        margin: 2rem 0.5rem;
+    }
+    
+    .solutions-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .solution-img {
+        height: 120px;
+    }
+    
+    .solution-text {
+        padding: 1rem;
+    }
+    
+    /* Action section */
+    .action-section {
+        margin: 2rem 0.5rem;
+    }
+    
+    .action-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .action-intro {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .action-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .action-card {
+        padding: 1rem;
+    }
+    
+    .action-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    /* Orgs section */
+    .orgs-section {
+        margin-top: 2rem;
+    }
+    
+    .orgs-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .orgs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .org-card {
+        height: 150px;
+    }
+    
+    .org-card img {
+        height: 100px;
+    }
+    
+    /* Success stories */
+    .success-section {
+        margin: 2rem 0.5rem;
+    }
+    
+    .success-stories {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .story-img {
+        height: 150px;
+    }
+    
+    .story-content {
+        padding: 1rem;
+    }
+    
+    /* Newsletter */
+    .newsletter-section {
+        padding: 2rem 1rem;
+    }
+    
+    .newsletter-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .newsletter-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        border-radius: 4px;
+    }
+    
+    .newsletter-form button {
+        margin-top: 0.5rem;
+        padding: 0.8rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Tablet (601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    /* Header adjustments */
+    .vibrant-header {
+        padding: 1.8rem 1rem;
+    }
+    
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    /* Hero section */
+    .hero-conservation {
+        height: 350px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    /* Urgency section */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Threats section */
+    .threats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Solutions section */
+    .solutions-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Action section */
+    .action-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Orgs section */
+    .orgs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Success stories */
+    .success-stories {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Desktop (901px to 1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
+    /* Hero section */
+    .hero-conservation {
+        height: 450px;
+    }
+    
+    /* Threats section */
+    .threats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    /* Solutions section */
+    .solutions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    /* Action section */
+    .action-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    /* Success stories */
+    .success-stories {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+/* Large Desktop (1201px and up) - Mostly already handled by base styles */
+@media (min-width: 1201px) {
+    /* Ensure maximum widths are respected */
+    .conservation-main,
+    .vibrant-footer {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Orientation-specific adjustments */
+@media (max-width: 900px) and (orientation: landscape) {
+    /* Adjust heights for landscape on mobile/tablet */
+    .hero-conservation {
+        height: 300px;
+    }
+    
+    /* Make grids 2 columns in landscape */
+    .stats-grid,
+    .threats-grid,
+    .solutions-grid,
+    .action-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Very small phones (under 400px) */
+@media (max-width: 400px) {
+    /* Make orgs grid single column */
+    .orgs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust card padding */
+    .threat-card,
+    .solution-card,
+    .action-card {
+        padding: 0.8rem;
+    }
+    
+    /* Reduce icon size */
+    .threat-icon {
+        height: 70px;
+        font-size: 2rem;
+    }
+}
+
+/* High-density displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    /* Ensure crisp rendering of text and borders */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Enhance the gradient header for retina */
+    .vibrant-header::before {
+        background: linear-gradient(90deg, 
+            #ff9a9e 0%, #fad0c4 25%, 
+            #fbc2eb 50%, #a6c1ee 75%, 
+            #ff9a9e 100%);
+        background-size: 200% 200%;
+    }
+}
+
+/* Print styles */
+@media print {
+    /* Hide non-essential elements for printing */
+    .floating-nav, .scroll-top {
+        display: none !important;
+    }
+    
+    /* Adjust colors for better print contrast */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .vibrant-header, 
+    .vibrant-footer,
+    .solutions-section,
+    .newsletter-section {
+        background: #126ca1 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    /* Remove shadows and animations for print */
+    .threat-card,
+    .solution-card,
+    .action-card,
+    .story-card,
+    .org-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    /* Ensure good page breaks */
+    .threat-card,
+    .solution-card,
+    .action-card,
+    .story-card {
+        page-break-inside: avoid;
+    }
+    
+    /* Hide background images */
+    .hero-conservation,
+    .solution-img,
+    .story-img {
+        background-image: none !important;
+        height: auto;
+    }
+}

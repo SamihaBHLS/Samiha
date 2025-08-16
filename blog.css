@@ -821,3 +821,188 @@
                 padding: 3rem 1rem;
             }
         }
+
+
+        /* Responsive Media Queries Only */
+@media (max-width: 1199px) {
+    .blog-container, 
+    .featured-destinations, 
+    .travel-resources, 
+    .interactive-map, 
+    .travel-quiz {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .hero-blog {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .vibrant-header {
+        padding: 1.8rem 1rem;
+    }
+    
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header-content p {
+        font-size: 0.95rem;
+    }
+    
+    .floating-nav {
+        width: 92%;
+        padding: 0.7rem;
+    }
+    
+    .hero-blog {
+        padding: 3.5rem 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .comment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-blog {
+        padding: 3rem 1.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .card-image, 
+    .featured-image {
+        height: 180px;
+    }
+    
+    .comment-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px 4px 0 0;
+        margin-bottom: 0;
+    }
+    
+    .newsletter-form button {
+        border-radius: 0 0 4px 4px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
+    }
+    
+    .hero-blog {
+        padding: 2.5rem 1rem;
+        margin: 1.5rem 1rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .blog-grid,
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header-content p {
+        font-size: 0.85rem;
+    }
+    
+    .floating-nav li a {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .card-content h3, 
+    .featured-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 359px) {
+    .header-content h1 {
+        font-size: 1.4rem;
+    }
+    
+    .floating-nav {
+        border-radius: 25px;
+    }
+    
+    .floating-nav li a {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .card-footer {
+        font-size: 0.8rem;
+    }
+}

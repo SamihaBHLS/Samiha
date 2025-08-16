@@ -417,6 +417,219 @@ body {
     transform: translateY(-5px);
 }
 
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+@media (max-width: 1199px) {
+    .hero-lisbon {
+        padding: 3.5rem 2rem;
+    }
+    
+    .lisbon-grid {
+        gap: 1.8rem;
+    }
+    
+    .lisbon-image {
+        height: 160px;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .lisbon-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hotels-section h2,
+    .restaurants-section h2,
+    .travel-tips h2 {
+        font-size: 1.7rem;
+    }
+    
+    .wisdom-banner h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-lisbon {
+        padding: 3rem 1.5rem;
+    }
+    
+    .lisbon-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 0 15px 15px;
+    }
+    
+    .wisdom-banner {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .lisbon-grid,
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .lisbon-card {
+        padding-top: 40px;
+    }
+    
+    .icon-circle {
+        margin: -40px auto 1rem;
+    }
+    
+    .lisbon-image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-lisbon {
+        padding: 2.5rem 1rem;
+    }
+    
+    .lisbon-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-details p {
+        font-size: 0.8rem;
+    }
+    
+    .hotel-card h3,
+    .restaurant-card h3,
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* RTL Support */
+@media (max-width: 767px) {
+    body[dir="rtl"] .floating-nav ul {
+        padding-right: 0;
+    }
+    
+    body[dir="rtl"] .icon-circle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Tablet to Mobile Transition */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .lisbon-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile Only */
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-lisbon {
+        padding: 3rem 1rem;
+    }
+    
+    .lisbon-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
