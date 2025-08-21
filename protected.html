@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Areas - Sky Conservation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Original Blue Color Scheme */
+        :root {
+            --primary-blue: #126ca1;
+            --light-blue: #e0f0f8;
+            --accent-blue: #0d5a8a;
+            --white: #ffffff;
+            --gray: #555555;
+            --light-gray: #f8f9fa;
+            --health-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --danger-red: #F44336;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Vibrant Header */
+        .vibrant-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vibrant-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .header-content h1 span {
+            color: #a6c1ee;
+        }
+
+        .header-content p {
+            margin: 0.5rem 0 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 0.8rem;
+            width: 90%;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .floating-nav li a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav li a:hover, 
+        .floating-nav li a.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero-protected {
+            background: url('./image/sky.webp') no-repeat center center/cover;
+            color: var(--primary-blue);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: 50px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-protected::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid var(--primary-blue);
+        }
+
+        /* Importance Section */
+        .importance-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            margin: 0.5rem auto 0;
+        }
+
+        .importance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .importance-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .importance-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .importance-card p {
+            margin: 0.5rem 0 0;
+        }
+
+        /* Protected Areas Types */
+        .types-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+            position: relative;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .type-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--health-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .type-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .type-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .type-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .type-list li:last-child {
+            border-bottom: none;
+        }
+
+        .type-list i {
+            color: var(--primary-blue);
+            margin-right: 0.7rem;
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        /* Statistics Section (Replaces Map) */
+        .stats-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .stats-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--light-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0.5rem 0;
+        }
+
+        .stat-description {
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* Success Stories */
+        .success-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .success-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tab-button {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-button:hover {
+            background: var(--light-blue);
+        }
+
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .success-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .success-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .success-info h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .info-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .info-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card strong {
+            color: var(--primary-blue);
+        }
+
+        /* Protection Status */
+        .protection-status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .well-protected {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .moderately-protected {
+            background-color: #FFF8E1;
+            color: #FF8F00;
+        }
+
+        .under-protected {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+
+        /* Action Steps */
+        .action-steps {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            background: var(--primary-blue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+
+        .step-content h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--gray);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            background: var(--light-blue);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .benefit-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            text-align: left;
+        }
+
+        .benefit-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-card li::before {
+            content: "•";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Stats Comparison Table */
+        .comparison-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--light-blue);
+        }
+
+        .comparison-table .highlight {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem auto;
+            max-width: 1000px;
+            padding: 0 1rem;
+        }
+
+        .faq-container {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: var(--light-blue);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1.5rem;
+            color: var(--gray);
+        }
+
+        /* Resources Section */
+        .resources-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h3 {
+            color: var(--primary-blue);
+            margin: 0 0 0.5rem;
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            margin: 0 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .resource-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .resource-link i {
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+            color: var(--accent-blue);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            margin: 4rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .newsletter-section h2 {
+            margin-top: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 1rem auto 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #0b4a72;
+        }
+
+        /* Simple Footer */
+        .simple-footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: #a6c1ee;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .process-steps, .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-question {
+                font-size: 0.9rem;
+            }
+
+            .types-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .type-card {
+                margin-left: 0;
+                margin-bottom: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                padding: 0.8rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .success-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+            
+            .tab-button {
+                margin: 0 0.3rem 0.8rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-protected {
+                padding: 2.5rem 1rem;
+                margin: 1.5rem 1rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-nav li a {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .importance-section {
+                padding: 1.5rem;
+            }
+            
+            .importance-card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .header-content p {
+                font-size: 0.85rem;
+            }
+            
+            .floating-nav {
+                border-radius: 25px;
+                padding: 0.6rem;
+            }
+            
+            .floating-nav li a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .type-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .step {
+                padding: 1.2rem;
+            }
+            
+            .benefit-card {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .floating-nav,
+            .vibrant-footer {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+            }
+
+            .hero-protected,
+            .importance-section,
+            .type-card,
+            .info-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            z-index: 99;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Protected Areas</h1>
+            <p>Preserving biodiversity through conservation and enforcement</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-content">
+        <section class="hero-protected">
+            <div class="hero-content">
+                <h2>Protecting Our Planet's Natural Heritage</h2>
+                <p>Establishing national parks and reserves with strong enforcement prevents deforestation and preserves biodiversity</p>
+            </div>
+        </section>
+
+        <!-- Importance Section -->
+        <section class="importance-section">
+            <h2 class="section-title">Why Protected Areas Matter</h2>
+            <div class="importance-grid">
+                <div class="importance-card">
+                    <h3><i class="fas fa-tree"></i> Biodiversity Conservation</h3>
+                    <p>Protected areas safeguard habitats for countless plant and animal species, many of which are endangered or found nowhere else on Earth.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-tint"></i> Climate Regulation</h3>
+                    <p>Forests in protected areas act as carbon sinks, absorbing CO2 from the atmosphere and helping mitigate climate change.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-hand-holding-water"></i> Water Security</h3>
+                    <p>Watersheds within protected areas provide clean drinking water for millions of people and support agricultural activities.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-users"></i> Cultural Preservation</h3>
+                    <p>Many protected areas are home to indigenous communities and preserve cultural heritage and traditional knowledge.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-heartbeat"></i> Human Health</h3>
+                    <p>Protected areas provide spaces for recreation and mental well-being, while also being sources of medicinal plants.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-dollar-sign"></i> Economic Benefits</h3>
+                    <p>Protected areas support tourism industries, create jobs, and provide ecosystem services worth billions of dollars annually.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protected Areas Types -->
+        <section class="types-section">
+            <h2 class="section-title">Types of Protected Areas</h2>
+            <div class="types-grid">
+                <article class="type-card">
+                    <div class="type-badge">I-II</div>
+                    <div class="card-header">
+                        <h3>Strict Nature Reserves</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="type-list">
+                            <li><i class="fas fa-ban"></i> Minimal human intervention</li>
+                            <li><i class="fas fa-flask"></i> Scientific research focus</li>
+                            <li><i class="fas fa-mountain"></i> Pristine ecosystems</li>
+                            <li><i class="fas fa-tree"></i> Biodiversity benchmarks</li>
+                            <li><i class="fas fa-lock"></i> Restricted public access</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="type-card">
+                    <div class="type-badge">II</div>
+                    <div class="card-header">
+                        <h3>National Parks</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="type-list">
+                            <li><i class="fas fa-landmark"></i> Ecosystem protection</li>
+                            <li><i class="fas fa-hiking"></i> Recreation compatible</li>
+                            <li><i class="fas fa-camera"></i> Tourism encouraged</li>
+                            <li><i class="fas fa-book"></i> Education programs</li>
+                            <li><i class="fas fa-map-marked"></i> Zoned management</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="type-card">
+                    <div class="type-badge">IV</div>
+                    <div class="card-header">
+                        <h3>Habitat/Species Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="type-list">
+                            <li><i class="fas fa-paw"></i> Species-specific focus</li>
+                            <li><i class="fas fa-tools"></i> Active management</li>
+                            <li><i class="fas fa-seedling"></i> Habitat restoration</li>
+                            <li><i class="fas fa-balance-scale"></i> Intervention needed</li>
+                            <li><i class="fas fa-binoculars"></i> Monitoring intensive</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="type-card">
+                    <div class="type-badge">VI</div>
+                    <div class="card-header">
+                        <h3>Sustainable Use Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="type-list">
+                            <li><i class="fas fa-handshake"></i> Community involvement</li>
+                            <li><i class="fas fa-leaf"></i> Sustainable extraction</li>
+                            <li><i class="fas fa-home"></i> Human settlements</li>
+                            <li><i class="fas fa-industry"></i> Controlled activities</li>
+                            <li><i class="fas fa-chart-line"></i> Long-term sustainability</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Statistics Section (Replaces Map) -->
+        <section class="stats-section">
+            <h2 class="section-title">Global Protection Statistics</h2>
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                        <div class="stat-number">16.64%</div>
+                        <p class="stat-description">of Earth's land is protected</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-water"></i></div>
+                        <div class="stat-number">7.74%</div>
+                        <p class="stat-description">of oceans are protected</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-mountain"></i></div>
+                        <div class="stat-number">238,563</div>
+                        <p class="stat-description">protected areas worldwide</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                        <div class="stat-number">42%</div>
+                        <p class="stat-description">of threatened species habitats protected</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="success-section">
+            <h2 class="section-title">Conservation Success Stories</h2>
+            <div class="success-tabs">
+                <button class="tab-button active" data-region="americas">Americas</button>
+                <button class="tab-button" data-region="africa">Africa</button>
+                <button class="tab-button" data-region="asia">Asia</button>
+            </div>
+            
+            <div class="success-content active" id="americas">
+                <div class="success-info">
+                    <h3><i class="fas fa-globe-americas"></i> American Conservation Successes</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Yellowstone National Park, USA <span class="protection-status well-protected">Well Protected</span></h4>
+                            <p>World's first national park established in 1872, serving as a model for protected areas worldwide.</p>
+                            <ul>
+                                <li><strong>Key Species:</strong> Gray wolves reintroduced successfully</li>
+                                <li><strong>Area:</strong> 2.2 million acres</li>
+                                <li><strong>Success:</strong> Ecosystem largely intact with full predator-prey dynamics</li>
+                                <li><strong>Challenge:</strong> Managing increasing visitor numbers</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>Great Bear Rainforest, Canada <span class="protection-status well-protected">Well Protected</span></h4>
+                            <p>World's largest intact temperate rainforest with innovative indigenous-led conservation.</p>
+                            <ul>
+                                <li><strong>Key Species:</strong> Spirit bears (Kermode bears), salmon</li>
+                                <li><strong>Area:</strong> 6.4 million hectares protected</li>
+                                <li><strong>Success:</strong> Ecosystem-based management approach</li>
+                                <li><strong>Challenge:</strong> Climate change impacts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="success-content" id="africa">
+                <div class="success-info">
+                    <h3><i class="fas fa-globe-africa"></i> African Conservation Successes</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Serengeti National Park, Tanzania <span class="protection-status well-protected">Well Protected</span></h4>
+                            <p>Famous for the annual migration of over 1.5 million white-bearded wildebeest.</p>
+                            <ul>
+                                <li><strong>Key Species:</strong> Big Five, wildebeest, zebra</li>
+                                <li><strong>Area:</strong> 14,750 square kilometers</li>
+                                <li><strong>Success:</strong> Anti-poaching efforts stabilizing populations</li>
+                                <li><strong>Challenge:</strong> Human-wildlife conflict at borders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="success-content" id="asia">
+                <div class="success-info">
+                    <h3><i class="fas fa-globe-asia"></i> Asian Conservation Successes</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Kaziranga National Park, India <span class="protection-status well-protected">Well Protected</span></h4>
+                            <p>Home to two-thirds of the world's great one-horned rhinoceroses.</p>
+                            <ul>
+                                <li><strong>Key Species:</strong> One-horned rhino, tigers, elephants</li>
+                                <li><strong>Area:</strong> 430 square kilometers</li>
+                                <li><strong>Success:</strong> Rhino population increased from 200 to 2400+</li>
+                                <li><strong>Challenge:</strong> Annual flooding and poaching pressure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Steps -->
+        <section class="action-steps">
+            <h2 class="section-title">How to Support Protected Areas</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Educate Yourself</h3>
+                        <p>Learn about protected areas in your region and globally. Understand their importance and the challenges they face.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Visit Responsibly</h3>
+                        <p>When visiting protected areas, follow guidelines, stay on trails, and practice Leave No Trace principles.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Support Conservation Organizations</h3>
+                        <p>Donate to or volunteer with organizations that work to establish and maintain protected areas.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Advocate for Protection</h3>
+                        <p>Contact policymakers to express support for creating new protected areas and funding existing ones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of Protected Areas</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Biodiversity Protection</h3>
+                    <ul>
+                        <li>Habitat preservation for endangered species</li>
+                        <li>Genetic diversity conservation</li>
+                        <li>Ecosystem services maintenance</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-water"></i></div>
+                    <h3>Climate Regulation</h3>
+                    <ul>
+                        <li>Carbon sequestration and storage</li>
+                        <li>Microclimate regulation</li>
+                        <li>Climate change resilience</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Human Wellbeing</h3>
+                    <ul>
+                        <li>Recreation and tourism opportunities</li>
+                        <li>Mental health benefits from nature access</li>
+                        <li>Educational and research value</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protected Areas FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Protected Areas FAQs</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What percentage of the Earth's surface is currently protected?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Currently, approximately 16.64% of the Earth's land surface and 7.74% of the ocean are protected. However, this varies significantly by region and many areas lack adequate protection or effective management. The Convention on Biological Diversity has set targets to protect at least 30% of the planet by 2030 (30x30 initiative).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How effective are protected areas at preventing deforestation?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Well-managed protected areas with adequate funding and enforcement are highly effective at preventing deforestation. Studies show that protected areas have significantly lower deforestation rates compared to similar unprotected areas. However, effectiveness varies based on management quality, funding, community involvement, and political support.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What are the biggest threats to protected areas?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Major threats include: illegal activities (poaching, logging, mining), climate change, invasive species, insufficient funding for management, political instability, pressure for resource extraction, and human encroachment. Effective protected areas require strong governance, adequate resources, and community support to address these threats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Sky Conservation</h3>
+                <p>We are dedicated to protecting natural habitats and biodiversity through the establishment and support of protected areas worldwide. Our mission is to ensure these precious ecosystems remain for future generations.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sky Conservation | Protecting nature for future generations</p>
+            <div class="scroll-top" id="scrollTopBtn">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Region tabs functionality
+        document.querySelectorAll('.success-tabs .tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.success-tabs .tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.success-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const region = button.getAttribute('data-region');
+                document.getElementById(region).classList.add('active');
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.maxHeight;
+                
+                // Close all answers first
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.maxHeight = null;
+                    ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                    ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                });
+                
+                // Open current answer if it was closed
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    question.querySelector('i').classList.remove('fa-chevron-down');
+                    question.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indigenous Stewardship - Sky Conservation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Original Blue Color Scheme */
+        :root {
+            --primary-blue: #126ca1;
+            --light-blue: #e0f0f8;
+            --accent-blue: #0d5a8a;
+            --white: #ffffff;
+            --gray: #555555;
+            --light-gray: #f8f9fa;
+            --health-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --danger-red: #F44336;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Vibrant Header */
+        .vibrant-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vibrant-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .header-content h1 span {
+            color: #a6c1ee;
+        }
+
+        .header-content p {
+            margin: 0.5rem 0 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 0.8rem;
+            width: 90%;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .floating-nav li a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav li a:hover, 
+        .floating-nav li a.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero-indigenous {
+            background: url('./image/sky.webp') no-repeat center center/cover;
+            color: var(--primary-blue);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: 50px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-indigenous::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid var(--primary-blue);
+        }
+
+        /* Importance Section */
+        .importance-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            margin: 0.5rem auto 0;
+        }
+
+        .importance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .importance-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .importance-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .importance-card p {
+            margin: 0.5rem 0 0;
+        }
+
+        /* Stewardship Section */
+        .stewardship-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .stewardship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stewardship-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+            position: relative;
+            text-align: center;
+        }
+
+        .stewardship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .stewardship-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--health-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .stewardship-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .stewardship-icon {
+            height: 80px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stewardship-icon i {
+            font-size: 4rem;
+            color: var(--primary-blue);
+        }
+
+        .stewardship-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .stewardship-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .stewardship-list li:last-child {
+            border-bottom: none;
+        }
+
+        .stewardship-list i {
+            color: var(--primary-blue);
+            margin-right: 0.7rem;
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .stats-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--light-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0.5rem 0;
+        }
+
+        .stat-description {
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* Success Stories Section */
+        .success-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .success-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tab-button {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-button:hover {
+            background: var(--light-blue);
+        }
+
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .success-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .success-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .success-info h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .info-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .info-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card strong {
+            color: var(--primary-blue);
+        }
+
+        /* Protection Status */
+        .protection-status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .well-protected {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .moderately-protected {
+            background-color: #FFF8E1;
+            color: #FF8F00;
+        }
+
+        .under-protected {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+
+        /* Action Steps */
+        .action-steps {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            background: var(--primary-blue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+
+        .step-content h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--gray);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            background: var(--light-blue);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .benefit-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            text-align: left;
+        }
+
+        .benefit-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-card li::before {
+            content: "•";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem auto;
+            max-width: 1000px;
+            padding: 0 1rem;
+        }
+
+        .faq-container {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: var(--light-blue);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1.5rem;
+            color: var(--gray);
+        }
+
+        /* Resources Section */
+        .resources-section {
+            margin: 4rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h3 {
+            color: var(--primary-blue);
+            margin: 0 0 0.5rem;
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            margin: 0 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .resource-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .resource-link i {
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+            color: var(--accent-blue);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            margin: 4rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .newsletter-section h2 {
+            margin-top: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 1rem auto 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #0b4a72;
+        }
+
+        /* Simple Footer */
+        .simple-footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: #a6c1ee;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .process-steps, .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-question {
+                font-size: 0.9rem;
+            }
+
+            .stewardship-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stewardship-card {
+                margin-left: 0;
+                margin-bottom: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                padding: 0.8rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .success-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+            
+            .tab-button {
+                margin: 0 0.3rem 0.8rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-indigenous {
+                padding: 2.5rem 1rem;
+                margin: 1.5rem 1rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-nav li a {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .importance-section {
+                padding: 1.5rem;
+            }
+            
+            .importance-card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .header-content p {
+                font-size: 0.85rem;
+            }
+            
+            .floating-nav {
+                border-radius: 25px;
+                padding: 0.6rem;
+            }
+            
+            .floating-nav li a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .stewardship-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .step {
+                padding: 1.2rem;
+            }
+            
+            .benefit-card {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .floating-nav,
+            .vibrant-footer {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+            }
+
+            .hero-indigenous,
+            .importance-section,
+            .stewardship-card,
+            .info-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            z-index: 99;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Indigenous Stewardship</h1>
+            <p>Supporting indigenous land rights protects forests and biodiversity</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-content">
+        <section class="hero-indigenous">
+            <div class="hero-content">
+                <h2>Nature's Best Guardians</h2>
+                <p>Supporting indigenous land rights protects forests, as indigenous peoples are nature's best guardians</p>
+            </div>
+        </section>
+
+        <!-- Importance Section -->
+        <section class="importance-section">
+            <h2 class="section-title">Why Indigenous Stewardship Matters</h2>
+            <div class="importance-grid">
+                <div class="importance-card">
+                    <h3><i class="fas fa-tree"></i> Biodiversity Protection</h3>
+                    <p>Indigenous territories contain 80% of the world's remaining biodiversity and have lower deforestation rates than protected areas.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-seedling"></i> Traditional Ecological Knowledge</h3>
+                    <p>Millennia of accumulated knowledge about local ecosystems, species, and sustainable management practices.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-shield-alt"></i> Climate Change Mitigation</h3>
+                    <p>Indigenous-managed forests store massive amounts of carbon and help regulate global climate systems.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-heart"></i> Cultural Preservation</h3>
+                    <p>Land stewardship is inseparable from cultural identity, spirituality, and intergenerational knowledge transfer.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-balance-scale"></i> Environmental Justice</h3>
+                    <p>Recognizing historical rights and addressing past injustices while protecting vital ecosystems.</p>
+                </div>
+                <div class="importance-card">
+                    <h3><i class="fas fa-handshake"></i> Community Wellbeing</h3>
+                    <p>Healthy lands directly support community health, food security, and economic resilience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stewardship Practices Section -->
+        <section class="stewardship-section">
+            <h2 class="section-title">Indigenous Stewardship Practices</h2>
+            <div class="stewardship-grid">
+                <article class="stewardship-card">
+                    <div class="stewardship-badge">1</div>
+                    <div class="stewardship-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="card-header">
+                        <h3>Cultural Burning</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="stewardship-list">
+                            <li><i class="fas fa-check"></i> Controlled, low-intensity burns</li>
+                            <li><i class="fas fa-check"></i> Reduces wildfire risk</li>
+                            <li><i class="fas fa-check"></i> Promotes biodiversity</li>
+                            <li><i class="fas fa-check"></i> Regenerates important species</li>
+                            <li><i class="fas fa-check"></i> Cultural and spiritual significance</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="stewardship-card">
+                    <div class="stewardship-badge">2</div>
+                    <div class="stewardship-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="card-header">
+                        <h3>Agroforestry Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="stewardship-list">
+                            <li><i class="fas fa-check"></i> Food forests and polycultures</li>
+                            <li><i class="fas fa-check"></i> Mimics natural ecosystems</li>
+                            <li><i class="fas fa-check"></i> Sustainable harvesting techniques</li>
+                            <li><i class="fas fa-check"></i> Maintains soil fertility</li>
+                            <li><i class="fas fa-check"></i> Supports diverse wildlife</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="stewardship-card">
+                    <div class="stewardship-badge">3</div>
+                    <div class="stewardship-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="card-header">
+                        <h3>Water Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="stewardship-list">
+                            <li><i class="fas fa-check"></i> Traditional watershed protection</li>
+                            <li><i class="fas fa-check"></i> Sustainable fishing practices</li>
+                            <li><i class="fas fa-check"></i> Sacred site preservation</li>
+                            <li><i class="fas fa-check"></i> Water quality monitoring</li>
+                            <li><i class="fas fa-check"></i> Seasonal flow management</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <h2 class="section-title">Impact of Indigenous Stewardship</h2>
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                        <div class="stat-number">36%</div>
+                        <p class="stat-description">Of intact forests are on indigenous lands</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                        <div class="stat-number">2X</div>
+                        <p class="stat-description">Lower deforestation rates on indigenous territories</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-paw"></i></div>
+                        <div class="stat-number">80%</div>
+                        <p class="stat-description">Of global biodiversity on indigenous lands</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-lock"></i></div>
+                        <div class="stat-number">50%</div>
+                        <p class="stat-description">Of indigenous lands still lack legal recognition</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="success-section">
+            <h2 class="section-title">Indigenous Stewardship Success Stories</h2>
+            <div class="success-tabs">
+                <button class="tab-button active" data-region="americas">Americas</button>
+                <button class="tab-button" data-region="asia">Asia-Pacific</button>
+                <button class="tab-button" data-region="africa">Africa</button>
+            </div>
+            
+            <div class="success-content active" id="americas">
+                <div class="success-info">
+                    <h3><i class="fas fa-globe-americas"></i> Success Stories in the Americas</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Kayapó Territory, Brazil <span class="protection-status well-protected">Protected</span></h4>
+                            <p>The Kayapó people have successfully protected 11 million hectares of Amazon rainforest from deforestation.</p>
+                            <ul>
+                                <li><strong>Area Protected:</strong> 11 million hectares</li>
+                                <li><strong>Key Strategies:</strong> Monitoring, alliances with NGOs, sustainable Brazil nut harvesting</li>
+                                <li><strong>Impact:</strong> Deforestation rates 70% lower than surrounding areas</li>
+                                <li><strong>Challenge:</strong> Ongoing pressure from mining and agricultural interests</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>Tla-o-qui-aht Tribal Parks, Canada <span class="protection-status well-protected">Thriving</span></h4>
+                            <p>First Nations on Vancouver Island have established tribal parks that combine conservation, sustainable tourism, and cultural renewal.</p>
+                            <ul>
+                                <li><strong>Approach:</strong> Tribal Parks designation</li>
+                                <li><strong>Key Strategies:</strong> Eco-cultural tourism, watershed protection, cultural education</li>
+                                <li><strong>Impact:</strong> Salmon habitat restoration, old-growth protection, community economic benefits</li>
+                                <li><strong>Recognition:</strong> Model for indigenous-led conservation nationwide</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="success-content" id="asia">
+                <div class="success-info">
+                    <h3><i class="fas fas fa-globe-asia"></i> Success Stories in Asia-Pacific</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Kalahan Forest, Philippines <span class="protection-status well-protected">Sustainable</span></h4>
+                            <p>The Ikalahan people have managed their ancestral forest for decades using traditional knowledge and modern sustainable practices.</p>
+                            <ul>
+                                <li><strong>Duration:</strong> 50+ years of sustainable management</li>
+                                <li><strong>Key Strategies:</strong> Forest zoning, sustainable harvesting, education center</li>
+                                <li><strong>Impact:</strong> Biodiversity conservation, carbon sequestration, water security</li>
+                                <li><strong>Innovation:</strong> Combining traditional knowledge with scientific approaches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="success-content" id="africa">
+                <div class="success-info">
+                    <h3><i class="fas fa-globe-africa"></i> Success Stories in Africa</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Ogiek Community, Kenya <span class="protection-status moderately-protected">Legal Victory</span></h4>
+                            <p>After decades of struggle, the Ogiek people won a landmark legal case recognizing their right to the Mau Forest.</p>
+                            <ul>
+                                <li><strong>Legal Victory:</strong> African Court on Human and Peoples' Rights ruling</li>
+                                <li><strong>Significance:</strong> Precedent for indigenous land rights across Africa</li>
+                                <li><strong>Role:</strong> Traditional honey gatherers and forest protectors</li>
+                                <li><strong>Challenge:</strong> Implementing court decision against government resistance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Steps -->
+        <section class="action-steps">
+            <h2 class="section-title">How to Support Indigenous Stewardship</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Support Indigenous-Led Organizations</h3>
+                        <p>Donate to and amplify the work of indigenous-led conservation organizations and land defenders.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Advocate for Land Rights</h3>
+                        <p>Support policies and legislation that recognize and protect indigenous land titles and territorial rights.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Ethical Consumption</h3>
+                        <p>Choose products that support indigenous communities and avoid those driving deforestation on indigenous lands.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Educate and Raise Awareness</h3>
+                        <p>Learn about indigenous history and current struggles, and share this knowledge with others.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of Supporting Indigenous Stewardship</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Environmental Benefits</h3>
+                    <ul>
+                        <li>Biodiversity conservation</li>
+                        <li>Carbon sequestration</li>
+                        <li>Ecosystem resilience</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Social Benefits</h3>
+                    <ul>
+                        <li>Cultural preservation</li>
+                        <li>Community wellbeing</li>
+                        <li>Intergenerational knowledge transfer</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Global Benefits</h3>
+                    <ul>
+                        <li>Climate change mitigation</li>
+                        <li>Sustainable development models</li>
+                        <li>Environmental justice advancement</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Indigenous Stewardship FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Indigenous Stewardship FAQs</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Why are indigenous peoples considered nature's best guardians?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Indigenous peoples are considered nature's best guardians for several reasons: 1) Their cultural and spiritual traditions are deeply connected to the land, fostering a long-term perspective on stewardship. 2) They possess millennia of accumulated Traditional Ecological Knowledge about local ecosystems, species interactions, and sustainable management practices. 3) Statistical evidence shows that indigenous-managed territories have significantly lower deforestation rates and higher biodiversity conservation outcomes than even government-protected areas. 4) Their governance systems often incorporate intergenerational responsibility and community decision-making that prioritizes ecological health. 5) Indigenous peoples maintain 80% of the world's biodiversity while comprising only 5% of the global population, demonstrating their effectiveness as stewards.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What are the main challenges indigenous stewards face?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Indigenous stewards face numerous challenges: 1) Lack of legal recognition of land rights - approximately 50% of indigenous lands globally lack formal legal recognition. 2) Encroachment by extractive industries (mining, logging, oil extraction) and agricultural expansion. 3) Climate change impacts that disrupt traditional practices and ecosystems. 4) Violence and threats against indigenous land defenders - hundreds are killed each year protecting their territories. 5) Economic pressures that sometimes force communities to choose between conservation and immediate economic needs. 6) Loss of traditional knowledge due to cultural assimilation policies and youth migration. 7) Inadequate funding and support for indigenous-led conservation initiatives despite their proven effectiveness.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How can non-indigenous people support indigenous stewardship?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Non-indigenous people can support indigenous stewardship in several ways: 1) Support indigenous-led organizations financially and through amplification of their work. 2) Advocate for policies that recognize indigenous land rights and sovereignty. 3) Make conscious consumption choices that avoid products linked to deforestation on indigenous lands. 4) Educate themselves and others about indigenous history, current struggles, and the importance of indigenous knowledge. 5) Respect indigenous leadership and follow their guidance rather than imposing external solutions. 6) Use platforms and privilege to center indigenous voices in environmental discussions. 7) Support businesses that partner with and fairly compensate indigenous communities for their knowledge and resources. 8) Pressure governments and corporations to respect Free, Prior and Informed Consent regarding projects affecting indigenous territories.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Sky Indigenous Stewardship</h3>
+                <p>We are dedicated to supporting indigenous land rights and stewardship practices that protect our planet's biodiversity and cultural heritage. We recognize that indigenous peoples are nature's best guardians and work to amplify their leadership in conservation.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sky Indigenous Stewardship | Honoring traditional knowledge and land protection</p>
+            <div class="scroll-top" id="scrollTopBtn">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Success tabs functionality
+        document.querySelectorAll('.success-tabs .tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.success-tabs .tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.success-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const region = button.getAttribute('data-region');
+                document.getElementById(region).classList.add('active');
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.maxHeight;
+                
+                // Close all answers first
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.maxHeight = null;
+                    ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                    ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                });
+                
+                // Open current answer if it was closed
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    question.querySelector('i').classList.remove('fa-chevron-down');
+                    question.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
