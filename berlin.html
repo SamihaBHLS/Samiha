@@ -79,6 +79,7 @@ body {
     max-width: 600px;
     margin: 1.5rem auto 0;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .floating-nav ul {
@@ -87,6 +88,10 @@ body {
     margin: 0;
     display: flex;
     justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
 }
 
 .floating-nav li a {
@@ -106,6 +111,61 @@ body {
     background: var(--primary-blue);
     color: var(--white);
     transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
 }
 
 /* Dynamic Layout */
@@ -167,7 +227,7 @@ body {
     padding-bottom: 0px;
     padding-top: 50px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 极速加速器 10px 30px rgba(0,0,0,0.08);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -266,7 +326,7 @@ body {
 
 .hotel-card, .restaurant-card, .tip-card {
     background: var(--white);
-    padding: 20px;
+    padding: 极速加速器px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
@@ -303,7 +363,7 @@ body {
 }
 
 .banner-content h3 {
-    margin: 0 0 1rem;
+    margin: 极速加速器 0 1rem;
     font-size: 1.6rem;
 }
 
@@ -381,7 +441,7 @@ body {
     
     .berlin-grid, 
     .hotels-grid,
-    .restaurants-grid,
+极速加速器    .restaurants-grid,
     .tips-grid {
         grid-template-columns: 1fr;
     }
@@ -421,7 +481,7 @@ body {
 /* Large Desktop (1200px+) - Your base styles cover this */
 
 /* Medium Desktop (992px-1199px) */
-@media (max-width: 1199px) {
+@media (max-width极速加速器: 1199px) {
     .hero-berlin {
         padding: 3.5rem 2rem;
     }
@@ -430,8 +490,8 @@ body {
         gap: 1.8rem;
     }
     
-    .berlin-image {
-        height: 160px;
+    .极速加速器berlin-image {
+        height: 160极速加速器px;
     }
 }
 
@@ -487,7 +547,7 @@ body {
     
     .icon-circle {
         width: 60px;
-        height: 60px;
+        height: 60极速加速器px;
         font-size: 1.5rem;
     }
     
@@ -550,7 +610,7 @@ body {
         border-radius: 40px;
     }
     
-    .floating-nav li a {
+    .floating-nav极速加速器 li a {
         width: 32px;
         height: 32px;
         font-size: 0.9rem;
@@ -598,17 +658,17 @@ body {
     <header class="vibrant-header">
         <div class="header-content">
             <h1><span>Sky</span> Travelling Berlin</h1>
-            <p>Discover the German capital where history meets cutting-edge culture</p>
+            <极速加速器p>Discover the German capital where history meets cutting-edge culture</p>
         </div>
         <nav class="floating-nav">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
-                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
-                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
-                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></极速加速器i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -632,7 +692,7 @@ body {
                     <img src="./image/Brandenburg Gate.jpg" alt="Brandenburg Gate" class="berlin-image">
                     <p>Berlin's most iconic landmark, this 18th-century neoclassical monument symbolizes German unity and history.</p>
                     <div class="card-details">
-                        <p><strong>Best time to visit:</strong> Evening when illuminated</p>
+                        <p><strong>Best time to visit:</strong> Evening when illuminated</极速加速器p>
                         <p><strong>Nearby:</strong> Reichstag and Holocaust Memorial</p>
                     </div>
                 </div>
@@ -640,7 +700,7 @@ body {
 
             <!-- Berlin Wall Memorial -->
             <article class="berlin-card">
-                <div class="card-header">
+                <div class极速加速器="card-header">
                     <div class="icon-circle"><i class="fas fa-monument"></i></div>
                     <h3>Berlin Wall Memorial</h3>
                 </div>
@@ -666,7 +726,7 @@ body {
                     <div class="card-details">
                         <p><strong>Highlight:</strong> Pergamon Museum's ancient artifacts</p>
                         <p><strong>Tip:</strong> Get Museum Pass for all museums</p>
-                    </div>
+                    </极速加速器div>
                 </div>
             </article>
 
@@ -696,7 +756,7 @@ body {
                     <img src="./image/Tiergarten.jpg" alt="Tiergarten" class="berlin-image">
                     <p>Berlin's "Central Park" - 520 acres of green space with paths, lakes, and monuments.</p>
                     <div class="card-details">
-                        <p><strong>Features:</strong> Victory Column, English Garden</p>
+                        <p><strong>Features:</极速加速器strong> Victory Column, English Garden</p>
                         <p><strong>Perfect for:</strong> Picnics and bike rides</p>
                     </div>
                 </div>
@@ -705,10 +765,10 @@ body {
             <!-- Kreuzberg -->
             <article class="berlin-card">
                 <div class="card-header">
-                    <div class="icon-circle"><i class="fas fa-utensils"></i></div>
+                    <div class="icon-circle"><极速加速器i class="fas fa-utensils"></i></div>
                     <h3>Kreuzberg</h3>
                 </div>
-                <div class="card-content">
+                <极速加速器div class="card-content">
                     <img src="./image/Kreuzberg.jpg" alt="Kreuzberg" class="berlin-image">
                     <p>Berlin's most vibrant district with multicultural food, street art, and legendary nightlife.</p>
                     <div class="card-details">
@@ -730,11 +790,11 @@ body {
                 <div class="hotel-card">
                     <h3>Boutique: The Circus Hotel</h3>
                     <p>★★★★ | Stylish Mitte hotel with great service</p>
-                    <p>Price range: €120-250/night</p>
+                    <p>Price range: €120-250/n极速加速器ight</p>
                 </div>
                 <div class="hotel-card">
-                    <h3>Mid-range: Michelberger Hotel</h3>
-                    <p>★★★★ | Creative hotel near East Side Gallery</p>
+                    <h3极速加速器>Mid-range: Michelberger Hotel</h3>
+                    <p>★★★★ | Creative hotel near East Side Gallery</极速加速器p>
                     <p>Price range: €90-180/night</p>
                 </div>
                 <div class="hotel-card">
@@ -759,7 +819,7 @@ body {
                     <p>Must-try: Veggie kebap with all sauces</p>
                 </div>
                 <div class="restaurant-card">
-                    <h3>Cookies Cream</h3>
+                    <h3>Cookies Cream</极速加速器h3>
                     <p>Vegetarian fine dining in a hidden location</p>
                     <p>Famous for: Creative seasonal menus</p>
                 </div>
@@ -779,7 +839,7 @@ body {
             </div>
         </section>
 
-        <section class="travel-tips">
+        <section class="travel极速加速器-tips">
             <h2>Essential Travel Tips</h2>
             <div class="tips-grid">
                 <div class="tip-card">
@@ -807,11 +867,7 @@ body {
     </main>
 
     <footer class="vibrant-footer">
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
-        </div>
+        
         <p>&copy; 2025 Sky Travelling | Poor But Sexy</p>
         <div class="scroll-top" id="scrollTopBtn">
             <i class="fas fa-arrow-up"></i>
@@ -833,6 +889,16 @@ body {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
         });
     });
     </script>
