@@ -175,6 +175,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     animation: fadeIn 1.5s ease-in-out;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 @keyframes fadeIn {
@@ -426,6 +427,7 @@ body {
     .hero-tip {
         margin-left: 2rem;
         margin-right: 2rem;
+        margin-bottom: 20px;
     }
 }
 
