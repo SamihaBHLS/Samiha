@@ -227,7 +227,7 @@ body {
     padding-bottom: 0px;
     padding-top: 50px;
     overflow: hidden;
-    box-shadow: 极速加速器 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -326,7 +326,7 @@ body {
 
 .hotel-card, .restaurant-card, .tip-card {
     background: var(--white);
-    padding: 极速加速器px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
@@ -363,7 +363,7 @@ body {
 }
 
 .banner-content h3 {
-    margin: 极速加速器 0 1rem;
+    margin: 0 0 1rem;
     font-size: 1.6rem;
 }
 
@@ -404,49 +404,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 1.8rem;
-    }
-    
-    .floating-nav {
-        width: 95%;
-        padding: 0.6rem;
-    }
-    
-    .floating-nav li a {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-    
-    .berlin-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-berlin {
-        padding: 3rem 1rem;
-    }
-    
-    .berlin-grid, 
-    .hotels-grid,
-极速加速器    .restaurants-grid,
-    .tips-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* Scroll to top button */
 .scroll-top {
     position: fixed;
     bottom: 20px;
@@ -460,10 +418,10 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     opacity: 0;
     visibility: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     z-index: 99;
 }
 
@@ -476,12 +434,13 @@ body {
     background: var(--accent-blue);
     transform: translateY(-5px);
 }
+
 /* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
 
 /* Large Desktop (1200px+) - Your base styles cover this */
 
 /* Medium Desktop (992px-1199px) */
-@media (max-width极速加速器: 1199px) {
+@media (max-width: 1199px) {
     .hero-berlin {
         padding: 3.5rem 2rem;
     }
@@ -490,8 +449,8 @@ body {
         gap: 1.8rem;
     }
     
-    .极速加速器berlin-image {
-        height: 160极速加速器px;
+    .berlin-image {
+        height: 160px;
     }
 }
 
@@ -547,7 +506,7 @@ body {
     
     .icon-circle {
         width: 60px;
-        height: 60极速加速器px;
+        height: 60px;
         font-size: 1.5rem;
     }
     
@@ -610,7 +569,7 @@ body {
         border-radius: 40px;
     }
     
-    .floating-nav极速加速器 li a {
+    .floating-nav li a {
         width: 32px;
         height: 32px;
         font-size: 0.9rem;
@@ -658,13 +617,13 @@ body {
     <header class="vibrant-header">
         <div class="header-content">
             <h1><span>Sky</span> Travelling Berlin</h1>
-            <极速加速器p>Discover the German capital where history meets cutting-edge culture</p>
+            <p>Discover the German capital where history meets cutting-edge culture</p>
         </div>
         <nav class="floating-nav">
             <ul>
                 <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
                 <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
-                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></极速加速器i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
                 <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
                 <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
                 <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
@@ -692,7 +651,7 @@ body {
                     <img src="./image/Brandenburg Gate.jpg" alt="Brandenburg Gate" class="berlin-image">
                     <p>Berlin's most iconic landmark, this 18th-century neoclassical monument symbolizes German unity and history.</p>
                     <div class="card-details">
-                        <p><strong>Best time to visit:</strong> Evening when illuminated</极速加速器p>
+                        <p><strong>Best time to visit:</strong> Evening when illuminated</p>
                         <p><strong>Nearby:</strong> Reichstag and Holocaust Memorial</p>
                     </div>
                 </div>
@@ -700,7 +659,7 @@ body {
 
             <!-- Berlin Wall Memorial -->
             <article class="berlin-card">
-                <div class极速加速器="card-header">
+                <div class="card-header">
                     <div class="icon-circle"><i class="fas fa-monument"></i></div>
                     <h3>Berlin Wall Memorial</h3>
                 </div>
@@ -726,7 +685,7 @@ body {
                     <div class="card-details">
                         <p><strong>Highlight:</strong> Pergamon Museum's ancient artifacts</p>
                         <p><strong>Tip:</strong> Get Museum Pass for all museums</p>
-                    </极速加速器div>
+                    </div>
                 </div>
             </article>
 
@@ -756,7 +715,7 @@ body {
                     <img src="./image/Tiergarten.jpg" alt="Tiergarten" class="berlin-image">
                     <p>Berlin's "Central Park" - 520 acres of green space with paths, lakes, and monuments.</p>
                     <div class="card-details">
-                        <p><strong>Features:</极速加速器strong> Victory Column, English Garden</p>
+                        <p><strong>Features:</strong> Victory Column, English Garden</p>
                         <p><strong>Perfect for:</strong> Picnics and bike rides</p>
                     </div>
                 </div>
@@ -765,10 +724,10 @@ body {
             <!-- Kreuzberg -->
             <article class="berlin-card">
                 <div class="card-header">
-                    <div class="icon-circle"><极速加速器i class="fas fa-utensils"></i></div>
+                    <div class="icon-circle"><i class="fas fa-utensils"></i></div>
                     <h3>Kreuzberg</h3>
                 </div>
-                <极速加速器div class="card-content">
+                <div class="card-content">
                     <img src="./image/Kreuzberg.jpg" alt="Kreuzberg" class="berlin-image">
                     <p>Berlin's most vibrant district with multicultural food, street art, and legendary nightlife.</p>
                     <div class="card-details">
@@ -790,11 +749,11 @@ body {
                 <div class="hotel-card">
                     <h3>Boutique: The Circus Hotel</h3>
                     <p>★★★★ | Stylish Mitte hotel with great service</p>
-                    <p>Price range: €120-250/n极速加速器ight</p>
+                    <p>Price range: €120-250/night</p>
                 </div>
                 <div class="hotel-card">
-                    <h3极速加速器>Mid-range: Michelberger Hotel</h3>
-                    <p>★★★★ | Creative hotel near East Side Gallery</极速加速器p>
+                    <h3>Mid-range: Michelberger Hotel</h3>
+                    <p>★★★★ | Creative hotel near East Side Gallery</p>
                     <p>Price range: €90-180/night</p>
                 </div>
                 <div class="hotel-card">
@@ -819,7 +778,7 @@ body {
                     <p>Must-try: Veggie kebap with all sauces</p>
                 </div>
                 <div class="restaurant-card">
-                    <h3>Cookies Cream</极速加速器h3>
+                    <h3>Cookies Cream</h3>
                     <p>Vegetarian fine dining in a hidden location</p>
                     <p>Famous for: Creative seasonal menus</p>
                 </div>
@@ -839,7 +798,7 @@ body {
             </div>
         </section>
 
-        <section class="travel极速加速器-tips">
+        <section class="travel-tips">
             <h2>Essential Travel Tips</h2>
             <div class="tips-grid">
                 <div class="tip-card">

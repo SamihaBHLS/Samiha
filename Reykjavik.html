@@ -89,6 +89,9 @@ body {
     justify-content: space-around;
 }
 
+.floating-nav li {
+    position: relative;
+}
 .floating-nav li a {
     color: var(--primary-blue);
     font-size: 1.2rem;
@@ -106,6 +109,61 @@ body {
     background: var(--primary-blue);
     color: var(--white);
     transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
 }
 
 /* Dynamic Reykjavik Layout */
@@ -640,13 +698,13 @@ body {
         </div>
         <nav class="floating-nav">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="destinations.html"><i class="fas fa-map-marked-alt"></i></a></li>
-                <li><a href="forests.html"><i class="fas fa-tree"></i></a></li>
-                <li><a href="blog.html"><i class="fas fa-blog"></i></a></li>
-                <li><a href="tips.html"><i class="fas fa-lightbulb"></i></a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="login.html"><i class="fas fa-user"></i></a></li>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
             </ul>
         </nav>
     </header>
