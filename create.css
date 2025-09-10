@@ -215,8 +215,7 @@ body {
     padding: 3.5rem;
     width: 100%;
     max-width: 600px;
-    margin-top: 2,5rem;
-    margin: 0 auto;
+    margin: 3rem auto;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-left: 5px solid var(--primary-blue);
@@ -421,7 +420,7 @@ body {
 /* Responsive Design (Matches Login Page) */
 @media (max-width: 1200px) {
     .form-card {
-        margin: 0 auto;
+        margin: 2rem auto;
     }
     
     .hero-tip {
