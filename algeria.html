@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algeria - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-algeria {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-algeria {
+    background:  url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-algeria::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.algeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.algeria-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.algeria-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.algeria-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.algeria-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.algeria-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .algeria-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-algeria {
+        padding: 3rem 1rem;
+    }
+    
+    .algeria-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Algeria</h1>
+            <p>Discover the gateway to the Sahara and ancient Mediterranean civilizations</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-algeria">
+        <section class="hero-algeria">
+            <div class="hero-content">
+                <h2>Experience Majestic Algeria</h2>
+                <p>Where ancient Roman ruins meet vast Saharan landscapes and Mediterranean coastlines</p>
+            </div>
+        </section>
+
+        <div class="algeria-grid">
+            <!-- Tassili n'Ajjer -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Tassili n'Ajjer</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Tassili n'Ajjer.jpg" alt="Tassili n'Ajjer" class="algeria-image">
+                    <p>A vast plateau in the Sahara desert, famous for its prehistoric rock art and unique geological formations.</p>
+                    <div class="card-details">
+                        <p><strong>Best time to visit:</strong> October to April</p>
+                        <p><strong>UNESCO World Heritage Site</strong> since 1982</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Djemila -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>Djemila</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Djemila.jpg" alt="Djemila" class="algeria-image">
+                    <p>Well-preserved Roman ruins with a unique adaptation to mountain terrain, featuring temples, basilicas and arches.</p>
+                    <div class="card-details">
+                        <p><strong>Location:</strong> Northern Algeria mountains</p>
+                        <p><strong>Name meaning:</strong> "Beautiful" in Arabic</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Algiers Casbah -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-archway"></i></div>
+                    <h3>Algiers Casbah</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Algiers Casbah.jpg" alt="Algiers Casbah" class="algeria-image">
+                    <p>The historic medina of Algiers, a unique Islamic city with winding streets, palaces, and mosques overlooking the Mediterranean.</p>
+                    <div class="card-details">
+                        <p><strong>Architecture:</strong> Ottoman and Moorish styles</p>
+                        <p><strong>UNESCO Site:</strong> Since 1992</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sahara Desert -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-sun"></i></div>
+                    <h3>Sahara Desert</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Sahara Desert.jpg" alt="Sahara Desert" class="algeria-image">
+                    <p>The world's largest hot desert covers 80% of Algeria, featuring dramatic sand dunes, oases, and unique desert wildlife.</p>
+                    <div class="card-details">
+                        <p><strong>Experience:</strong> Camel trekking and desert camping</p>
+                        <p><strong>Highlight:</strong> The Grand Erg Oriental dunes</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Timgad -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-history"></i></div>
+                    <h3>Timgad</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Timgad.jpg" alt="Timgad" class="algeria-image">
+                    <p>A Roman colonial town founded by Emperor Trajan around 100 AD, known for its perfect grid plan and impressive arch.</p>
+                    <div class="card-details">
+                        <p><strong>Nickname:</strong> "The Pompeii of Africa"</p>
+                        <p><strong>Special feature:</strong> Exceptionally preserved layout</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Oran -->
+            <article class="algeria-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-music"></i></div>
+                    <h3>Oran</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Oran.jpg" alt="Oran" class="algeria-image">
+                    <p>Algeria's second largest city, known for its Rai music, Spanish-influenced architecture, and vibrant cultural scene.</p>
+                    <div class="card-details">
+                        <p><strong>Famous for:</strong> Birthplace of Rai music</p>
+                        <p><strong>Must-see:</strong> Santa Cruz fort and Bey's Palace</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Accommodations in Algeria</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: El Aurassi Hotel</h3>
+                    <p>★★★★★ | Algiers landmark with panoramic city views</p>
+                    <p>Price range: $120-250/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Desert Experience: Sahara Resort</h3>
+                    <p>★★★★ | Traditional lodging in the desert dunes</p>
+                    <p>Price range: $80-150/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Hotel Mercure</h3>
+                    <p>★★★★ | International standard in Oran</p>
+                    <p>Price range: $70-120/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Guesthouses</h3>
+                    <p>★★★ | Authentic local experiences</p>
+                    <p>Price range: $30-60/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Algerian Culinary Delights</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Couscous</h3>
+                    <p>National dish served with vegetables, meat, and broth</p>
+                    <p>Best enjoyed: Friday family meals</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Traditional: Mechoui</h3>
+                    <p>Whole lamb slow-roasted in underground oven</p>
+                    <p>Specialty: Festival and celebration dish</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Street Food: Maaqouda</h3>
+                    <p>Potato fritters often served in bread</p>
+                    <p>Perfect for: Quick snack on the go</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Sweet: Baklava</h3>
+                    <p>Algerian version with almonds and honey</p>
+                    <p>Best with: Traditional mint tea</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Algerian Wisdom</h3>
+                <p>"Algeria is where the Mediterranean's blue meets the Sahara's gold, where ancient Roman pillars stand against desert horizons, and where hospitality is not just a custom but a way of life. It's a land of contrasts that captures the heart of every traveler."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips for Algeria</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Visa Requirements</h3>
+                    <p>Most visitors need a visa. Apply through Algerian consulates in advance.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>October-April for Sahara, May-September for coastal areas.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Language</h3>
+                    <p>Arabic and French are widely spoken. English in tourist areas.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Currency</h3>
+                    <p>Algerian Dinar (DZD). Cash is preferred outside major cities.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Land of Contrasts</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>

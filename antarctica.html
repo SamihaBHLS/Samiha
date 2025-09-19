@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antarctica - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-antarctica {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-antarctica {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-antarctica::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.antarctica-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.antarctica-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.antarctica-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.antarctica-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.antarctica-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.antarctica-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.expedition-section, .wildlife-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.expedition-section h2, .wildlife-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.expedition-section h2::after, 
+.wildlife-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.expedition-grid, .wildlife-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.expedition-card, .wildlife-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.expedition-card h3, .wildlife-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .antarctica-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-antarctica {
+        padding: 3rem 1rem;
+    }
+    
+    .antarctica-grid, 
+    .expedition-grid,
+    .wildlife-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Antarctica</h1>
+            <p>Discover the last great wilderness on Earth</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-antarctica">
+        <section class="hero-antarctica">
+            <div class="hero-content">
+                <h2>Experience the Pristine Wilderness of Antarctica</h2>
+                <p>Where colossal icebergs meet incredible wildlife at the bottom of the world</p>
+            </div>
+        </section>
+
+        <div class="antarctica-grid">
+            <!-- Icebergs -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-icicles"></i></div>
+                    <h3>Colossal Icebergs</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Colossal Icebergs.jpg" alt="Icebergs" class="antarctica-image">
+                    <p>Massive tabular icebergs that calve from glaciers, some larger than cities, creating breathtaking seascapes.</p>
+                    <div class="card-details">
+                        <p><strong>Best for:</strong> Photography & zodiac cruising</p>
+                        <p><strong>Feature:</strong> Incredible blue ice formations</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Penguin Colonies -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-crow"></i></div>
+                    <h3>Penguin Colonies</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Penguin Colonies.jpg" alt="Penguin Colonies" class="antarctica-image">
+                    <p>Millions of penguins including Adélie, Chinstrap, and Gentoo species nesting in vast colonies.</p>
+                    <div class="card-details">
+                        <p><strong>Activity:</strong> Wildlife watching & photography</p>
+                        <p><strong>See:</strong> Penguin highways & nesting behaviors</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Scientific Stations -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-flask"></i></div>
+                    <h3>Scientific Stations</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Scientific Stations.jpg" alt="Scientific Stations" class="antarctica-image">
+                    <p>International research stations where scientists study climate change, astronomy, and extreme environments.</p>
+                    <div class="card-details">
+                        <p><strong>Best seen:</strong> Palmer Station (US), Vernadsky (Ukraine)</p>
+                        <p><strong>Feature:</strong> Southernmost post office at Port Lockroy</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Whale Watching -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Whale Watching</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Whale Watching.jpg" alt="Whale Watching" class="antarctica-image">
+                    <p>Rich feeding grounds attract humpback, minke, and orca whales that can be observed from ships or zodiacs.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Humpback whale bubble-net feeding</p>
+                        <p><strong>Season:</strong> February and March are peak months</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Polar Plunge -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-swimmer"></i></div>
+                    <h3>Polar Plunge</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Polar Plunge.jpg" alt="Polar Plunge" class="antarctica-image">
+                    <p>The ultimate Antarctic rite of passage - a brief but exhilarating swim in the freezing Southern Ocean.</p>
+                    <div class="card-details">
+                        <p><strong>Experience:</strong> Certificate of achievement</p>
+                        <p><strong>Temperature:</strong> Around -1.8°C (28.8°F)</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kayaking -->
+            <article class="antarctica-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Kayaking Adventures</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Kayaking Adventures.jpg" alt="Kayaking" class="antarctica-image">
+                    <p>Paddle silently among icebergs and wildlife for an intimate Antarctic experience away from the ship.</p>
+                    <div class="card-details">
+                        <p><strong>Specialty:</strong> Up-close encounters with wildlife</p>
+                        <p><strong>Feature:</strong> Peaceful exploration of hidden coves</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="expedition-section">
+            <h2>Antarctic Expedition Options</h2>
+            <div class="expedition-grid">
+                <div class="expedition-card">
+                    <h3>Antarctic Peninsula</h3>
+                    <p>Most popular route | 8-12 days</p>
+                    <p>Price range: $8,000-15,000</p>
+                </div>
+                <div class="expedition-card">
+                    <h3>Falklands & South Georgia</h3>
+                    <p>Wildlife focused | 18-22 days</p>
+                    <p>Price range: $12,000-25,000</p>
+                </div>
+                <div class="expedition-card">
+                    <h3>Antarctic Circle</h3>
+                    <p>Go further south | 12-15 days</p>
+                    <p>Price range: $12,000-20,000</p>
+                </div>
+                <div class="expedition-card">
+                    <h3>Emperor Penguin Safari</h3>
+                    <p>Specialty expedition | 10-12 days</p>
+                    <p>Price range: $15,000-30,000</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wildlife-section">
+            <h2>Wildlife Encounters</h2>
+            <div class="wildlife-grid">
+                <div class="wildlife-card">
+                    <h3>Penguin Species</h3>
+                    <p>Adélie, Chinstrap, Gentoo, Emperor, Macaroni</p>
+                    <p>Best viewing: November to March</p>
+                </div>
+                <div class="wildlife-card">
+                    <h3>Seal Species</h3>
+                    <p>Weddell, Leopard, Crabeater, Elephant, Fur</p>
+                    <p>See: Leopard seals hunting penguins</p>
+                </div>
+                <div class="wildlife-card">
+                    <h3>Whale Species</h3>
+                    <p>Humpback, Minke, Orca, Blue, Fin, Sei</p>
+                    <p>Peak season: February and March</p>
+                </div>
+                <div class="wildlife-card">
+                    <h3>Seabirds</h3>
+                    <p>Albatross, Petrel, Skua, Cormorant</p>
+                    <p>Wandering Albatross has 3.5m wingspan</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Antarctica Wisdom</h3>
+                <p>"Antarctica is the last truly wild continent, where nature operates on a scale that dwarfs human existence. It's a place of profound silence broken only by the crack of calving glaciers and the calls of penguins. Visiting Antarctica isn't just a trip—it's a transformation that leaves you with a renewed sense of wonder and a deeper understanding of our planet's fragility. This icy wilderness reminds us that some places should remain untouched, preserved for their sheer magnificence."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips for Antarctica</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>November-March (austral summer) for wildlife and accessibility.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-ship"></i>
+                    <h3>Getting There</h3>
+                    <p>Fly or cruise from Ushuaia, Argentina (most common departure point).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Requirements</h3>
+                    <p>IAATO guidelines apply, no visa needed but permits required.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>What to Pack</h3>
+                    <p>Waterproof layers, binoculars, camera, motion sickness medication.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Polar Expeditions</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>

@@ -97,7 +97,7 @@
     </main>
 
     <footer class="vibrant-footer">
-       
+
         <p>&copy; 2025 Sky Travelling | Adventure Awaits</p>
         <div class="scroll-top" id="scrollTopBtn">
             <i class="fas fa-arrow-up"></i>
@@ -105,97 +105,97 @@
     </footer>
     <script>
         // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('active');
-        } else {
-            scrollTopBtn.classList.remove('active');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
         });
-    });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-    // Wait for the page to load
-window.onload = function() {
-    // Get the create account form
-    const createForm = document.querySelector('.account-form');
-    
-    // When form is submitted
-    createForm.onsubmit = function(e) {
-        e.preventDefault(); // Stop form from submitting normally
-        
-        // Get the input values
-        const username = document.getElementById('username').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-        const gender = document.getElementById('gender').value;
-        const remember = document.getElementById('remember').checked;
-        const newsletter = document.getElementById('newsletter').checked;
-        
-        // Simple validation
-        if (username.length < 3) {
-            alert('Username must be at least 3 characters');
-            return;
-        }
-        
-        if (!email.includes('@') || !email.includes('.')) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        if (password.length < 6) {
-            alert('Password must be at least 6 characters');
-            return;
-        }
-        
-        if (gender === "") {
-            alert('Please select your gender');
-            return;
-        }
-        
-        // Change button to show loading
-        const submitBtn = document.querySelector('.btn-submit');
-        submitBtn.innerHTML = 'Creating account...';
-        submitBtn.disabled = true;
-        
-        // Simulate account creation (in real app, this would call a server)
-        setTimeout(function() {
-            // In a real app, you would send this data to your server
-            const userData = {
-                username: username,
-                email: email,
-                password: password, // Note: In real app, never store passwords in plain text
-                gender: gender,
-                newsletter: newsletter
+        // Wait for the page to load
+        window.onload = function() {
+            // Get the create account form
+            const createForm = document.querySelector('.account-form');
+            
+            // When form is submitted
+            createForm.onsubmit = function(e) {
+                e.preventDefault(); // Stop form from submitting normally
+                
+                // Get the input values
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const gender = document.getElementById('gender').value;
+                const remember = document.getElementById('remember').checked;
+                const newsletter = document.getElementById('newsletter').checked;
+                
+                // Simple validation
+                if (username.length < 3) {
+                    alert('Username must be at least 3 characters');
+                    return;
+                }
+                
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters');
+                    return;
+                }
+                
+                if (gender === "") {
+                    alert('Please select your gender');
+                    return;
+                }
+                
+                // Change button to show loading
+                const submitBtn = document.querySelector('.btn-submit');
+                submitBtn.innerHTML = 'Creating account...';
+                submitBtn.disabled = true;
+                
+                // Simulate account creation (in real app, this would call a server)
+                setTimeout(function() {
+                    // In a real app, you would send this data to your server
+                    const userData = {
+                        username: username,
+                        email: email,
+                        password: password, // Note: In real app, never store passwords in plain text
+                        gender: gender,
+                        newsletter: newsletter
+                    };
+                    
+                    // Save to localStorage (just for demo - not secure for real apps)
+                    if (remember) {
+                        localStorage.setItem('currentUser', JSON.stringify(userData));
+                    }
+                    
+                    // Show success and redirect
+                    alert('Account created successfully! Welcome to Sky Travelling.');
+                    window.location.href = 'index.html'; // Go to homepage
+                    
+                }, 1500); // 1.5 second delay to simulate server response
             };
             
-            // Save to localStorage (just for demo - not secure for real apps)
-            if (remember) {
-                localStorage.setItem('currentUser', JSON.stringify(userData));
+            // Check if there's a remembered user (just for demo purposes)
+            const rememberedUser = localStorage.getItem('currentUser');
+            if (rememberedUser) {
+                const user = JSON.parse(rememberedUser);
+                document.getElementById('email').value = user.email;
+                document.getElementById('remember').checked = true;
             }
-            
-            // Show success and redirect
-            alert('Account created successfully! Welcome to Sky Travelling.');
-            window.location.href = 'index.html'; // Go to homepage
-            
-        }, 1500); // 1.5 second delay to simulate server response
-    };
-    
-    // Check if there's a remembered user (just for demo purposes)
-    const rememberedUser = localStorage.getItem('currentUser');
-    if (rememberedUser) {
-        const user = JSON.parse(rememberedUser);
-        document.getElementById('email').value = user.email;
-        document.getElementById('remember').checked = true;
-    }
-};
+        };
     </script>
 </body>
 </html>

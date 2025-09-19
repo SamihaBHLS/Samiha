@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petra - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-petra {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-petra {
+    background:  url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-petra::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.petra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.petra-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.petra-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.petra-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.petra-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.petra-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .petra-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-petra {
+        padding: 3rem 1rem;
+    }
+    
+    .petra-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop (1200px+) - Your base styles cover this */
+
+/* Medium Desktop (992px-1199px) */
+@media (max-width: 1199px) {
+    .hero-petra {
+        padding: 3.5rem 2rem;
+    }
+    
+    .petra-grid {
+        gap: 1.8rem;
+    }
+    
+    .petra-image {
+        height: 160px;
+    }
+}
+
+/* Tablet Landscape (768px-991px) */
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .petra-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hotels-section h2,
+    .restaurants-section h2,
+    .travel-tips h2 {
+        font-size: 1.7rem;
+    }
+    
+    .wisdom-banner h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablet Portrait (576px-767px) */
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-petra {
+        padding: 3rem 1.5rem;
+    }
+    
+    .petra-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 0 15px 15px;
+    }
+    
+    .wisdom-banner {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile (480px-575px) */
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .petra-grid,
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .petra-card {
+        padding-top: 40px;
+    }
+    
+    .icon-circle {
+        margin: -40px auto 1rem;
+    }
+    
+    .petra-image {
+        height: 150px;
+    }
+}
+
+/* Small Mobile (0-479px) */
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-petra {
+        padding: 2.5rem 1rem;
+    }
+    
+    .petra-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-details p {
+        font-size: 0.8rem;
+    }
+    
+    .hotel-card h3,
+    .restaurant-card h3,
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* RTL Support */
+@media (max-width: 767px) {
+    body[dir="rtl"] .floating-nav ul {
+        padding-right: 0;
+    }
+    
+    body[dir="rtl"] .icon-circle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Petra</h1>
+            <p>Discover the Rose-Red City carved into the cliffs of southern Jordan</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-petra">
+        <section class="hero-petra">
+            <div class="hero-content">
+                <h2>Explore Ancient Petra</h2>
+                <p>A UNESCO World Heritage Site and one of the New Seven Wonders of the World</p>
+            </div>
+        </section>
+
+        <div class="petra-grid">
+            <!-- The Treasury -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-monument"></i></div>
+                    <h3>The Treasury (Al-Khazneh)</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/The Treasury (Al-Khazneh).jpg" alt="The Treasury" class="petra-image">
+                    <p>The most elaborate temple in Petra, carved into the sandstone cliff face in the 1st century BC as a tomb for an important Nabataean king.</p>
+                    <div class="card-details">
+                        <p><strong>Best time to visit:</strong> Early morning for golden light</p>
+                        <p><strong>Fun fact:</strong> Featured in Indiana Jones and the Last Crusade</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- The Monastery -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>The Monastery (Ad-Deir)</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/The Monastery (Ad-Deir).jpg" alt="The Monastery" class="petra-image">
+                    <p>One of the largest monuments in Petra, reached by climbing 800 steps cut into the mountain, offering breathtaking views.</p>
+                    <div class="card-details">
+                        <p><strong>Height:</strong> 50 meters wide and 45 meters tall</p>
+                        <p><strong>Tip:</strong> Allow 1-2 hours for the climb</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- The Siq -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-road"></i></div>
+                    <h3>The Siq</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/The Siq.jpg" alt="The Siq" class="petra-image">
+                    <p>The main entrance to Petra is a narrow, winding canyon over 1km long with towering walls up to 80 meters high.</p>
+                    <div class="card-details">
+                        <p><strong>Features:</strong> Remains of ancient dams and carvings</p>
+                        <p><strong>Experience:</strong> Dramatic approach to the Treasury</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Royal Tombs -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-crown"></i></div>
+                    <h3>Royal Tombs</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Royal Tombs.jpg" alt="Royal Tombs" class="petra-image">
+                    <p>A collection of impressive tomb facades including the Urn Tomb, Silk Tomb, Corinthian Tomb, and Palace Tomb.</p>
+                    <div class="card-details">
+                        <p><strong>Location:</strong> Opposite the theater</p>
+                        <p><strong>Best for:</strong> Sunset views over Petra</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- High Place of Sacrifice -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>High Place of Sacrifice</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/High Place of Sacrifice.jpg" alt="High Place of Sacrifice" class="petra-image">
+                    <p>One of the highest points in Petra, used for religious ceremonies with altars for animal sacrifices and stunning panoramic views.</p>
+                    <div class="card-details">
+                        <p><strong>Trail:</strong> Steep climb but well-preserved path</p>
+                        <p><strong>View:</strong> Overlooks entire Petra basin</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Petra by Night -->
+            <article class="petra-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-moon"></i></div>
+                    <h3>Petra by Night</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/petra.jpg" alt="Petra by Night" class="petra-image">
+                    <p>A magical experience where the Siq and Treasury are illuminated by over 1,500 candles, with traditional Bedouin music.</p>
+                    <div class="card-details">
+                        <p><strong>When:</strong> Monday, Wednesday and Thursday</p>
+                        <p><strong>Tip:</strong> Book in advance as it sells out</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels Near Petra</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Mövenpick Resort Petra</h3>
+                    <p>★★★★★ | Located right at the entrance to Petra</p>
+                    <p>Price range: $200-400/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Petra Guest House Hotel</h3>
+                    <p>★★★★ | Cave Bar is carved into rock</p>
+                    <p>Price range: $120-250/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Petra Moon Hotel</h3>
+                    <p>★★★★ | Modern hotel with great views</p>
+                    <p>Price range: $80-150/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Valentine Inn</h3>
+                    <p>★★★ | Budget-friendly with pool</p>
+                    <p>Price range: $40-80/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Local Dining</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Al-Wadi Restaurant</h3>
+                    <p>Traditional Jordanian cuisine with live music</p>
+                    <p>Specialty: Mansaf (national dish)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Red Cave Restaurant</h3>
+                    <p>Authentic local dishes near visitor center</p>
+                    <p>Must-try: Maqluba (upside-down rice dish)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Sandstone Restaurant</h3>
+                    <p>International and Middle Eastern buffet</p>
+                    <p>Famous for: Views of Petra mountains</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Al-Saraya Restaurant</h3>
+                    <p>Bedouin-style dining experience</p>
+                    <p>Experience: Zarb (underground barbecue)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Petra Wisdom</h3>
+                <p>"Half as old as time itself, Petra stands as a testament to human ingenuity. A rose-red city carved directly into the living rock, it whispers stories of ancient Nabataeans who turned this desert stronghold into a crossroads of civilizations. To walk through the Siq and emerge before the Treasury is to step back two millennia."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>What to Wear</h3>
+                    <p>Comfortable walking shoes are essential. Dress modestly out of respect for local culture.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Weather Prep</h3>
+                    <p>Desert climate - hot days, cool nights. Bring sun protection and layers for temperature changes.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>Spring (March-May) and Autumn (September-November) for pleasant temperatures.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Tickets & Guides</h3>
+                    <p>Multi-day tickets available. Consider a local guide to fully appreciate the history.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Rose-Red City</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>

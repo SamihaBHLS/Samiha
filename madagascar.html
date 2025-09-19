@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madagascar - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-madagascar {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-madagascar {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-madagascar::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.madagascar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.madagascar-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.madagascar-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.madagascar-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.madagascar-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.madagascar-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+    font-size: 1rem;
+    }
+    
+    .madagascar-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-madagascar {
+        padding: 3rem 1rem;
+    }
+    
+    .madagascar-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop (1200px+) - Your base styles cover this */
+
+/* Medium Desktop (992px-1199px) */
+@media (max-width: 1199px) {
+    .hero-madagascar {
+        padding: 3.5rem 2rem;
+    }
+    
+    .madagascar-grid {
+        gap: 1.8rem;
+    }
+    
+    .madagascar-image {
+        height: 160px;
+    }
+}
+
+/* Tablet Landscape (768px-991px) */
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .madagascar-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hotels-section h2,
+    .restaurants-section h2,
+    .travel-tips h2 {
+        font-size: 1.7rem;
+    }
+    
+    .wisdom-banner h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablet Portrait (576px-767px) */
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-madagascar {
+        padding: 3rem 1.5rem;
+    }
+    
+    .madagascar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 0 15px 15px;
+    }
+    
+    .wisdom-banner {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile (480px-575px) */
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .madagascar-grid,
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .madagascar-card {
+        padding-top: 40px;
+    }
+    
+    .icon-circle {
+        margin: -40px auto 1rem;
+    }
+    
+    .madagascar-image {
+        height: 150px;
+    }
+}
+
+/* Small Mobile (0-479px) */
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-madagascar {
+        padding: 2.5rem 1rem;
+    }
+    
+    .madagascar-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-details p {
+        font-size: 0.8rem;
+    }
+    
+    .hotel-card h3,
+    .restaurant-card h3,
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* RTL Support */
+@media (max-width: 767px) {
+    body[dir="rtl"] .floating-nav ul {
+        padding-right: 0;
+    }
+    
+    body[dir="rtl"] .icon-circle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Madagascar</h1>
+            <p>Discover the Island of Unique Wildlife and Breathtaking Landscapes</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-madagascar">
+        <section class="hero-madagascar">
+            <div class="hero-content">
+                <h2>Experience the Eighth Continent</h2>
+                <p>Where unique wildlife and diverse cultures create an unforgettable adventure</p>
+            </div>
+        </section>
+
+        <div class="madagascar-grid">
+            <!-- Avenue of the Baobabs -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-tree"></i></div>
+                    <h3>Avenue of the Baobabs</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Avenue of the Baobabs.jpg" alt="Avenue of the Baobabs" class="madagascar-image">
+                    <p>This striking landscape features a dirt road lined with massive baobab trees, some over 800 years old, creating one of Africa's most photographed scenes.</p>
+                    <div class="card-details">
+                        <p><strong>Best time:</strong> Sunset for spectacular photos</p>
+                        <p><strong>Location:</strong> Morondava, western Madagascar</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Andasibe-Mantadia National Park -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-leaf"></i></div>
+                    <h3>Andasibe-Mantadia National Park</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Andasibe-Mantadia National Park.jpg" alt="Andasibe-Mantadia National Park" class="madagascar-image">
+                    <p>Home to the indri, Madagascar's largest lemur, this rainforest park offers incredible wildlife viewing just a few hours from the capital.</p>
+                    <div class="card-details">
+                        <p><strong>Highlight:</strong> Indri lemurs' haunting calls</p>
+                        <p><strong>Species:</strong> 11 lemur species, rare birds</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Nosy Be -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3>Nosy Be</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Nosy Be.jpg" alt="Nosy Be" class="madagascar-image">
+                    <p>Madagascar's premier beach destination with pristine white sand, turquoise waters, and excellent diving spots surrounded by smaller islands.</p>
+                    <div class="card-details">
+                        <p><strong>Activities:</strong> Diving, snorkeling, whale watching</p>
+                        <p><strong>Known for:</strong> Ylang-ylang plantations</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tsingy de Bemaraha -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Tsingy de Bemaraha</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Tsingy de Bemaraha.jpg" alt="Tsingy de Bemaraha" class="madagascar-image">
+                    <p>A UNESCO World Heritage Site featuring spectacular limestone formations creating a "forest" of sharp peaks, canyons, and suspended bridges.</p>
+                    <div class="card-details">
+                        <p><strong>Unique feature:</strong> Karst limestone landscape</p>
+                        <p><strong>Access:</strong> April to November only</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Ranomafana National Park -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Ranomafana National Park</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Ranomafana National Park.jpg" alt="Ranomafana National Park" class="madagascar-image">
+                    <p>A misty rainforest park with hot springs, waterfalls, and incredible biodiversity including 12 species of lemurs and numerous endemic birds.</p>
+                    <div class="card-details">
+                        <p><strong>Specialty:</strong> Golden bamboo lemur</p>
+                        <p><strong>Feature:</strong> Natural hot springs</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Malagasy Culture -->
+            <article class="madagascar-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-music"></i></div>
+                    <h3>Malagasy Culture</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Malagasy Culture.jpg" alt="Malagasy Culture" class="madagascar-image">
+                    <p>A rich blend of Southeast Asian, African, Arab and French influences expressed through music, dance, cuisine, and unique funeral traditions.</p>
+                    <div class="card-details">
+                        <p><strong>Famadihana:</strong> Turning of the bones ceremony</p>
+                        <p><strong>Cuisine:</strong> Rice-based dishes with unique flavors</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Madagascar</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Constance Tsarabanjina</h3>
+                    <p>★★★★★ | Private island resort near Nosy Be</p>
+                    <p>Price range: $400-800/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Eco-Lodge: Vakona Forest Lodge</h3>
+                    <p>★★★★ | Andasibe rainforest experience</p>
+                    <p>Price range: $150-300/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Relais des Plateaux</h3>
+                    <p>★★★★ | Convenient Antananarivo airport hotel</p>
+                    <p>Price range: $100-200/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Beach: Nosy Be Hotel</h3>
+                    <p>★★★ | Beachfront location with pool</p>
+                    <p>Price range: $80-150/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Malagasy Cuisine</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>La Varangue</h3>
+                    <p>Fine dining in Antananarivo with French-Malagasy fusion</p>
+                    <p>Specialty: Zebu steak with vanilla sauce</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Le Rossini</h3>
+                    <p>Italian-Malagasy cuisine in a garden setting</p>
+                    <p>Must-try: Seafood pasta with local spices</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Chez Mariette</h3>
+                    <p>Authentic Malagasy home cooking</p>
+                    <p>Famous for: Romazava (beef and vegetable stew)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>La Table d'Alexandre</h3>
+                    <p>Nosy Be beachfront dining</p>
+                    <p>Experience: Fresh lobster with sunset views</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Madagascar Wisdom</h3>
+                <p>"Madagascar is a world apart, where evolution took a different path, creating unique wildlife found nowhere else on Earth. From the iconic lemurs and bizarre baobabs to the intricate tapestry of cultures blending Southeast Asian, African, and French influences, this island nation offers an experience like no other. Travel here requires patience and flexibility, but rewards with unparalleled natural wonders and the warmth of the Malagasy people who believe that 'foreigners are gifts from God.'"</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Visa Requirements</h3>
+                    <p>Most nationalities need a visa, available on arrival for tourism (approx. $37 for 30 days).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-syringe"></i>
+                    <h3>Health Precautions</h3>
+                    <p>Malaria prophylaxis recommended. Vaccinations for hepatitis A, typhoid advised.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Best Seasons</h3>
+                    <p>April-October (dry season) for best weather. November-March is rainy season with cyclone risk.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-road"></i>
+                    <h3>Transportation</h3>
+                    <p>Domestic flights save time. Roads are often challenging - allow extra travel time for overland journeys.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Island of Unique Biodiversity</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Wildlife', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>

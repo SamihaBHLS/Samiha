@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patagonia - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-patagonia {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-patagonia {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-patagonia::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.patagonia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.patagonia-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.patagonia-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.patagonia-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.patagonia-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.patagonia-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .patagonia-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-patagonia {
+        padding: 3rem 1rem;
+    }
+    
+    .patagonia-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Patagonia</h1>
+            <p>Discover the wild beauty of the end of the world</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-patagonia">
+        <section class="hero-patagonia">
+            <div class="hero-content">
+                <h2>Experience the Wild Majesty of Patagonia</h2>
+                <p>Where jagged peaks meet pristine glaciers in the southern wilderness</p>
+            </div>
+        </section>
+
+        <div class="patagonia-grid">
+            <!-- Torres del Paine -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Torres del Paine</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Torres del Paine.jpg" alt="Torres del Paine" class="patagonia-image">
+                    <p>Iconic granite peaks rising dramatically above turquoise lakes in Chile's premier national park.</p>
+                    <div class="card-details">
+                        <p><strong>Best for:</strong> Hiking & photography</p>
+                        <p><strong>Feature:</strong> W Trek & O Circuit trails</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Perito Moreno Glacier -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-snowflake"></i></div>
+                    <h3>Perito Moreno Glacier</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Perito Moreno Glacier.jpg" alt="Perito Moreno Glacier" class="patagonia-image">
+                    <p>One of the few advancing glaciers in the world, with spectacular ice calving events.</p>
+                    <div class="card-details">
+                        <p><strong>Activity:</strong> Ice trekking & boat tours</p>
+                        <p><strong>See:</strong> Massive ice collapses</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tierra del Fuego -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Tierra del Fuego</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Tierra del Fuego.jpg" alt="Tierra del Fuego" class="patagonia-image">
+                    <p>The "Land of Fire" at the southernmost tip of South America, shared by Argentina and Chile.</p>
+                    <div class="card-details">
+                        <p><strong>Best seen:</strong> Ushuaia - world's southernmost city</p>
+                        <p><strong>Location:</strong> Beagle Channel & Lapataia Bay</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Wildlife Watching -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-binoculars"></i></div>
+                    <h3>Wildlife Watching</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Wildlife Watching.jpg" alt="Patagonian Wildlife" class="patagonia-image">
+                    <p>Home to diverse species including guanacos, pumas, Andean condors, and Magellanic penguins.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Penguin colonies at Punta Tombo</p>
+                        <p><strong>Experience:</strong> Whale watching in Peninsula Valdés</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Fitz Roy Massif -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Fitz Roy Massif</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Fitz Roy Massif.jpg" alt="Fitz Roy Massif" class="patagonia-image">
+                    <p>The stunning granite spires near El Chaltén, Argentina's trekking capital.</p>
+                    <div class="card-details">
+                        <p><strong>Experience:</strong> Challenging hikes with epic views</p>
+                        <p><strong>Feature:</strong> Laguna de los Tres viewpoint</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Estancia Experience -->
+            <article class="patagonia-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-horse"></i></div>
+                    <h3>Estancia Experience</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Estancia Experience.jpg" alt="Estancia Experience" class="patagonia-image">
+                    <p>Authentic ranch stays offering horseback riding, traditional lamb barbecues, and gaucho culture.</p>
+                    <div class="card-details">
+                        <p><strong>Specialty:</strong> Traditional asado (barbecue)</p>
+                        <p><strong>Feature:</strong> Working sheep farms</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Lodging Options in Patagonia</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Explora Patagonia</h3>
+                    <p>★★★★★ | All-inclusive adventure lodge in Torres del Paine</p>
+                    <p>Price range: $800-1,500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Eco-Lodge: Tierra Patagonia</h3>
+                    <p>★★★★★ | Sustainable luxury with stunning lake views</p>
+                    <p>Price range: $600-1,200/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Los Cerros</h3>
+                    <p>★★★★ | Charming hotel with panoramic views of El Chaltén</p>
+                    <p>Price range: $200-400/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Adventure: Refugios</h3>
+                    <p>★★★ | Mountain refuges along hiking trails</p>
+                    <p>Price range: $50-100/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Dining Experiences</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Traditional Asado</h3>
+                    <p>Authentic Patagonian barbecue with lamb cooked over open fire</p>
+                    <p>Specialty: Cordero al palo (spit-roasted lamb)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Seafood Specialties</h3>
+                    <p>Fresh king crab, centolla, and salmon from southern waters</p>
+                    <p>Experience: Centolla feast in Ushuaia</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Mountain Refugio Meals</h3>
+                    <p>Hearty meals after long days of hiking</p>
+                    <p>Perfect for: Replenishing energy</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Chocolate & Craft Beer</h3>
+                    <p>Bariloche's famous chocolate shops and Patagonian microbreweries</p>
+                    <p>Must-try: Artisanal beers with mountain views</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Patagonia Wisdom</h3>
+                <p>"Patagonia is where the mountains whisper ancient stories, where glaciers groan with the weight of millennia, and where the wind carves the landscape and the soul. It's not merely a place you visit, but a raw, powerful experience that changes how you see the world and your place in it. The wilderness here reminds you of both your insignificance and your connection to everything."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips for Patagonia</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>October-April for warmer weather (summer in Southern Hemisphere).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Weather Preparedness</h3>
+                    <p>Expect four seasons in one day - pack layers and windproof gear.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Trekking Requirements</h3>
+                    <p>Good physical condition needed for challenging trails.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Currency</h3>
+                    <p>Chilean pesos and Argentine pesos. US dollars accepted in some places.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Wilderness Adventures</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>

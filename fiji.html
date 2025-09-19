@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiji - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-fiji {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-fiji {
+    background: url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-fiji::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.fiji-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.fiji-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fiji-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.fiji-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.fiji-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.fiji-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Scroll to top button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop (1200px+) - Your base styles cover this */
+
+/* Medium Desktop (992px-1199px) */
+@media (max-width: 1199px) {
+    .hero-fiji {
+        padding: 3.5rem 2rem;
+    }
+    
+    .fiji-grid {
+        gap: 1.8rem;
+    }
+    
+    .fiji-image {
+        height: 160px;
+    }
+}
+
+/* Tablet Landscape (768px-991px) */
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .fiji-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hotels-section h2,
+    .restaurants-section h2,
+    .travel-tips h2 {
+        font-size: 1.7rem;
+    }
+    
+    .wisdom-banner h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablet Portrait (576px-767px) */
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-fiji {
+        padding: 3rem 1.5rem;
+    }
+    
+    .fiji-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 0 15px 15px;
+    }
+    
+    .wisdom-banner {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile (480px-575px) */
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .fiji-grid,
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .fiji-card {
+        padding-top: 40px;
+    }
+    
+    .icon-circle {
+        margin: -40px auto 1rem;
+    }
+    
+    .fiji-image {
+        height: 150px;
+    }
+}
+
+/* Small Mobile (0-479px) */
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-fiji {
+        padding: 2.5rem 1rem;
+    }
+    
+    .fiji-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-details p {
+        font-size: 0.8rem;
+    }
+    
+    .hotel-card h3,
+    .restaurant-card h3,
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Fiji</h1>
+            <p>Discover the Islands of Smiles, Crystal Waters, and Tropical Paradise</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-fiji">
+        <section class="hero-fiji">
+            <div class="hero-content">
+                <h2>Experience the Heart of the South Pacific</h2>
+                <p>Where turquoise waters, white sand beaches, and warm smiles create paradise on Earth</p>
+            </div>
+        </section>
+
+        <div class="fiji-grid">
+            <!-- Mamanuca Islands -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Mamanuca Islands</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Mamanuca Islands.jpg" alt="Mamanuca Islands" class="fiji-image">
+                    <p>A stunning archipelago of 20 islands known for palm-fringed beaches, coral reefs, and luxury resorts. Popular for snorkeling, diving, and surfing.</p>
+                    <div class="card-details">
+                        <p><strong>Highlights:</strong> Monuriki Island (Cast Away filming location)</p>
+                        <p><strong>Activities:</strong> Snorkeling, surfing, island hopping</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Yasawa Islands -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Yasawa Islands</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Yasawa Islands.jpg" alt="Yasawa Islands" class="fiji-image">
+                    <p>A chain of volcanic islands with dramatic landscapes, pristine beaches, and traditional Fijian villages. Less developed than the Mamanucas.</p>
+                    <div class="card-details">
+                        <p><strong>Must-see:</strong> Sawa-i-Lau Caves with underwater passages</p>
+                        <p><strong>Known for:</strong> Blue Lagoon, spectacular sunsets</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Coral Coast -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ring"></i></div>
+                    <h3>Coral Coast</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Coral Coast.jpg" alt="Coral Coast" class="fiji-image">
+                    <p>Viti Levu's famous coastline stretching 80km along the Queen's Road. Features resorts, traditional villages, and the world's fourth-largest barrier reef.</p>
+                    <div class="card-details">
+                        <p><strong>Activities:</strong> Shark diving, zip-lining, cultural tours</p>
+                        <p><strong>Highlight:</strong> Sigatoka Sand Dunes National Park</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Taveuni - Garden Island -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-seedling"></i></div>
+                    <h3>Taveuni - Garden Island</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Taveuni - Garden Island.jpg" alt="Taveuni" class="fiji-image">
+                    <p>Known as the 'Garden Island' for its lush rainforests, waterfalls, and abundant flora. Home to Bouma National Heritage Park and rare bird species.</p>
+                    <div class="card-details">
+                        <p><strong>Unique feature:</strong> International Date Line runs through</p>
+                        <p><strong>Must-see:</strong> Tavoro Waterfalls, Lavena Coastal Walk</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Fijian Culture -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-users"></i></div>
+                    <h3>Fijian Culture</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Fijian Culture.jpg" alt="Fijian Culture" class="fiji-image">
+                    <p>Warm, welcoming culture centered around community, tradition, and ceremony. Known for meke dances, lovo feasts, and the welcoming 'Bula!' spirit.</p>
+                    <div class="card-details">
+                        <p><strong>Ceremony:</strong> Kava drinking (yaqona)</p>
+                        <p><strong>Cuisine:</strong> Kokoda, lovo, tropical fruits</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Diving & Snorkeling -->
+            <article class="fiji-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-fish"></i></div>
+                    <h3>Diving & Snorkeling</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Diving & Snorkeling.jpg" alt="Diving in Fiji" class="fiji-image">
+                    <p>Fiji's 'Soft Coral Capital of the World' offers spectacular dive sites with vibrant coral gardens, sharks, manta rays, and incredible marine biodiversity.</p>
+                    <div class="card-details">
+                        <p><strong>Top sites:</strong> Great Astrolabe Reef, Rainbow Reef</p>
+                        <p><strong>Season:</strong> Year-round (best April-October)</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Resorts in Fiji</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Likuliku Lagoon Resort</h3>
+                    <p>★★★★★ | Adults-only with overwater bures</p>
+                    <p>Price range: $600-1200/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Eco-Resort: Jean-Michel Cousteau Resort</h3>
+                    <p>★★★★★ | Family-friendly luxury eco-resort</p>
+                    <p>Price range: $800-1500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Outrigger Fiji Beach Resort</h3>
+                    <p>★★★★ | Coral Coast family favorite</p>
+                    <p>Price range: $250-500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Bamboo Beach Hostel</h3>
+                    <p>★★★ | Backpacker favorite on Coral Coast</p>
+                    <p>Price range: $30-80/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Fijian Cuisine & Dining</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Flying Fish Restaurant</h3>
+                    <p>Signature restaurant at Sheraton Denarau with seafood specialties</p>
+                    <p>Specialty: Yellowfin tuna with Fijian spices</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Cardo's Steakhouse & Bar</h3>
+                    <p>Popular Nadi restaurant with Fijian-Australian fusion</p>
+                    <p>Must-try: Kokoda (Fijian ceviche)</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Lovo Night Experience</h3>
+                    <p>Traditional Fijian feast cooked in underground oven</p>
+                    <p>Experience: Cultural show with buffet dinner</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Wicked Walu</h3>
+                    <p>Overwater restaurant at Jean-Michel Cousteau Resort</p>
+                    <p>Famous for: Romantic dining with reef views</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Fiji Wisdom</h3>
+                <p>"Fiji is more than just a destination; it's an experience of genuine warmth and 'Bula spirit.' With over 300 islands, each offering its own unique charm, Fiji presents the perfect blend of adventure and relaxation. From world-class diving in the Soft Coral Capital to immersing in vibrant Fijian culture through kava ceremonies and lovo feasts, these islands capture the essence of paradise. Remember that 'Fiji time' isn't just a concept—it's a way of life that teaches us to slow down, connect with others, and appreciate the simple joys of sun, sea, and smiles."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Visa Requirements</h3>
+                    <p>Most nationalities receive a 4-month visa on arrival. Passport must be valid for 6 months beyond stay.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Best Seasons</h3>
+                    <p>Dry season: May-October (cooler, less humid). Wet season: November-April (warmer, possible cyclones).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Cultural Etiquette</h3>
+                    <p>Dress modestly in villages. Remove hats and sunglasses when entering homes. Participate respectfully in kava ceremonies.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Currency & Costs</h3>
+                    <p>Fijian Dollar (FJD). Resorts accept cards but carry cash for villages. Tipping isn't customary but appreciated.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+       
+        <p>&copy; 2025 Sky Travelling | Where Happiness Comes Naturally</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add tooltips to nav items on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.floating-nav li a');
+            const tooltips = ['Home', 'Destinations', 'Beaches', 'Blog', 'Tips', 'Contact', 'Login'];
+            
+            navItems.forEach((item, index) => {
+                item.setAttribute('data-tooltip', tooltips[index]);
+            });
+        });
+    </script>
+</body>
+</html>

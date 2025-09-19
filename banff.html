@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banff - Sky Travelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Vibrant Style - Same Color Palette */
+:root {
+    --primary-blue: #126ca1;
+    --light-blue: #e0f0f8;
+    --accent-blue: #0d5a8a;
+    --white: #ffffff;
+    --gray: #555555;
+    --light-gray: #f8f9fa;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Vibrant Header */
+.vibrant-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.vibrant-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.header-content h1 span {
+    color: #a6c1ee;
+}
+
+.header-content p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    background: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem;
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.floating-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.floating-nav li {
+    position: relative;
+}
+
+.floating-nav li a {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.floating-nav li a:hover, 
+.floating-nav li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* Tooltip Styles */
+.floating-nav li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.floating-nav li a::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary-blue) transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-nav li a:hover::after,
+.floating-nav li a:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments for tooltips */
+@media (max-width: 768px) {
+    .floating-nav li a::after {
+        bottom: auto;
+        top: -40px;
+    }
+    
+    .floating-nav li a::before {
+        bottom: auto;
+        top: -15px;
+        border-color: var(--primary-blue) transparent transparent transparent;
+    }
+}
+
+/* Dynamic Layout */
+.dynamic-banff {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-banff {
+    background:url('./image/sky.webp') no-repeat center center/cover;
+    color: var(--primary-blue);
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.hero-banff::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary-blue);
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid */
+.banff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Cards */
+.banff-card {
+    background: var(--white);
+    border-radius: 15px;
+    height: auto;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.banff-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(18, 108, 161, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.banff-card h3 {
+    color: var(--primary-blue);
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content {
+    padding: 0 20px 20px;
+}
+
+.banff-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.banff-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+.card-details {
+    background: var(--light-blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Sections */
+.hotels-section, .restaurants-section, .travel-tips {
+    margin: 4rem 0;
+}
+
+.hotels-section h2, .restaurants-section h2, .travel-tips h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hotels-section h2::after, 
+.restaurants-section h2::after,
+.travel-tips h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+}
+
+.hotels-grid, .restaurants-grid, .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hotel-card, .restaurant-card, .tip-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.hotel-card h3, .restaurant-card h3, .tip-card h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+}
+
+.tip-card {
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Wisdom Banner */
+.wisdom-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.banner-content i {
+    font-size: 2rem;
+    color: #a6c1ee;
+    margin-bottom: 1rem;
+}
+
+.banner-content h3 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.banner-content p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Vibrant Footer */
+.vibrant-footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #a6c1ee;
+    transform: translateY(-3px);
+}
+
+.vibrant-footer p {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.6rem;
+    }
+    
+    .floating-nav li a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .banff-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-banff {
+        padding: 3rem 1rem;
+    }
+    
+    .banff-grid, 
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--accent-blue);
+    transform: translateY(-5px);
+}
+/* ========== ENHANCED RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop (1200px+) - Your base styles cover this */
+
+/* Medium Desktop (992px-1199px) */
+@media (max-width: 1199px) {
+    .hero-banff {
+        padding: 3.5rem 2rem;
+    }
+    
+    .banff-grid {
+        gap: 1.8rem;
+    }
+    
+    .banff-image {
+        height: 160px;
+    }
+}
+
+/* Tablet Landscape (768px-991px) */
+@media (max-width: 991px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .banff-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hotels-section h2,
+    .restaurants-section h2,
+    .travel-tips h2 {
+        font-size: 1.7rem;
+    }
+    
+    .wisdom-banner h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablet Portrait (576px-767px) */
+@media (max-width: 767px) {
+    .vibrant-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-nav {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    
+    .floating-nav li a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .hero-banff {
+        padding: 3rem 1.5rem;
+    }
+    
+    .banff-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-content {
+        padding: 0 15px 15px;
+    }
+    
+    .wisdom-banner {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile (480px-575px) */
+@media (max-width: 575px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .banff-grid,
+    .hotels-grid,
+    .restaurants-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .banff-card {
+        padding-top: 40px;
+    }
+    
+    .icon-circle {
+        margin: -40px auto 1rem;
+    }
+    
+    .banff-image {
+        height: 150px;
+    }
+}
+
+/* Small Mobile (0-479px) */
+@media (max-width: 479px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .floating-nav {
+        width: 98%;
+        border-radius: 40px;
+    }
+    
+    .floating-nav li a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-banff {
+        padding: 2.5rem 1rem;
+    }
+    
+    .banff-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-details p {
+        font-size: 0.8rem;
+    }
+    
+    .hotel-card h3,
+    .restaurant-card h3,
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* RTL Support */
+@media (max-width: 767px) {
+    body[dir="rtl"] .floating-nav ul {
+        padding-right: 0;
+    }
+    
+    body[dir="rtl"] .icon-circle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="vibrant-header">
+        <div class="header-content">
+            <h1><span>Sky</span> Travelling Banff</h1>
+            <p>Discover Canada's majestic Rocky Mountain paradise</p>
+        </div>
+        <nav class="floating-nav">
+            <ul>
+                <li><a href="index.html" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                <li><a href="destinations.html" data-tooltip="Destinations"><i class="fas fa-map-marked-alt"></i></a></li>
+                <li><a href="forests.html" data-tooltip="Forests"><i class="fas fa-tree"></i></a></li>
+                <li><a href="blog.html" data-tooltip="Blog"><i class="fas fa-blog"></i></a></li>
+                <li><a href="tips.html" data-tooltip="Tips"><i class="fas fa-lightbulb"></i></a></li>
+                <li><a href="contact.html" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="login.html" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dynamic-banff">
+        <section class="hero-banff">
+            <div class="hero-content">
+                <h2>Explore Banff National Park</h2>
+                <p>Canada's first national park and a UNESCO World Heritage Site</p>
+            </div>
+        </section>
+
+        <div class="banff-grid">
+            <!-- Lake Louise -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Lake Louise</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Lake Louise.jpg" alt="Lake Louise" class="banff-image">
+                    <p>Famous for its stunning turquoise waters, surrounded by high peaks and the Victoria Glacier.</p>
+                    <div class="card-details">
+                        <p><strong>Activities:</strong> Canoeing, hiking, skiing</p>
+                        <p><strong>Best time:</strong> June-September for hiking, November-April for skiing</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Moraine Lake -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Moraine Lake</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Moraine Lake.jpg" alt="Moraine Lake" class="banff-image">
+                    <p>A glacially fed lake in the Valley of the Ten Peaks, known for its brilliant blue water.</p>
+                    <div class="card-details">
+                        <p><strong>Viewpoint:</strong> Rockpile Trail for iconic photos</p>
+                        <p><strong>Note:</strong> Road access seasonal (June to October)</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Banff Gondola -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-mountain"></i></div>
+                    <h3>Banff Gondola</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Banff Gondola.jpg" alt="Banff Gondola" class="banff-image">
+                    <p>An 8-minute ride to the summit of Sulphur Mountain for panoramic views of six mountain ranges.</p>
+                    <div class="card-details">
+                        <p><strong>Height:</strong> 2,281 meters (7,486 feet)</p>
+                        <p><strong>Features:</strong> Boardwalk, restaurant, interactive exhibits</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Johnston Canyon -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-hiking"></i></div>
+                    <h3>Johnston Canyon</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Johnston Canyon.jpg" alt="Johnston Canyon" class="banff-image">
+                    <p>A beautiful canyon walk featuring waterfalls, deep pools, and fascinating rock formations.</p>
+                    <div class="card-details">
+                        <p><strong>Trail:</strong> Easy to moderate hike</p>
+                        <p><strong>Highlights:</strong> Lower and Upper Falls, ink pots</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lake Minnewanka -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-ship"></i></div>
+                    <h3>Lake Minnewanka</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Lake Minnewanka.jpg" alt="Lake Minnewanka" class="banff-image">
+                    <p>The largest lake in Banff National Park, popular for boat tours, hiking, and wildlife viewing.</p>
+                    <div class="card-details">
+                        <p><strong>Name meaning:</strong> "Water of the Spirits"</p>
+                        <p><strong>Activities:</strong> Boat cruise, hiking, diving</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Banff Upper Hot Springs -->
+            <article class="banff-card">
+                <div class="card-header">
+                    <div class="icon-circle"><i class="fas fa-hot-tub"></i></div>
+                    <h3>Banff Upper Hot Springs</h3>
+                </div>
+                <div class="card-content">
+                    <img src="./image/Banff Upper Hot Springs.jpg" alt="Banff Upper Hot Springs" class="banff-image">
+                    <p>Historic outdoor hot pool with mineral waters, offering stunning mountain views.</p>
+                    <div class="card-details">
+                        <p><strong>Temperature:</strong> 37-40°C (98-104°F)</p>
+                        <p><strong>History:</strong> Discovered by railway workers in 1880s</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="hotels-section">
+            <h2>Top Hotels in Banff</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <h3>Luxury: Fairmont Banff Springs</h3>
+                    <p>★★★★★ | Historic castle-like hotel with stunning mountain views</p>
+                    <p>Price range: $400-1000/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Boutique: Moose Hotel & Suites</h3>
+                    <p>★★★★ | Modern lodge with rooftop hot pools</p>
+                    <p>Price range: $250-500/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Mid-range: Banff Park Lodge</h3>
+                    <p>★★★★ | Centrally located with indoor pool</p>
+                    <p>Price range: $150-300/night</p>
+                </div>
+                <div class="hotel-card">
+                    <h3>Budget: Banff International Hostel</h3>
+                    <p>★★★ | Affordable lodging with mountain views</p>
+                    <p>Price range: $40-100/night</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="restaurants-section">
+            <h2>Best Restaurants</h2>
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <h3>Sky Bistro</h3>
+                    <p>Upscale dining at the top of Sulphur Mountain</p>
+                    <p>Specialty: Alberta beef tenderloin</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>The Bison Restaurant</h3>
+                    <p>Farm-to-table Canadian cuisine</p>
+                    <p>Must-try: Bison short ribs</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Park Distillery</h3>
+                    <p>Restaurant and distillery with campfire-inspired menu</p>
+                    <p>Famous for: Handcrafted spirits and mountain meals</p>
+                </div>
+                <div class="restaurant-card">
+                    <h3>Wild Flour Bakery</h3>
+                    <p>Artisan bakery and café</p>
+                    <p>Experience: Fresh pastries and organic coffee</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wisdom-banner">
+            <div class="banner-content">
+                <i class="fas fa-quote-left"></i>
+                <h3>Banff Wisdom</h3>
+                <p>"Banff is where the Canadian Rockies reveal their most spectacular secrets. From the jewel-like lakes born of glacial flour to the wildlife that roams freely through valleys and townsites, this is a place that captures the heart and never lets go. The mountains don't just surround you here—they embrace you."</p>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <h2>Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Park Pass Required</h3>
+                    <p>All visitors need a Parks Canada pass. Daily or annual passes available.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bear"></i>
+                    <h3>Wildlife Safety</h3>
+                    <p>Keep safe distance from animals (100m from bears, 30m from elk).</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Seasonal Preparation</h3>
+                    <p>Summer: hiking gear. Winter: warm layers, ice cleats.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bus"></i>
+                    <h3>Roam Transit</h3>
+                    <p>Use public transit to popular sites to avoid parking challenges.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vibrant-footer">
+        
+        <p>&copy; 2025 Sky Travelling | Canadian Rockies</p>
+        <div class="scroll-top" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add tooltips to nav items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.floating-nav li a');
+        const tooltips = ['Home', 'Destinations', 'Forests', 'Blog', 'Tips', 'Contact', 'Login'];
+        
+        navItems.forEach((item, index) => {
+            item.setAttribute('data-tooltip', tooltips[index]);
+        });
+    });
+    </script>
+</body>
+</html>
